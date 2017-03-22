@@ -1,0 +1,8 @@
+---
+path: ../out
+memory: 64MB
+domain: 18f.gov
+stack: cflinuxfs2
+buildpack: staticfile_buildpack
+applications:
+- name: pages-redirects

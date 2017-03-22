@@ -1,0 +1,5 @@
+---
+inherit: base.yml
+domain: app.cloud.gov
+host: sandbox-pages-redirects
+instances: 1
