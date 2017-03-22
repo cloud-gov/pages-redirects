@@ -1,0 +1,6 @@
+---
+inherit: base.yml
+hosts:
+  - pages
+  - guides
+instances: 4

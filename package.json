@@ -1,0 +1,21 @@
+{
+  "name": "pages-redirects",
+  "version": "1.0.0",
+  "main": "build-config.js",
+  "license": "CC0-1.0",
+  "scripts": {
+    "eslint": "eslint",
+    "test": "faucet test/*.js "
+  },
+  "dependencies": {
+    "eslint": "3.16.1",
+    "eslint-config-airbnb-base": "^11.1.1",
+    "eslint-plugin-import": "2.2.0",
+    "faucet": "^0.0.1",
+    "js-yaml": "^3.8.2",
+    "minimist": "^1.2.0",
+    "nunjucks": "^3.0.0",
+    "request": "^2.81.0",
+    "tape": "^4.6.3"
+  }
+}
