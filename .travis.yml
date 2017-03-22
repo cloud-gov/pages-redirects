@@ -10,4 +10,4 @@ before_install:
 install:
   - yarn --pure-lockfile
 script:
-  - npm run eslint
+  - npm run eslint .
