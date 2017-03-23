@@ -7,8 +7,14 @@ services:
   - docker
 before_install:
   - npm install -g yarn
+  - docker-compose --version
 install:
   - yarn --pure-lockfile
+  - make
+  - docker-compose build
+  - docker-compose up -d
+  - docker-compose ps
 script:
   - npm run eslint .
   - npm test
+  - npm run test-docker
