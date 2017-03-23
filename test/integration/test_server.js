@@ -18,12 +18,22 @@ test('host is running', (t) => {
 
 const pageConfigs = lib.getPageConfigs(PAGES_FILE);
 pageConfigs.forEach((pc) => {
-  test(`redirect "${pc.from}" to "${pc.to}" works`, (t) => {
+  test(`redirect "pages/${pc.from}" to "${pc.to}.18f.gov" works`, (t) => {
     const reqObj = { url: `${HOST}/${pc.from}`, followRedirect: false };
     request(reqObj, (err, res) => {
       t.notOk(err);
       t.equal(res.statusCode, 302);
       t.equal(res.headers.location, `https://${pc.to}.18f.gov`);
+      t.end();
+    });
+  });
+
+  test(`redirect "pages/${pc.from}/whatever" to "${pc.to}.18f.gov/whatever" works`, (t) => {
+    const reqObj = { url: `${HOST}/${pc.from}/whatever`, followRedirect: false };
+    request(reqObj, (err, res) => {
+      t.notOk(err);
+      t.equal(res.statusCode, 302);
+      t.equal(res.headers.location, `https://${pc.to}.18f.gov/whatever`);
       t.end();
     });
   });
