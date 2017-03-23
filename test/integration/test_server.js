@@ -1,4 +1,4 @@
-const path = require('path')
+const path = require('path');
 const request = require('request');
 const test = require('tape');
 
