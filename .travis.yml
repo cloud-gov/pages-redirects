@@ -7,6 +7,7 @@ services:
   - docker
 before_install:
   - npm install -g yarn
+  - docker-compose --version
 install:
   - yarn --pure-lockfile
   - make
