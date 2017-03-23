@@ -1,12 +1,12 @@
 
-all: docker
+all: build-conf
 
-.PHONY: docker-nginx.conf docker clean
+.PHONY: build-conf docker clean
 
-docker-nginx.conf:
-	node build-config.js --docker
+build-conf:
+	node build-nginx-configs.js
 
-docker: docker-nginx.conf
+docker: build-conf
 	docker-compose build
 
 clean:
