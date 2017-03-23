@@ -2,9 +2,6 @@ worker_processes 1;
 
 {% if not IS_DOCKER %}
 daemon off;
-{% endif %}
-
-{% if not IS_DOCKER %}
 error_log <%= ENV["APP_ROOT"] %>/nginx/logs/error.log;
 {% endif %}
 
