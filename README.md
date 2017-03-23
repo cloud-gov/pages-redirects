@@ -8,7 +8,9 @@ Redirects traffic from previous pages.18f.gov sites to their new URLs.
 
 ## Usage
 
-Coming Soon!
+`make docker`
+`docker-compose up -d`
+`npm run test-docker`
 
 ## Adding a new redirect
 
