@@ -9,6 +9,11 @@ before_install:
   - npm install -g yarn
 install:
   - yarn --pure-lockfile
+  - make
+  - docker-compose build
+  - docker-compose up
+  - docker-compose ps
 script:
   - npm run eslint .
   - npm test
+  - npm run test-docker
