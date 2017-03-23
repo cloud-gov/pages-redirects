@@ -17,12 +17,16 @@ test('lib.getPageConfigs', (t) => {
 });
 
 test('lib.makeNginxConfigs', (t) => {
-  const { dockerConf, prodConf } = lib.makeNginxConfigs(PAGES_FILE);
+  const testPageConfigs = [
+    { from: 'test1', to: 'test1' },
+    { from: 'test2a', to: 'test2b' },
+  ];
+
+  const { dockerConf, prodConf } = lib.makeNginxConfigs(testPageConfigs);
   t.ok(dockerConf);
   t.ok(prodConf);
 
-  const pageConfigs = lib.getPageConfigs(PAGES_FILE);
-  pageConfigs.forEach((pc) => {
+  testPageConfigs.forEach((pc) => {
     const rewrite = `rewrite ^/${pc.from}(.*)$ https://${pc.to}.18f.gov$1;`;
     t.ok(prodConf.indexOf(rewrite) >= 0);
     t.ok(dockerConf.indexOf(rewrite) >= 0);
