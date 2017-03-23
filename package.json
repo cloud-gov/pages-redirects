@@ -5,7 +5,9 @@
   "license": "CC0-1.0",
   "scripts": {
     "eslint": "eslint",
-    "test": "faucet test/*.js "
+    "test": "faucet test/test_lib.js",
+    "test-docker": "faucet test/test_server.js",
+    "test-prod": "TARGET_HOST=https://pages.18f.gov faucet test/test_server.js"
   },
   "dependencies": {
     "eslint": "3.16.1",

@@ -1,8 +1,7 @@
 const request = require('request');
 const test = require('tape');
-const argv = require('minimist')(process.argv.slice(2));
 
-const HOST = argv.host || 'http://localhost:8080';
+const HOST = process.env.TARGET_HOST || 'http://localhost:8080';
 
 test('host is running', (t) => {
   request(HOST, (err, res, body) => {
