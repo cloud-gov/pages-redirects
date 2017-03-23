@@ -12,6 +12,7 @@ install:
   - yarn --pure-lockfile
   - make
   - docker-compose build
+  - docker-compose create
   - docker-compose start
   - docker-compose ps
 script:
