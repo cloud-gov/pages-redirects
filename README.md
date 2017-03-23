@@ -30,14 +30,19 @@ add lines of the following form to `pages.yml`:
 
 ## Usage
 
-Run `make` to build nginx configs, which will be written to the `out/` directory.
+This project uses [`yarn`](https://yarnpkg.com/) for managing node dependencies.
+After making sure you have it installed, run `yarn` to install dependencies.
 
+Run `make` to build nginx configs, which will be written to the `out/` directory.
 
 ## Testing
 
 To run unit tests, run `npm test`.
 
-To run integration tests, you'll need to build and run this repo's docker container:
+To run integration tests, you'll need to build and run this repo's docker container.
+
+First make sure you have [Docker][] and [Docker Compose][] installed, and maybe
+give the [18F Docker guide][] a read.
 
 ```sh
 make docker
@@ -55,3 +60,22 @@ Once you are finished testing, stop your detached dockers with:
 ```
 docker-compose stop
 ```
+
+## Deploying
+
+This app will be deployed in GovCloud cloud.gov:
+
+org: `gsa-18f-federalist`
+space: `redirects`
+
+
+To manually deploy:
+
+```sh
+make
+cf push -f manifests/manifest-<target>.yml`
+```
+
+[18F Docker guide]: https://pages.18f.gov/dev-environment-standardization/virtualization/docker/
+[Docker]: https://www.docker.com/
+[Docker Compose]: https://docs.docker.com/compose/
