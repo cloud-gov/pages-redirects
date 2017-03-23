@@ -31,5 +31,6 @@ if (argv.docker) {
 const context = Object.assign({}, contextDefaults, localContext);
 
 const nginxConf = nunjucks.render(NGINX_TEMPLATE_FILE, context);
+const outFile = `nginx${argv.docker ? '.docker' : ''}.conf`;
 
-fs.writeFileSync(path.join(NGINX_OUT_PATH, NGINX_OUT_FILE), nginxConf);
+fs.writeFileSync(path.join(NGINX_OUT_PATH, outFile), nginxConf);

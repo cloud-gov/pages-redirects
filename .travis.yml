@@ -11,3 +11,4 @@ install:
   - yarn --pure-lockfile
 script:
   - npm run eslint .
+  - npm test
