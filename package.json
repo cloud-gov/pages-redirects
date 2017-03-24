@@ -7,7 +7,10 @@
     "eslint": "eslint",
     "test": "faucet test/unit/",
     "test-docker": "faucet test/integration/",
-    "test-prod": "TARGET_HOST=https://pages.18f.gov faucet test/integration/"
+    "test-prod": "TARGET_HOST=https://pages.18f.gov faucet test/integration/",
+    "clean": "rm out/*.conf",
+    "build-configs": "node build-nginx-configs.js",
+    "build-docker": "npm run build-configs && docker-compose build"
   },
   "dependencies": {
     "eslint": "3.16.1",
