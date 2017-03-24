@@ -36,7 +36,6 @@ http {
 
   server {
     listen {{ PORT }};
-    server_name _;
 
     {% for page in PAGE_CONFIGS %}
     rewrite ^/{{ page.from }}(.*)$ https://{{ page.to }}.18f.gov$1;

@@ -10,7 +10,7 @@ before_install:
   - docker-compose --version
 install:
   - yarn --pure-lockfile
-  - make docker
+  - npm run build-docker
   - docker-compose build
   - docker-compose up -d
   - docker-compose ps

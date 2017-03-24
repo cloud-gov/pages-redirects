@@ -33,7 +33,7 @@ add lines of the following form to `pages.yml`:
 This project uses [`yarn`](https://yarnpkg.com/) for managing node dependencies.
 After making sure you have it installed, run `yarn` to install dependencies.
 
-Run `make` to build nginx configs, which will be written to the `out/` directory.
+Run `npm run build-configs` to build nginx configs, which will be written to the `out/` directory.
 
 ## Testing
 
@@ -45,7 +45,7 @@ First make sure you have [Docker][] and [Docker Compose][] installed, and maybe
 give the [18F Docker guide][] a read.
 
 ```sh
-make docker
+npm run build-docker
 docker-compose up -d
 ```
 
@@ -72,7 +72,7 @@ space: `redirects`
 To manually deploy:
 
 ```sh
-make
+npm run build-configs
 cf push -f manifests/manifest-<target>.yml`
 ```
 
