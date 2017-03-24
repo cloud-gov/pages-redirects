@@ -5,9 +5,9 @@
   "license": "CC0-1.0",
   "scripts": {
     "eslint": "eslint",
-    "test": "faucet test/unit/",
-    "test-docker": "faucet test/integration/",
-    "test-prod": "TARGET_HOST=https://pages.18f.gov faucet test/integration/",
+    "test": "tape test/unit/**/*.js | tap-summary",
+    "test-docker": "tape test/integration/**/*.js | tap-summary",
+    "test-prod": "TARGET_HOST=https://pages.18f.gov tape test/integration/**/*.js | tap-summary",
     "clean": "rm out/*.conf",
     "build-configs": "node build-nginx-configs.js",
     "build-docker": "npm run build-configs && docker-compose build"
@@ -16,11 +16,10 @@
     "eslint": "3.16.1",
     "eslint-config-airbnb-base": "^11.1.1",
     "eslint-plugin-import": "2.2.0",
-    "faucet": "^0.0.1",
     "js-yaml": "^3.8.2",
-    "minimist": "^1.2.0",
     "nunjucks": "^3.0.0",
     "request": "^2.81.0",
+    "tap-summary": "^3.0.1",
     "tape": "^4.6.3"
   }
 }
