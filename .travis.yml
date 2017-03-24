@@ -1,0 +1,20 @@
+sudo: required
+cache: yarn
+language: node_js
+node_js:
+  - "6"
+services:
+  - docker
+before_install:
+  - npm install -g yarn
+  - docker-compose --version
+install:
+  - yarn --pure-lockfile
+  - make docker
+  - docker-compose build
+  - docker-compose up -d
+  - docker-compose ps
+script:
+  - npm run eslint .
+  - npm test
+  - npm run test-docker

@@ -1,0 +1,45 @@
+worker_processes 1;
+
+{% if not IS_DOCKER %}
+daemon off;
+error_log <%= ENV["APP_ROOT"] %>/nginx/logs/error.log;
+{% endif %}
+
+events { worker_connections 1024; }
+
+http {
+  charset utf-8;
+  log_format cloudfoundry '$http_x_forwarded_for - $http_referer - [$time_local] "$request" $status $body_bytes_sent';
+
+  {% if not IS_DOCKER %}
+  access_log <%= ENV["APP_ROOT"] %>/nginx/logs/access.log cloudfoundry;
+  {% endif %}
+
+  default_type application/octet-stream;
+  include mime.types;
+  sendfile on;
+
+  gzip on;
+  gzip_disable "msie6";
+  gzip_comp_level 6;
+  gzip_min_length 1100;
+  gzip_buffers 16 8k;
+  gzip_proxied any;
+  gunzip on;
+  gzip_static always;
+  gzip_types text/plain text/css text/js text/xml text/javascript application/javascript application/x-javascript application/json application/xml application/xml+rss;
+
+  tcp_nopush on;
+  keepalive_timeout 30;
+  port_in_redirect off; {# Ensure that redirects do not include the internal container PORT #}
+  server_tokens off;
+
+  server {
+    listen {{ PORT }};
+    server_name _;
+
+    {% for page in PAGE_CONFIGS %}
+    rewrite ^/{{ page.from }}(.*)$ https://{{ page.to }}.18f.gov$1;
+    {% endfor %}
+  }
+}
