@@ -5,6 +5,9 @@ node_js:
   - "6"
 services:
   - docker
+env:
+  global:
+    - CF_CLI_VERSION=6.22.2
 before_install:
   - npm install -g yarn
   - docker-compose --version
@@ -18,3 +21,14 @@ script:
   - npm run eslint .
   - npm test
   - npm run test-docker
+before_deploy:
+  - export PATH=$HOME:$PATH
+  - travis_retry curl -L -o $HOME/cf.tgz "https://cli.run.pivotal.io/stable?release=linux64-binary&version=$CF_CLI_VERSION"
+  - tar xzvf $HOME/cf.tgz -C $HOME
+  - travis_retry cf install-plugin autopilot -f -r CF-Community
+deploy:
+  - provider: script
+    script: ./deploy-travis.sh
+    skip_cleanup: true
+    on:
+      branch: master
