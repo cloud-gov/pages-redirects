@@ -1,5 +1,5 @@
 ---
 inherit: base.yml
-domain: app.cloud.gov
-host: sandbox-pages-redirects
+routes:
+  - route: sandbox-pages-redirects.app.cloud.gov
 instances: 1

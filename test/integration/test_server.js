@@ -28,13 +28,25 @@ pageConfigs.forEach((pc) => {
     });
   });
 
-  test(`redirect "pages/${pc.from}/whatever" to "${pc.to}.18f.gov/whatever" works`, (t) => {
-    const reqObj = { url: `${HOST}/${pc.from}/whatever`, followRedirect: false };
+  test(`redirect "pages/${pc.from}/subpath" to "${pc.to}.18f.gov/subpath" works`, (t) => {
+    const reqObj = { url: `${HOST}/${pc.from}/subpath`, followRedirect: false };
     request(reqObj, (err, res) => {
       t.notOk(err);
       t.equal(res.statusCode, 302);
-      t.equal(res.headers.location, `https://${pc.to}.18f.gov/whatever`);
+      t.equal(res.headers.location, `https://${pc.to}.18f.gov/subpath`);
       t.end();
     });
+  });
+});
+
+test('proxy_pass for non-migrated pages', (t) => {
+  const reqObj = {
+    url: `${HOST}/non-migrated-page`,
+  };
+  request(reqObj, (err, res) => {
+    t.notOk(err);
+    t.ok(res);
+    t.notEqual(res.statusCode, 302);
+    t.end();
   });
 });
