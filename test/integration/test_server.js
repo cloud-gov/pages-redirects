@@ -44,7 +44,6 @@ test('proxy_pass for non-migrated pages', (t) => {
     url: `${HOST}/non-migrated-page`,
   };
   request(reqObj, (err, res) => {
-    // TODO: make this test better
     t.notOk(err);
     t.ok(res);
     t.notEqual(res.statusCode, 302);
