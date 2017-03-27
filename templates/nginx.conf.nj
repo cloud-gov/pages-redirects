@@ -40,5 +40,9 @@ http {
     {% for page in PAGE_CONFIGS %}
     rewrite ^/{{ page.from }}(.*)$ https://{{ page.to }}.18f.gov$1;
     {% endfor %}
+
+    location / {
+      proxy_pass http://federalist.18f.gov.s3-website-us-east-1.amazonaws.com/site/18f/;
+    }
   }
 }
