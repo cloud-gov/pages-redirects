@@ -9,8 +9,8 @@ Redirects traffic from previous pages.18f.gov sites to their new URLs.
 ## Adding a new redirect
 
 To add a new redirect from a retired pages.18f.gov to its new subdomain home,
-you will need to edit [`pages.yml`](/pages.yml). Please open a Pull Request with
-your modifications.
+you will need to edit [`pages.yml`](/pages.yml). Please open a [Pull Request](https://github.com/18F/pages-redirects/pull/new/master)
+with your modifications.
 
 If you need to add a simple redirect of `pages.18f.gov/site-name` to `site-name.18f.gov`,
 simply add a new line to the `pages.yml` that looks like:
@@ -27,6 +27,9 @@ add lines of the following form to `pages.yml`:
 - from: old-name
   to: new-name
 ```
+
+Once your changes are merged into `master`, the `pages-redirects` app will be redeployed
+by Travis and your redirects should start working within a few minutes.
 
 ## Usage
 
