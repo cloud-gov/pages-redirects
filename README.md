@@ -66,11 +66,20 @@ docker-compose stop
 
 ## Deploying
 
-This app will be deployed in GovCloud cloud.gov:
+This is deployed in GovCloud cloud.gov:
 
 org: `gsa-18f-federalist`
 space: `redirects`
 
+### Automated Deployments
+
+This app is automatically deployed by Travis when commits are pushed to the
+`master` branch (such as from a merged Pull Request). Deployments are done with
+the [cf-autopilot][] plugin so that there will be no downtime.
+
+See [`.travis.yml`](/.travis.yml) and [`deploy-travis.sh`](/deploy-travis.sh) for details.
+
+### Manual Deployments
 
 To manually deploy:
 
@@ -82,3 +91,4 @@ cf push -f manifests/manifest-<target>.yml`
 [18F Docker guide]: https://pages.18f.gov/dev-environment-standardization/virtualization/docker/
 [Docker]: https://www.docker.com/
 [Docker Compose]: https://docs.docker.com/compose/
+[cf-autopilot]: https://github.com/contraband/autopilot
