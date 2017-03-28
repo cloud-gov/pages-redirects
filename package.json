@@ -8,6 +8,7 @@
     "eslint": "eslint",
     "test": "tape test/unit/**/*.js | tap-summary --no-progress",
     "test-docker": "tape test/integration/**/*.js | tap-summary --no-progress",
+    "test-integration": "npm run test-docker",
     "test-prod": "TARGET_HOST=https://pages.18f.gov tape test/integration/**/*.js | tap-summary --no-progress",
     "clean": "rm out/*.conf",
     "build-configs": "node build-nginx-configs.js",
