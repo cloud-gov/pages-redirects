@@ -45,8 +45,11 @@ test('lib.makeNginxConfigs', (t) => {
     t.ok(dockerConf.indexOf(rewrite) >= 0);
   });
 
+  // lines that must be in the real nginx config but that are not
+  // in the docker config
   const prodLines = [
-    'daemon off',
+    'port_in_redirect off;',
+    'daemon off;',
     'error_log <%= ENV["APP_ROOT"] %>/nginx/logs/error.log;',
     'access_log <%= ENV["APP_ROOT"] %>/nginx/logs/access.log cloudfoundry;',
     'listen <%= ENV["PORT"] %>;',

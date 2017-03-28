@@ -13,6 +13,7 @@ http {
 
   {% if not IS_DOCKER %}
   access_log <%= ENV["APP_ROOT"] %>/nginx/logs/access.log cloudfoundry;
+  port_in_redirect off; # Ensure that redirects do not include the internal container PORT
   {% endif %}
 
   default_type application/octet-stream;
@@ -31,7 +32,6 @@ http {
 
   tcp_nopush on;
   keepalive_timeout 30;
-  port_in_redirect off; {# Ensure that redirects do not include the internal container PORT #}
   server_tokens off;
 
   server {
@@ -41,7 +41,19 @@ http {
     rewrite ^/{{ page.from }}(.*)$ https://{{ page.to }}.18f.gov$1;
     {% endfor %}
 
+    # The following are redirects from the old federalist-redirects app
+    # Ref: https://github.com/18F/federalist-redirects/blob/b60293b49d01c429092195bc6d446690423dcf3b/nginx.conf#L85-L89
+    rewrite ^/intake/.* https://18f.gsa.gov/contact/ redirect;
+    rewrite ^/designstandards/.* https://standards.usa.gov/ redirect;
+    rewrite ^/joining-18f/.* https://18f.gsa.gov/join/ redirect;
+    rewrite ^/$ /guides/ redirect;
+
+    # For everything else, proxy to the old Federalist bucket.
+    # This portion will go away soon once all 18F pages are migrated to their
+    # new subdomain homes.
+    rewrite ^/([^/]*)$ /$1/ redirect; # add trailing slash if missing
     location / {
+      # proxy everything else to the old Federalist S3 bucket
       proxy_pass http://federalist.18f.gov.s3-website-us-east-1.amazonaws.com/site/18f/;
     }
   }
