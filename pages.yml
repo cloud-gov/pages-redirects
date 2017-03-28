@@ -1,8 +1,6 @@
 ---
-- accessibility
-- agile
-- testing-cookbook
-- before-you-ship
-- guides
-- from: first-thing
-  to: other-thing
+# Add simple redirects with just
+# - pagename
+# Add redirects that have a change with
+# - from: oldname
+#   to: newname

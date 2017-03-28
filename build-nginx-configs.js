@@ -7,7 +7,7 @@ const lib = require('./lib');
 const PAGES_FILE = 'pages.yml';
 const NGINX_OUT_PATH = './out';
 
-const pageConfigs = lib.getPageConfigs(PAGES_FILE);
+const pageConfigs = lib.getPageConfigs(fs.readFileSync(PAGES_FILE, 'utf-8'));
 const { dockerConf, prodConf } = lib.makeNginxConfigs(pageConfigs);
 
 fs.writeFileSync(path.join(NGINX_OUT_PATH, 'nginx.docker.conf'), dockerConf);

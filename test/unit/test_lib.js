@@ -1,18 +1,31 @@
-const path = require('path');
 const test = require('tape');
-
 
 const lib = require('../../lib');
 
-const PAGES_FILE = path.join(__dirname, 'test_pages_config.yml');
+const PAGES_CONFIG = [
+  '---',
+  '- test1',
+  '- test2',
+  '- from: test3from',
+  '  to: test3to',
+].join('\n');
+
+const EMTPY_CONFIG = '---\n';
 
 test('lib.getPageConfigs', (t) => {
-  const configs = lib.getPageConfigs(PAGES_FILE);
+  const configs = lib.getPageConfigs(PAGES_CONFIG);
   t.ok(configs);
   t.equal(configs.length, 3);
   t.same(configs[0], { to: 'test1', from: 'test1' });
   t.same(configs[1], { to: 'test2', from: 'test2' });
   t.same(configs[2], { to: 'test3to', from: 'test3from' });
+  t.end();
+});
+
+test('lib.getPageConfigs with empty config', (t) => {
+  const configs = lib.getPageConfigs(EMTPY_CONFIG);
+  t.ok(configs);
+  t.equal(configs.length, 0);
   t.end();
 });
 

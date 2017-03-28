@@ -1,3 +1,4 @@
+const fs = require('fs');
 const path = require('path');
 const request = require('request');
 const test = require('tape');
@@ -16,7 +17,7 @@ test('host is running', (t) => {
   });
 });
 
-const pageConfigs = lib.getPageConfigs(PAGES_FILE);
+const pageConfigs = lib.getPageConfigs(fs.readFileSync(PAGES_FILE, 'utf-8'));
 pageConfigs.forEach((pc) => {
   test(`redirect "pages/${pc.from}" to "${pc.to}.18f.gov" works`, (t) => {
     const reqObj = { url: `${HOST}/${pc.from}`, followRedirect: false };
