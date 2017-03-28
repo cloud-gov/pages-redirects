@@ -31,28 +31,30 @@ add lines of the following form to `pages.yml`:
 Once your changes are merged into `master`, the `pages-redirects` app will be redeployed
 by Travis and your redirects should start working within a few minutes.
 
-## Usage
+## Developing
 
 This project uses [`yarn`](https://yarnpkg.com/) for managing node dependencies.
 After making sure you have it installed, run `yarn` to install dependencies.
-
-Run `npm run build-configs` to build nginx configs, which will be written to the `out/` directory.
 
 ## Testing
 
 To run unit tests, run `npm test`.
 
-To run integration tests, you'll need to build and run this repo's docker container.
+### Integration Tests
 
+#### Local Docker
+
+You can run integration tests locally against a docker container.
 First make sure you have [Docker][] and [Docker Compose][] installed, and maybe
 give the [18F Docker guide][] a read.
+
+Then build and run the docker container:
 
 ```sh
 npm run build-docker
 docker-compose up -d
 ```
-
-Then you can run the tests with:
+Finally, run tests against it with:
 
 ```sh
 npm run test-docker
@@ -62,6 +64,20 @@ Once you are finished testing, stop your detached dockers with:
 
 ```
 docker-compose stop
+```
+
+#### Real server
+
+To run integration tests against a real server:
+
+```sh
+TARGET_HOST=<FULL_URL_TOSERVER> npm run test-integration
+```
+
+For example:
+
+```sh
+TARGET_HOST=https://pages-redirects.app.cloud.gov npm run test-integration
 ```
 
 ## Deploying
