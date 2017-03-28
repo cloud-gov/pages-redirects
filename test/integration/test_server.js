@@ -9,14 +9,10 @@ const HOST = process.env.TARGET_HOST || 'http://localhost:8080';
 const PAGES_FILE = path.join(__dirname, '../..', 'pages.yml');
 
 test('redirects "/" to guides', (t) => {
-  const reqObj = {
-    url: HOST,
-    followRedirect: false,
-  };
-  request(reqObj, (err, res) => {
+  request(HOST, (err, res) => {
     t.notOk(err);
-    t.equal(res.statusCode, 302);
-    t.equal(res.headers.location, `${HOST}/guides/`);
+    t.equal(res.statusCode, 200);
+    t.equal(res.request.uri.path, '/guides/');
     t.end();
   });
 });
@@ -48,15 +44,10 @@ pageConfigs.forEach((pc) => {
 });
 
 test('proxy_pass for non-migrated pages works', (t) => {
-  const reqObj = {
-    url: `${HOST}/non-migrated-page`,
-    followRedirect: false,
-  };
-  request(reqObj, (err, res) => {
+  request(`${HOST}/non-migrated-page`, (err, res) => {
     t.notOk(err);
     t.ok(res);
-    t.equal(res.statusCode, 302);
-    t.equal(res.headers.location, `${HOST}/non-migrated-page/`);
+    t.equal(res.request.uri.path, '/non-migrated-page/');
     t.end();
   });
 });
