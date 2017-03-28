@@ -71,13 +71,13 @@ docker-compose stop
 To run integration tests against a real server:
 
 ```sh
-TARGET_HOST=<FULL_URL_TOSERVER> npm run integration-tests
+TARGET_HOST=<FULL_URL_TOSERVER> npm run test-integration
 ```
 
 For example:
 
 ```sh
-TARGET_HOST=https://pages-redirects.app.cloud.gov npm run integration-tests
+TARGET_HOST=https://pages-redirects.app.cloud.gov npm run test-integration
 ```
 
 ## Deploying
