@@ -4,10 +4,11 @@
   "main": "build-config.js",
   "license": "CC0-1.0",
   "scripts": {
+    "start": "npm run build-configs",
     "eslint": "eslint",
-    "test": "tape test/unit/**/*.js | tap-summary",
-    "test-docker": "tape test/integration/**/*.js | tap-summary",
-    "test-prod": "TARGET_HOST=https://pages.18f.gov tape test/integration/**/*.js | tap-summary",
+    "test": "tape test/unit/**/*.js | tap-summary --no-progress",
+    "test-docker": "tape test/integration/**/*.js | tap-summary --no-progress",
+    "test-prod": "TARGET_HOST=https://pages.18f.gov tape test/integration/**/*.js | tap-summary --no-progress",
     "clean": "rm out/*.conf",
     "build-configs": "node build-nginx-configs.js",
     "build-docker": "npm run build-configs && docker-compose build"
