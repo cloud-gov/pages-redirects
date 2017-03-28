@@ -41,7 +41,16 @@ http {
     rewrite ^/{{ page.from }}(.*)$ https://{{ page.to }}.18f.gov$1;
     {% endfor %}
 
+    rewrite ^/intake/.* https://18f.gsa.gov/contact/ redirect;
+    rewrite ^/designstandards/.* https://standards.usa.gov/ redirect;
+    rewrite ^/pages/.* https://github.com/18F/pages/ redirect;
+    rewrite ^/joining-18f/.* https://18f.gsa.gov/join/ redirect;
+    rewrite ^/$ /guides/ redirect;
+
+    # add trailing slash if missing
+    rewrite ^/([^/]*)$ /$1/ redirect;
     location / {
+      # proxy everything else to the old Federalist S3 bucket
       proxy_pass http://federalist.18f.gov.s3-website-us-east-1.amazonaws.com/site/18f/;
     }
   }
