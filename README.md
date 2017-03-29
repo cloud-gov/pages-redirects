@@ -2,13 +2,12 @@
 
 [![Build Status](https://travis-ci.org/18F/pages-redirects.svg?branch=master)](https://travis-ci.org/18F/pages-redirects)
 
-**UNDER DEVELOPMENT**
-
-Redirects traffic from previous pages.18f.gov sites to their new URLs.
+Redirects traffic from previous pages.18f.gov sites to their new URLs, which must
+be a subdomain of `18f.gov` (eg `pages.18f.gov/boop` → `boop.18f.gov`).
 
 ## Adding a new redirect
 
-To add a new redirect from a retired pages.18f.gov to its new subdomain home,
+To add a new redirect from a retired pages.18f.gov to its new 18f.gov-subdomain home,
 you will need to edit [`pages.yml`](/pages.yml). Please open a [Pull Request](https://github.com/18F/pages-redirects/pull/new/master)
 with your modifications.
 
@@ -19,22 +18,29 @@ simply add a new line to the `pages.yml` that looks like:
 - site-name
 ```
 
-If you need to change the name of the old page to something new, like `pages.18f.gov/old-name` to `new-name.18f.gov`,
+If you need to change the name of the old page to something new, like
+`pages.18f.gov/old-name` to `new-name.18f.gov`,
 add lines of the following form to `pages.yml`:
-
 
 ```yml
 - from: old-name
   to: new-name
 ```
 
-Once your changes are merged into `master`, the `pages-redirects` app will be redeployed
-by Travis and your redirects should start working within a few minutes.
+Once your changes are merged into `master` by an administrator,
+the `pages-redirects` app will be redeployed by Travis and your redirects
+should start working within a few minutes.
 
 ## Developing
 
-This project uses [`yarn`](https://yarnpkg.com/) for managing node dependencies.
+This is a NodeJS-based that project uses [`yarn`](https://yarnpkg.com/) for managing node dependencies.
 After making sure you have it installed, run `yarn` to install dependencies.
+
+The NodeJS code (called from `build-nginx-configs.js`), reads an array of sites to
+redirect from the [`pages.yml`](/pages.yml) file and inserts new NGINX rewrite rules
+into the [`nginx.conf.nj`](/templates/nginx.conf.js) template in [`templates/`](/templates).
+The resulting nginx.conf files (one for testing in [Docker](#local-docker) and one
+for the production site) are written to the `out/` directory.
 
 ## Testing
 
@@ -44,7 +50,7 @@ To run unit tests, run `npm test`.
 
 #### Local Docker
 
-You can run integration tests locally against a docker container.
+You can run integration tests locally against a Docker container.
 First make sure you have [Docker][] and [Docker Compose][] installed, and maybe
 give the [18F Docker guide][] a read.
 
