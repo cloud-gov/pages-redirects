@@ -90,8 +90,8 @@ TARGET_HOST=https://pages-redirects.app.cloud.gov npm run test-integration
 
 This is deployed in GovCloud cloud.gov:
 
-org: `gsa-18f-federalist`
-space: `redirects`
+- org: `gsa-18f-federalist`
+- space: `redirects`
 
 ### Automated Deployments
 
