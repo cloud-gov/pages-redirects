@@ -34,9 +34,14 @@ http {
   keepalive_timeout 30;
   server_tokens off;
 
+  # Custom domain redirects for various Federalist-hosted sites
+  {% include "federalist-redirects.njk" %}
+
   server {
     listen {{ PORT }};
+    server_name _;
 
+    # Redirects for pages.18f.gov/<SITE>
     {% for page in PAGE_CONFIGS %}
     rewrite ^/{{ page.from }}(.*)$ https://{{ page.to }}.18f.gov$1;
     {% endfor %}
