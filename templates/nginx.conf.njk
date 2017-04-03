@@ -34,24 +34,23 @@ http {
   keepalive_timeout 30;
   server_tokens off;
 
-  # Custom domain redirects for various Federalist-hosted sites
-  {% include "federalist-redirects.njk" %}
-
   server {
     listen {{ PORT }};
     server_name _;
 
-    # Redirects for pages.18f.gov/<SITE>
+    # -- Redirects for pages.18f.gov sites
     {% for page in PAGE_CONFIGS %}
     rewrite ^/{{ page.from }}(.*)$ https://{{ page.to }}.18f.gov$1;
     {% endfor %}
+    # -- end redirects for pages.18f.gov sites
 
-    # The following are redirects from the old federalist-redirects app
+    # -- Custom pages.18f.gov redirects from the old federalist-redirects app
     # Ref: https://github.com/18F/federalist-redirects/blob/b60293b49d01c429092195bc6d446690423dcf3b/nginx.conf#L85-L89
     rewrite ^/intake/.* https://18f.gsa.gov/contact/ redirect;
     rewrite ^/designstandards/.* https://standards.usa.gov/ redirect;
     rewrite ^/joining-18f/.* https://18f.gsa.gov/join/ redirect;
     rewrite ^/$ /guides/ redirect;
+    # 00 end custom pages.18f.gov redirects
 
     # For everything else, proxy to the old Federalist bucket.
     # This portion will go away soon once all 18F pages are migrated to their
@@ -62,4 +61,8 @@ http {
       proxy_pass http://federalist.18f.gov.s3-website-us-east-1.amazonaws.com/site/18f/;
     }
   }
+
+  # -- Custom domain redirects for various Federalist-hosted sites
+  {% include "federalist-redirects.njk" %}
+  # -- end custom domain redirects
 }
