@@ -54,22 +54,10 @@ You can run integration tests locally against a Docker container.
 First make sure you have [Docker][] and [Docker Compose][] installed, and maybe
 give the [18F Docker guide][] a read.
 
-Then build and run the docker container:
+Then build and run tests in docker-compose network:
 
 ```sh
-npm run build-docker
-docker-compose up -d
-```
-Finally, run tests against it with:
-
-```sh
-npm run test-docker
-```
-
-Once you are finished testing, stop your detached dockers with:
-
-```
-docker-compose stop
+npm run build-docker && npm run test-docker
 ```
 
 #### Real server
