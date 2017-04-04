@@ -54,7 +54,7 @@ for the production site) are written to the `out/` directory.
 
 ## Testing
 
-To run unit tests, run `npm test`.
+To run unit tests, run `yarn test`.
 
 ### Integration Tests
 
@@ -67,7 +67,7 @@ give the [18F Docker guide][] a read.
 Then build and run tests in docker-compose network:
 
 ```sh
-npm run build-docker && npm run test-docker
+yarn build-docker && yarn test-docker
 ```
 
 #### Real server
@@ -75,13 +75,13 @@ npm run build-docker && npm run test-docker
 To run integration tests against a real server:
 
 ```sh
-TARGET_HOST=<FULL_URL_TOSERVER> npm run test-integration
+TARGET_HOST=<FULL_URL_TOSERVER> yarn test-integration
 ```
 
 For example:
 
 ```sh
-TARGET_HOST=https://pages-redirects.app.cloud.gov npm run test-integration
+TARGET_HOST=https://pages-redirects.app.cloud.gov yarn test-integration
 ```
 
 ## Deploying
@@ -104,7 +104,7 @@ See [`.travis.yml`](/.travis.yml) and [`deploy-travis.sh`](/deploy-travis.sh) fo
 To manually deploy:
 
 ```sh
-npm run build-configs
+yarn build-configs
 cf push -f manifests/manifest-<target>.yml`
 ```
 
