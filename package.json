@@ -3,6 +3,16 @@
   "version": "1.0.0",
   "main": "build-config.js",
   "license": "CC0-1.0",
+  "repository" : {
+    "type": "git",
+    "url": "https://github.com/18f/pages-redirects"
+  },
+  "homepage": "https://github.com/18f/pages-redirects",
+  "author": "James Seppi",
+  "private": true,
+  "engines": {
+    "node": "^6.9.1"
+  },
   "scripts": {
     "start": "yarn build-configs",
     "eslint": "eslint",
