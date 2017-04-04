@@ -27,6 +27,16 @@ add lines of the following form to `pages.yml`:
   to: new-name
 ```
 
+If you need to redirect to a _different domain_ from `18f.gov`, like
+`pages.18f.gov/old-name` to `new-name.new-domain.gov`,
+add lines of the following form to `pages.yml`:
+
+```yml
+- from: old-name
+  to: new-name
+  toDomain: new-domain.gov
+```
+
 Once your changes are merged into `master` by an administrator,
 the `pages-redirects` app will be redeployed by Travis and your redirects
 should start working within a few minutes.
