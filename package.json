@@ -11,7 +11,7 @@
   "author": "James Seppi",
   "private": true,
   "engines": {
-    "node": "^6.9.1"
+    "node": "^6.10.0"
   },
   "scripts": {
     "start": "yarn build-configs",
