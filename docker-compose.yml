@@ -1,6 +1,39 @@
 version: '2'
+volumes:
+  yarn-cache:
+  node-modules:
 services:
   app:
-    build: .
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile-app
     ports:
-      - 8080:8080
+      - 8080:80
+  test_client:
+    build:
+      context: .
+      dockerfile: /docker/Dockerfile-test_client
+    depends_on:
+      - app
+    external_links:
+     - app:pif.gov
+    environment:
+      - TARGET_HOST=http://app
+    volumes:
+      - node-modules:/src/node_modules/
+      - yarn-cache:/root/.cache/
+    extra_hosts:
+      - "pif.gov:app"
+      - "www.pif.gov:app"
+      - "login.gov:app"
+      - "www.login.gov:app"
+      - "connect.gov:app"
+      - "www.connect.gov:app"
+      - "18f.gov:app"
+      - "www.18f.gov:app"
+      - "app.gov:app"
+      - "www.app.gov:app"
+      - "jobs.18f.gov:app"
+      - "join.18f.gov:app"
+      - "pages.18f.gov:app"
+      - "guides.18f.gov:app"

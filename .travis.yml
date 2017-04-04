@@ -15,8 +15,6 @@ install:
   - yarn --pure-lockfile
   - npm run build-docker
   - docker-compose build
-  - docker-compose up -d
-  - docker-compose ps
 script:
   - npm run eslint .
   - npm test
