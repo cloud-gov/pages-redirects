@@ -1,0 +1,10 @@
+FROM node:6-alpine
+
+WORKDIR /src
+
+COPY package.json /src
+COPY yarn.lock /src
+
+RUN yarn
+
+ADD . /src

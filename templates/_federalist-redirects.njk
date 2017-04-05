@@ -1,0 +1,52 @@
+
+# Originally from https://github.com/18F/federalist-redirects/blob/b60293b49d01c429092195bc6d446690423dcf3b/nginx.conf
+server {
+  listen {{ PORT }};
+  set $target_domain presidentialinnovationfellows.gov;
+  server_name pif.gov www.pif.gov;
+  return 302 https://$target_domain$request_uri;
+}
+
+server {
+  listen {{ PORT }};
+  set $target_domain pages.18f.gov/identity-intro;
+  server_name login.gov www.login.gov;
+  add_header Strict-Transport-Security 'max-age=31536000; includeSubDomains; preload';
+  return 302 https://$target_domain$request_uri;
+}
+
+server {
+  listen {{ PORT }};
+  set $target_domain login.gov;
+  server_name connect.gov www.connect.gov;
+  return 302 https://$target_domain$request_uri;
+}
+
+server {
+  listen {{ PORT }};
+  set $target_domain 18f.gsa.gov;
+  server_name 18f.gov www.18f.gov;
+  add_header X-Government-Innovation Disrupted;
+  add_header Strict-Transport-Security 'max-age=31536000; includeSubDomains; preload';
+  return 302 https://$target_domain$request_uri;
+}
+
+server {
+  listen {{ PORT }};
+  set $target_domain apps.gov;
+  server_name app.gov www.app.gov;
+  return 302 https://$target_domain$request_uri;
+}
+
+server {
+  listen {{ PORT }};
+  set $target_domain join.18f.gov;
+  server_name jobs.18f.gov;
+  return 302 https://$target_domain$request_uri;
+}
+
+server {
+  listen {{ PORT }};
+  server_name join.18f.gov;
+  return 302 https://18f.gsa.gov/join/;
+}

@@ -3,16 +3,26 @@
   "version": "1.0.0",
   "main": "build-config.js",
   "license": "CC0-1.0",
+  "repository" : {
+    "type": "git",
+    "url": "https://github.com/18f/pages-redirects"
+  },
+  "homepage": "https://github.com/18f/pages-redirects",
+  "author": "James Seppi",
+  "private": true,
+  "engines": {
+    "node": "^6.10.0"
+  },
   "scripts": {
-    "start": "npm run build-configs",
+    "start": "yarn build-configs",
     "eslint": "eslint",
     "test": "tape test/unit/**/*.js | tap-summary --no-progress",
-    "test-docker": "tape test/integration/**/*.js | tap-summary --no-progress",
-    "test-integration": "npm run test-docker",
-    "test-prod": "TARGET_HOST=https://pages.18f.gov tape test/integration/**/*.js | tap-summary --no-progress",
+    "test-prod": "TARGET_HOST=https://pages.18f.gov yarn test-integration",
+    "test-docker": "docker-compose up -d && sleep 2 && docker-compose run test_client yarn test-integration && docker-compose stop",
+    "test-integration": "tape test/integration/**/*.js | tap-summary --no-progress",
     "clean": "rm out/*.conf",
     "build-configs": "node build-nginx-configs.js",
-    "build-docker": "npm run build-configs && docker-compose build"
+    "build-docker": "yarn build-configs && docker-compose build"
   },
   "dependencies": {
     "eslint": "3.16.1",

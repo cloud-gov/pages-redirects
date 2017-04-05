@@ -27,6 +27,16 @@ add lines of the following form to `pages.yml`:
   to: new-name
 ```
 
+If you need to redirect to a _different domain_ from `18f.gov`, like
+`pages.18f.gov/old-name` to `new-name.new-domain.gov`,
+add lines of the following form to `pages.yml`:
+
+```yml
+- from: old-name
+  to: new-name
+  toDomain: new-domain.gov
+```
+
 Once your changes are merged into `master` by an administrator,
 the `pages-redirects` app will be redeployed by Travis and your redirects
 should start working within a few minutes.
@@ -38,13 +48,13 @@ After making sure you have it installed, run `yarn` to install dependencies.
 
 The NodeJS code (called from [`build-nginx-configs.js`](/build-nginx-configs.js)), reads an array of sites to
 redirect from the [`pages.yml`](/pages.yml) file and inserts new NGINX rewrite rules
-into the [`nginx.conf.nj`](/templates/nginx.conf.nj) template in [`templates/`](/templates).
+into the [`nginx.conf.njk`](/templates/nginx.conf.njk) template in [`templates/`](/templates).
 The resulting `nginx.conf` files (one for testing in [Docker](#local-docker) and one
 for the production site) are written to the `out/` directory.
 
 ## Testing
 
-To run unit tests, run `npm test`.
+To run unit tests, run `yarn test`.
 
 ### Integration Tests
 
@@ -54,22 +64,10 @@ You can run integration tests locally against a Docker container.
 First make sure you have [Docker][] and [Docker Compose][] installed, and maybe
 give the [18F Docker guide][] a read.
 
-Then build and run the docker container:
+Then build and run tests in docker-compose network:
 
 ```sh
-npm run build-docker
-docker-compose up -d
-```
-Finally, run tests against it with:
-
-```sh
-npm run test-docker
-```
-
-Once you are finished testing, stop your detached dockers with:
-
-```
-docker-compose stop
+yarn build-docker && yarn test-docker
 ```
 
 #### Real server
@@ -77,13 +75,13 @@ docker-compose stop
 To run integration tests against a real server:
 
 ```sh
-TARGET_HOST=<FULL_URL_TOSERVER> npm run test-integration
+TARGET_HOST=<FULL_URL_TOSERVER> yarn test-integration
 ```
 
 For example:
 
 ```sh
-TARGET_HOST=https://pages-redirects.app.cloud.gov npm run test-integration
+TARGET_HOST=https://pages-redirects.app.cloud.gov yarn test-integration
 ```
 
 ## Deploying
@@ -106,7 +104,7 @@ See [`.travis.yml`](/.travis.yml) and [`deploy-travis.sh`](/deploy-travis.sh) fo
 To manually deploy:
 
 ```sh
-npm run build-configs
+yarn build-configs
 cf push -f manifests/manifest-<target>.yml`
 ```
 
