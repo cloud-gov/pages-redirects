@@ -8,12 +8,16 @@ const lib = require('../../lib');
 const HOST = process.env.TARGET_HOST || 'http://localhost:8080';
 const PAGES_FILE = path.join(__dirname, '../..', 'pages.yml');
 
+function internalRedirectOk(t, res, internalPath) {
+  t.equal(res.statusCode, 302);
+  t.equal(res.headers.location, `${HOST.replace('https', 'http')}/${internalPath}`);
+}
+
 test('redirects "/" to guides', (t) => {
   const reqObj = { url: HOST, followRedirect: false };
   request(reqObj, (err, res) => {
     t.notOk(err);
-    t.equal(res.statusCode, 302);
-    t.equal(res.headers.location, `${HOST}/guides/`);
+    internalRedirectOk(t, res, 'guides/');
     t.end();
   });
 });
@@ -48,8 +52,7 @@ test('proxy_pass for non-migrated pages works', (t) => {
   const reqObj = { url: `${HOST}/non-migrated-page`, followRedirect: false };
   request(reqObj, (err, res) => {
     t.notOk(err);
-    t.equal(res.statusCode, 302);
-    t.equal(res.headers.location, `${HOST}/non-migrated-page/`);
+    internalRedirectOk(t, res, 'non-migrated-page/');
     t.end();
   });
 });
