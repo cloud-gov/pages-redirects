@@ -24,8 +24,6 @@ services:
       # These are all the `server_name`s that the nginx server is listening on
       - app:pif.gov
       - app:www.pif.gov
-      - app:login.gov
-      - app:www.login.gov
       - app:connect.gov
       - app:www.connect.gov
       - app:18f.gov
