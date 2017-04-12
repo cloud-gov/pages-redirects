@@ -46,11 +46,12 @@ should start working within a few minutes.
 This is a NodeJS-based that project uses [`yarn`](https://yarnpkg.com/) for managing node dependencies.
 After making sure you have it installed, run `yarn` to install dependencies.
 
-The NodeJS code (called from [`build-nginx-configs.js`](/build-nginx-configs.js)), reads an array of sites to
+The NodeJS code (called from [`build.js`](/build.js)), reads an array of sites to
 redirect from the [`pages.yml`](/pages.yml) file and inserts new NGINX rewrite rules
 into the [`nginx.conf.njk`](/templates/nginx.conf.njk) template in [`templates/`](/templates).
 The resulting `nginx.conf` files (one for testing in [Docker](#local-docker) and one
 for the production site) are written to the `out/` directory.
+The build script also produces a CloudFoundry manifest file at `out/manifest-prod.yml` for deploying this app to cloud.gov.
 
 ## Testing
 
@@ -104,8 +105,8 @@ See [`.travis.yml`](/.travis.yml) and [`deploy-travis.sh`](/deploy-travis.sh) fo
 To manually deploy:
 
 ```sh
-yarn build-configs
-cf push -f manifests/manifest-<target>.yml`
+yarn build
+cf push -f out/manifest-prod.yml`
 ```
 
 [18F Docker guide]: https://pages.18f.gov/dev-environment-standardization/virtualization/docker/
