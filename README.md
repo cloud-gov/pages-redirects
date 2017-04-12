@@ -105,7 +105,7 @@ See [`.travis.yml`](/.travis.yml) and [`deploy-travis.sh`](/deploy-travis.sh) fo
 To manually deploy:
 
 ```sh
-yarn build-configs
+yarn build
 cf push -f out/manifest-prod.yml`
 ```
 

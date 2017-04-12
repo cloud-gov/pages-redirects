@@ -14,15 +14,15 @@
     "node": "^6.10.0"
   },
   "scripts": {
-    "start": "yarn build-configs",
+    "start": "yarn build",
     "eslint": "eslint",
     "test": "tape test/unit/**/*.js | tap-summary --no-progress",
     "test-prod": "TARGET_HOST=https://pages.18f.gov yarn test-integration",
     "test-docker": "docker-compose up -d && sleep 2 && docker-compose run test_client yarn test-integration && docker-compose stop",
     "test-integration": "tape test/integration/**/*.js | tap-summary --no-progress",
     "clean": "rm out/*.conf",
-    "build-configs": "node build.js",
-    "build-docker": "yarn build-configs && docker-compose build"
+    "build": "node build.js",
+    "build-docker": "yarn build && docker-compose build"
   },
   "dependencies": {
     "eslint": "3.16.1",
