@@ -1,7 +1,0 @@
----
-path: ../out
-memory: 64MB
-stack: cflinuxfs2
-buildpack: staticfile_buildpack
-applications:
-- name: pages-redirects

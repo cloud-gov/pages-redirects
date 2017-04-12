@@ -1,7 +1,7 @@
 {
   "name": "pages-redirects",
   "version": "1.0.0",
-  "main": "build-config.js",
+  "main": "build.js",
   "license": "CC0-1.0",
   "repository" : {
     "type": "git",
@@ -21,7 +21,7 @@
     "test-docker": "docker-compose up -d && sleep 2 && docker-compose run test_client yarn test-integration && docker-compose stop",
     "test-integration": "tape test/integration/**/*.js | tap-summary --no-progress",
     "clean": "rm out/*.conf",
-    "build-configs": "node build-nginx-configs.js",
+    "build-configs": "node build.js",
     "build-docker": "yarn build-configs && docker-compose build"
   },
   "dependencies": {

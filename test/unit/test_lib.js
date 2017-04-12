@@ -1,4 +1,5 @@
 const test = require('tape');
+const yaml = require('js-yaml');
 
 const lib = require('../../lib');
 
@@ -14,6 +15,12 @@ const PAGES_CONFIG = [
 ].join('\n');
 
 const EMTPY_CONFIG = '---\n';
+
+const TEST_PAGE_CONFIGS = [
+  { from: 'test1', to: 'test1', toDomain: '18f.gov' },
+  { from: 'test2a', to: 'test2b', toDomain: '18f.gov' },
+  { from: 'test3a', to: 'test3b', toDomain: 'boop.gov' },
+];
 
 test('lib.getPageConfigs', (t) => {
   const configs = lib.getPageConfigs(PAGES_CONFIG);
@@ -34,17 +41,11 @@ test('lib.getPageConfigs with empty config', (t) => {
 });
 
 test('lib.makeNginxConfigs', (t) => {
-  const testPageConfigs = [
-    { from: 'test1', to: 'test1', toDomain: '18f.gov' },
-    { from: 'test2a', to: 'test2b', toDomain: '18f.gov' },
-    { from: 'test3a', to: 'test3b', toDomain: 'boop.gov' },
-  ];
-
-  const { dockerConf, prodConf } = lib.makeNginxConfigs(testPageConfigs);
+  const { dockerConf, prodConf } = lib.makeNginxConfigs(TEST_PAGE_CONFIGS);
   t.ok(dockerConf);
   t.ok(prodConf);
 
-  testPageConfigs.forEach((pc) => {
+  TEST_PAGE_CONFIGS.forEach((pc) => {
     const rewrite = `rewrite ^/${pc.from}(.*)$ https://${pc.to}.${pc.toDomain}$1;`;
     t.ok(prodConf.indexOf(rewrite) >= 0);
     t.ok(dockerConf.indexOf(rewrite) >= 0);
@@ -64,5 +65,22 @@ test('lib.makeNginxConfigs', (t) => {
     t.ok(prodConf.indexOf(line) >= 0);
   });
 
+  t.end();
+});
+
+test('lib.makeManifest produces correct routes', (t) => {
+  const manifest = yaml.safeLoad(lib.makeManifest(TEST_PAGE_CONFIGS));
+  t.ok(manifest);
+  t.ok(Array.isArray(manifest.routes));
+
+  const isInManifestRoutes = (pc) => {
+    const route = `${pc.to}.${pc.toDomain}`;
+    const res = manifest.routes.filter(r => r.route === route);
+    t.equal(res.length, 1, `route for ${route} not found`);
+  };
+
+  TEST_PAGE_CONFIGS.forEach((pc) => {
+    isInManifestRoutes(pc);
+  });
   t.end();
 });
