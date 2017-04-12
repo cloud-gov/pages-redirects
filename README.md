@@ -51,6 +51,7 @@ redirect from the [`pages.yml`](/pages.yml) file and inserts new NGINX rewrite r
 into the [`nginx.conf.njk`](/templates/nginx.conf.njk) template in [`templates/`](/templates).
 The resulting `nginx.conf` files (one for testing in [Docker](#local-docker) and one
 for the production site) are written to the `out/` directory.
+The build script also produces a CloudFoundry manifest file at `out/manifest-prod.yml` for deploying this app to cloud.gov.
 
 ## Testing
 
