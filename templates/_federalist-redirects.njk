@@ -9,14 +9,6 @@ server {
 
 server {
   listen {{ PORT }};
-  set $target_domain pages.18f.gov/identity-intro;
-  server_name login.gov www.login.gov;
-  add_header Strict-Transport-Security 'max-age=31536000; includeSubDomains; preload';
-  return 302 https://$target_domain$request_uri;
-}
-
-server {
-  listen {{ PORT }};
   set $target_domain login.gov;
   server_name connect.gov www.connect.gov;
   return 302 https://$target_domain$request_uri;

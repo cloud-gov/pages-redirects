@@ -5,8 +5,6 @@ const test = require('tape');
 const expectedRedirects = [
   { from: 'pif.gov', to: 'presidentialinnovationfellows.gov' },
   { from: 'www.pif.gov', to: 'presidentialinnovationfellows.gov' },
-  { from: 'login.gov', to: 'pages.18f.gov/identity-intro' },
-  { from: 'www.login.gov', to: 'pages.18f.gov/identity-intro' },
   { from: 'connect.gov', to: 'login.gov' },
   { from: 'www.connect.gov', to: 'login.gov' },
   { from: '18f.gov', to: '18f.gsa.gov' },
