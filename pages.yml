@@ -6,3 +6,5 @@
 #   to: newname
 - from: state-faq
   to: modularcontracting
+- from: ads-bpa
+  to: ads
