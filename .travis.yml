@@ -9,8 +9,11 @@ env:
   global:
     - CF_CLI_VERSION=6.25.0
 before_install:
-  - yarn --version
   - docker-compose --version
+  - curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+  - echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+  - sudo apt-get update && sudo apt-get install yarn
+  - yarn --version
 install:
   - yarn --pure-lockfile
   - npm run build-docker
