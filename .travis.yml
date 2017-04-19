@@ -9,7 +9,7 @@ env:
   global:
     - CF_CLI_VERSION=6.25.0
 before_install:
-  - npm install -g yarn
+  - yarn --version
   - docker-compose --version
 install:
   - yarn --pure-lockfile
