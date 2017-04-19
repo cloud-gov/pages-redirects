@@ -13,8 +13,8 @@ before_install:
   - curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
   - echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
   - sudo apt-get -qq update && sudo apt-get -qq install yarn
-  - export PATH="$HOME/.yarn/bin:$PATH"
-  - dpkg -L yarn
+  - export PATH="/usr/share/yarn/bin:$PATH"
+  - which yarn
   - yarn --version
 install:
   - yarn --pure-lockfile
