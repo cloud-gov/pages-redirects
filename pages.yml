@@ -4,8 +4,7 @@
 # Add redirects that have a change with
 # - from: oldname
 #   to: newname
-- from: state-faq
-  to: modularcontracting
 - from: ads-bpa
   to: ads
-
+- from: state-faq
+  to: modularcontracting
