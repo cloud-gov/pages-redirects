@@ -2,10 +2,12 @@
 const request = require('request');
 const test = require('tape');
 
-// If we have a specified TARGET_HOST env var then we are testing against
-// a live server, which should be using https. Otherwise, we're testing
-// against our docker-compose setup, which will be on localhost over plain http.
-const PROTOCOL = process.env.TARGET_HOST ? 'https' : 'http';
+// If we have a specified TARGET_HOST env var that starts with 'https' then we
+// are testing against a live server, which should be using https.
+// Otherwise, we're testing against either localhost or our docker-compose setup,
+// which will over plain http.
+const PROTOCOL = process.env.TARGET_HOST && process.env.TARGET_HOST.startsWith('https')
+  ? 'https' : 'http';
 
 const expectedRedirects = [
   { from: 'pif.gov', to: 'presidentialinnovationfellows.gov' },
