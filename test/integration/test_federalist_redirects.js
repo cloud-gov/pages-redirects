@@ -2,6 +2,13 @@
 const request = require('request');
 const test = require('tape');
 
+// If we have a specified TARGET_HOST env var that starts with 'https' then we
+// are testing against a live server, which should be using https.
+// Otherwise, we're testing against either localhost or our docker-compose setup,
+// which will over plain http.
+const PROTOCOL = process.env.TARGET_HOST && process.env.TARGET_HOST.startsWith('https')
+  ? 'https' : 'http';
+
 const expectedRedirects = [
   { from: 'pif.gov', to: 'presidentialinnovationfellows.gov' },
   { from: 'www.pif.gov', to: 'presidentialinnovationfellows.gov' },
@@ -16,7 +23,7 @@ const expectedRedirects = [
 ];
 
 function redirectOk(t, from, to) {
-  request({ url: `http://${from}`, followRedirect: false }, (err, res) => {
+  request({ url: `${PROTOCOL}://${from}`, followRedirect: false }, (err, res) => {
     t.notOk(err);
     t.ok(res);
     t.equal(res.statusCode, 302);
