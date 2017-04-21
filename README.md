@@ -69,7 +69,7 @@ You can run integration tests locally against a Docker container.
 First make sure you have [Docker][] and [Docker Compose][] installed, and maybe
 give the [18F Docker guide][] a read.
 
-Then build and run tests in docker-compose network:
+Then build and run tests in the docker-compose network:
 
 ```sh
 yarn build-docker && yarn test-docker
@@ -106,7 +106,7 @@ See [`.travis.yml`](/.travis.yml) and [`deploy-travis.sh`](/deploy-travis.sh) fo
 
 ### Manual Deployments
 
-To manually deploy:
+To manually deploy (this should not be necessary):
 
 ```sh
 yarn build
