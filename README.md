@@ -2,8 +2,12 @@
 
 [![Build Status](https://travis-ci.org/18F/pages-redirects.svg?branch=master)](https://travis-ci.org/18F/pages-redirects)
 
-Redirects traffic from previous pages.18f.gov sites to their new URLs, which must
-be a subdomain of `18f.gov` (eg `pages.18f.gov/boop` → `boop.18f.gov`).
+This app redirects traffic from previous `pages.18f.gov` sites to their new URLs,
+which are usually a subdomain of `18f.gov` (eg `pages.18f.gov/boop` → `boop.18f.gov`).
+
+This app also contains a number of non-pages.18f.gov-related redirects that were
+previously handled by [federalist-redirects](https://github.com/18F/federalist-redirects).
+These redirect rules can be found in [`templates/_federalist-redirects.njk`](./templates/_federalist-redirects.njk).
 
 ## Adding a new redirect
 
@@ -65,7 +69,7 @@ You can run integration tests locally against a Docker container.
 First make sure you have [Docker][] and [Docker Compose][] installed, and maybe
 give the [18F Docker guide][] a read.
 
-Then build and run tests in docker-compose network:
+Then build and run tests in the docker-compose network:
 
 ```sh
 yarn build-docker && yarn test-docker
@@ -102,7 +106,7 @@ See [`.travis.yml`](/.travis.yml) and [`deploy-travis.sh`](/deploy-travis.sh) fo
 
 ### Manual Deployments
 
-To manually deploy:
+To manually deploy (this should not be necessary):
 
 ```sh
 yarn build
