@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.org/18F/pages-redirects.svg?branch=master)](https://travis-ci.org/18F/pages-redirects)
 
 This app redirects traffic from previous `pages.18f.gov` sites to their new URLs,
-which must be a subdomain of `18f.gov` (eg `pages.18f.gov/boop` → `boop.18f.gov`).
+which are usually a subdomain of `18f.gov` (eg `pages.18f.gov/boop` → `boop.18f.gov`).
 
 This app also contains a number of non-pages.18f.gov-related redirects that were
 previously handled by [federalist-redirects](https://github.com/18F/federalist-redirects).
