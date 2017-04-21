@@ -7,7 +7,7 @@ which must be a subdomain of `18f.gov` (eg `pages.18f.gov/boop` → `boop.18f.go
 
 This app also contains a number of non-pages.18f.gov-related redirects that were
 previously handled by [federalist-redirects](https://github.com/18F/federalist-redirects).
-These redirect rules can be found in [`templates/_federalist-redirects.njk`](./templates/federalist-redirects.njk).
+These redirect rules can be found in [`templates/_federalist-redirects.njk`](./templates/_federalist-redirects.njk).
 
 ## Adding a new redirect
 
