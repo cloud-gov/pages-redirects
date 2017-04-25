@@ -8,5 +8,6 @@
 #   to: newname
 - from: ads-bpa
   to: ads
+- partnership-playbook  
 - from: state-faq
   to: modularcontracting
