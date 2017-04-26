@@ -1,15 +1,18 @@
 ---
-# Important: Please maintain alphabetical order
-#
 # Add simple redirects with just
 # - pagename
 # Add redirects that have a change with
 # - from: oldname
 #   to: newname
+
+# Important: Please maintain alphabetical order
+
 - from: ads-bpa
   to: ads
+- agile
 - fec-style
 - govconnect
 - partnership-playbook  
 - from: state-faq
   to: modularcontracting
+
