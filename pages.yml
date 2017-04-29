@@ -14,7 +14,8 @@
 - agile
 - blogging-guide
 - fec-style
-- fedspendingtransparency.github.io
+- from: fedspendingtransparency.github.io
+  to: fedspendingtransparency
 - frontend
 - govconnect
 - guides-template
