@@ -16,6 +16,8 @@
 - brand
 - digitalaccelerator
 - fec-style
+- from: fedspendingtransparency.github.io
+  to: fedspendingtransparency
 - frontend
 - govconnect
 - guides-template
