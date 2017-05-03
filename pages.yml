@@ -8,6 +8,7 @@
 # Important: Please maintain alphabetical order
 
 - 18franklin
+- acqstack-journeymap
 - from: ads-bpa
   to: ads
 - agile-labor-categories
@@ -15,7 +16,9 @@
 - before-you-ship
 - blogging-guide
 - brand
+- contracting-cookbook
 - digitalaccelerator
+- digital-acquisition-playbook
 - fec-style
 - from: fedspendingtransparency.github.io
   to: fedspendingtransparency
