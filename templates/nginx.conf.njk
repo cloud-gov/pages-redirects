@@ -55,7 +55,7 @@ http {
     # For everything else, proxy to the old Federalist bucket.
     # This portion will go away soon once all 18F pages are migrated to their
     # new subdomain homes.
-    rewrite ^/([^/]*)$ /$1/ redirect; # add trailing slash if missing
+    rewrite ^/([^/]*)$ https://pages.18f.gov/$1/ redirect; # add trailing slash if missing
     location / {
       # proxy everything else to the old Federalist S3 bucket
       proxy_pass http://federalist.18f.gov.s3-website-us-east-1.amazonaws.com/site/18f/;
