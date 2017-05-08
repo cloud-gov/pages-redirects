@@ -13,6 +13,7 @@
   to: ads
 - agile-labor-categories
 - agile
+- automated-testing-playbook
 - before-you-ship
 - blogging-guide
 - brand
@@ -33,4 +34,5 @@
 - product-guide
 - from: state-faq
   to: modularcontracting
+- testing-cookbook
 - writing-lab-guide
