@@ -36,7 +36,7 @@ http {
 
   server {
     listen {{ PORT }};
-    server_name pages.18f.gov
+    server_name pages.18f.gov;
 
     # -- Redirects for pages.18f.gov sites
     {% for page in PAGE_CONFIGS %}
