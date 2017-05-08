@@ -13,11 +13,12 @@ function internalRedirectOk(t, res, internalPath) {
   t.equal(res.headers.location, `${HOST.replace('https', 'http')}/${internalPath}`);
 }
 
-test('redirects "/" to guides', (t) => {
+test('redirects "/" to guides.18f.gov', (t) => {
   const reqObj = { url: HOST, followRedirect: false };
   request(reqObj, (err, res) => {
     t.notOk(err);
-    internalRedirectOk(t, res, 'guides/');
+    t.equal(res.statusCode, 302);
+    t.equal(res.headers.location, 'https://guides.18f.gov');
     t.end();
   });
 });
