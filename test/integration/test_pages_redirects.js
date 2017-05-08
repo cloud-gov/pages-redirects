@@ -13,6 +13,16 @@ function internalRedirectOk(t, res, internalPath) {
   t.equal(res.headers.location, `${HOST.replace('https', 'http')}/${internalPath}`);
 }
 
+test('redirects "/" to guides.18f.gov', (t) => {
+  const reqObj = { url: HOST, followRedirect: false };
+  request(reqObj, (err, res) => {
+    t.notOk(err);
+    t.equal(res.statusCode, 302);
+    t.equal(res.headers.location, 'https://guides.18f.gov');
+    t.end();
+  });
+});
+
 const pageConfigs = lib.getPageConfigs(fs.readFileSync(PAGES_FILE, 'utf-8'));
 pageConfigs.forEach((pc) => {
   test(`redirect "pages/${pc.from}" to "${pc.to}.18f.gov" works`, (t) => {
