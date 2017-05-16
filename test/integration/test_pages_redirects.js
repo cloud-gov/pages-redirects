@@ -19,7 +19,11 @@ test('redirects "/" to guides.18f.gov', (t) => {
 });
 
 const pageConfigs = lib.getPageConfigs(fs.readFileSync(PAGES_FILE, 'utf-8'));
-pageConfigs.forEach((pc) => {
+
+const subdomainConfigs = pageConfigs.filter(pc => !pc.toDomain);
+const customDomainConfigs = pageConfigs.filter(pc => pc.toDomain);
+
+subdomainConfigs.forEach((pc) => {
   test(`redirect "pages/${pc.from}" to "${pc.to}.18f.gov" works`, (t) => {
     const reqObj = {
       url: `${HOST}/${pc.from}`,
@@ -43,6 +47,32 @@ pageConfigs.forEach((pc) => {
     });
   });
 });
+
+customDomainConfigs.forEach((pc) => {
+  test(`redirect "pages/${pc.from}" to "${pc.to}.${pc.toDomain}" works`, (t) => {
+    const reqObj = {
+      url: `${HOST}/${pc.from}`,
+      followRedirect: false,
+    };
+    request(reqObj, (err, res) => {
+      t.notOk(err);
+      t.equal(res.statusCode, 302);
+      t.equal(res.headers.location, `https://${pc.to}.${pc.toDomain}`);
+      t.end();
+    });
+  });
+
+  test(`redirect "pages/${pc.from}/subpath" to "${pc.to}.${pc.toDomain}/subpath" works`, (t) => {
+    const reqObj = { url: `${HOST}/${pc.from}/subpath`, followRedirect: false };
+    request(reqObj, (err, res) => {
+      t.notOk(err);
+      t.equal(res.statusCode, 302);
+      t.equal(res.headers.location, `https://${pc.to}.${pc.toDomain}/subpath`);
+      t.end();
+    });
+  });
+});
+
 
 test('proxy_pass for non-migrated pages works', (t) => {
   const reqObj = { url: `${HOST}/non-migrated-page`, followRedirect: false };
