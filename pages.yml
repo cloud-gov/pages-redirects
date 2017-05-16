@@ -30,6 +30,9 @@
 - govconnect
 - guides-template
 - guides
+- from: identity-dev-docs
+  to: developers
+  toDomain: login.gov
 - partnership-playbook
 - private-eye
 - plain-language-tutorial
