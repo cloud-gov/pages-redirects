@@ -26,10 +26,10 @@ test('lib.getPageConfigs', (t) => {
   const configs = lib.getPageConfigs(PAGES_CONFIG);
   t.ok(configs);
   t.equal(configs.length, 4);
-  t.same(configs[0], { to: 'test1', from: 'test1', toDomain: '18f.gov' });
-  t.same(configs[1], { to: 'test2', from: 'test2', toDomain: '18f.gov' });
-  t.same(configs[2], { to: 'test3to', from: 'test3from', toDomain: '18f.gov' });
-  t.same(configs[3], { to: 'test4to', from: 'test4from', toDomain: 'anotherdomain.gov' });
+  t.same(configs[0], { to: 'test1', from: 'test1', toDomain: '18f.gov', toPath: '' });
+  t.same(configs[1], { to: 'test2', from: 'test2', toDomain: '18f.gov', toPath: '' });
+  t.same(configs[2], { to: 'test3to', from: 'test3from', toDomain: '18f.gov', toPath: '' });
+  t.same(configs[3], { to: 'test4to', from: 'test4from', toDomain: 'anotherdomain.gov', toPath: '' });
   t.end();
 });
 
