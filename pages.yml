@@ -33,6 +33,7 @@
 - from: identity-dev-docs
   to: developers
   toDomain: login.gov
+- lean-product-design
 - partnership-playbook
 - private-eye
 - plain-language-tutorial
