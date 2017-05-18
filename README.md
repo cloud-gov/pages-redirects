@@ -41,6 +41,17 @@ add lines of the following form to `pages.yml`:
   toDomain: new-domain.gov
 ```
 
+Additionally you can redirect to a _custom path_ on that domain, like
+`pages.18f.gov/old-name` to `new-name.new-domain.gov/custom-path`,
+add lines of the following form to `pages.yml`:
+
+```yml
+- from: old-name
+  to: new-name
+  toDomain: new-domain.gov
+  toPath: custom-path
+```
+
 Once your changes are merged into `master` by an administrator,
 the `pages-redirects` app will be redeployed by Travis and your redirects
 should start working within a few minutes.

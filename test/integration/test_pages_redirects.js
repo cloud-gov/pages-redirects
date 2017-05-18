@@ -57,22 +57,39 @@ customDomainConfigs.forEach((pc) => {
     request(reqObj, (err, res) => {
       t.notOk(err);
       t.equal(res.statusCode, 302);
-      t.equal(res.headers.location, `https://${pc.to}.${pc.toDomain}`);
+      t.equal(res.headers.location, `https://${pc.to}.${pc.toDomain}${pc.toPath}`);
       t.end();
     });
   });
 
-  test(`redirect "pages/${pc.from}/subpath" to "${pc.to}.${pc.toDomain}/subpath" works`, (t) => {
+  test(`redirect "pages/${pc.from}/subpath" to "${pc.to}.${pc.toDomain}${pc.toPath}/subpath" works`, (t) => {
     const reqObj = { url: `${HOST}/${pc.from}/subpath`, followRedirect: false };
     request(reqObj, (err, res) => {
       t.notOk(err);
       t.equal(res.statusCode, 302);
-      t.equal(res.headers.location, `https://${pc.to}.${pc.toDomain}/subpath`);
+      t.equal(res.headers.location, `https://${pc.to}.${pc.toDomain}${pc.toPath}/subpath`);
       t.end();
     });
   });
 });
 
+[
+  ['identity-intro', 'www.login.gov'],
+  ['identity-playbook', 'www.login.gov/playbook'],
+  ['identity-pii-management', 'www.login.gov/security'],
+].forEach((config) => {
+  const [from, to] = config;
+
+  test(`redirect "pages/${from}" to "${to}"`, (t) => {
+    const reqObj = { url: `${HOST}/${from}`, followRedirect: false };
+    request(reqObj, (err, res) => {
+      t.notOk(err);
+      t.equal(res.statusCode, 302);
+      t.equal(res.headers.location, `https://${to}`);
+      t.end();
+    });
+  });
+});
 
 test('proxy_pass for non-migrated pages works', (t) => {
   const reqObj = { url: `${HOST}/non-migrated-page`, followRedirect: false };

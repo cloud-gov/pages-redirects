@@ -34,6 +34,17 @@
 - from: identity-dev-docs
   to: developers
   toDomain: login.gov
+- from: identity-intro
+  to: www
+  toDomain: login.gov
+- from: identity-pii-management
+  to: www
+  toDomain: login.gov
+  toPath: /security
+- from: identity-playbook
+  to: www
+  toDomain: login.gov
+  toPath: /playbook
 - lean-product-design
 - paid-leave-prototype
 - partnership-playbook
