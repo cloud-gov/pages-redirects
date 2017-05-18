@@ -12,6 +12,10 @@ const PAGES_CONFIG = [
   '- from: test4from',
   '  to: test4to',
   '  toDomain: anotherdomain.gov',
+  '- from: test5from',
+  '  to: test5to',
+  '  toDomain: custom.gov',
+  '  toPath: /path',
 ].join('\n');
 
 const EMTPY_CONFIG = '---\n';
@@ -25,11 +29,12 @@ const TEST_PAGE_CONFIGS = [
 test('lib.getPageConfigs', (t) => {
   const configs = lib.getPageConfigs(PAGES_CONFIG);
   t.ok(configs);
-  t.equal(configs.length, 4);
+  t.equal(configs.length, 5);
   t.same(configs[0], { to: 'test1', from: 'test1', toDomain: '18f.gov', toPath: '' });
   t.same(configs[1], { to: 'test2', from: 'test2', toDomain: '18f.gov', toPath: '' });
   t.same(configs[2], { to: 'test3to', from: 'test3from', toDomain: '18f.gov', toPath: '' });
   t.same(configs[3], { to: 'test4to', from: 'test4from', toDomain: 'anotherdomain.gov', toPath: '' });
+  t.same(configs[4], { to: 'test5to', from: 'test5from', toDomain: 'custom.gov', toPath: '/path' });
   t.end();
 });
 
