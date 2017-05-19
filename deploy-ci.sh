@@ -8,7 +8,7 @@ set -eu
 API="https://api.fr.cloud.gov"
 ORG="gsa-18f-federalist"
 SPACE="redirects"
-APP_NAME="pages-redirects-testing"
+APP_NAME="pages-redirects"
 MANIFEST="out/manifest-prod.yml"
 
 cf login -a $API -u $CF_USER -p $CF_PASS -o $ORG -s $SPACE
