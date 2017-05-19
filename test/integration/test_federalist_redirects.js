@@ -26,7 +26,7 @@ function redirectOk(t, from, to) {
   request({ url: `${PROTOCOL}://${from}`, followRedirect: false }, (err, res) => {
     t.notOk(err);
     t.ok(res);
-    t.equal(res.statusCode, 302);
+    t.equal(res.statusCode, 301);
     t.equal(res.headers.location, `https://${to}`);
     t.end();
   });
