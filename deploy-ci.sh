@@ -6,10 +6,8 @@
 set -eu
 
 API="https://api.fr.cloud.gov"
-# ORG="gsa-18f-federalist"
-# SPACE="redirects"
-ORG="sandbox-gsa"
-SPACE="james.seppi"
+ORG="gsa-18f-federalist"
+SPACE="redirects"
 APP_NAME="pages-redirects-testing"
 MANIFEST="out/manifest-prod.yml"
 
