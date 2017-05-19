@@ -4,6 +4,8 @@ machine:
     # Install newer version of docker engine to support docker-compose version 2 configs
     - curl -sSL https://s3.amazonaws.com/circle-downloads/install-circleci-docker.sh | bash -s -- 1.10.0
     - pip install docker-compose
+  services:
+    - docker
   node:
     version: 6
   environment:
