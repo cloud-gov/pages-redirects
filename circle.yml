@@ -1,6 +1,4 @@
 machine:
-  environment:
-    CF_CLI_VERSION: 6.25.0
   pre:
     # Install newer version of docker engine to support docker-compose version 2 configs
     - curl -sSL https://s3.amazonaws.com/circle-downloads/install-circleci-docker.sh | bash -s -- 1.10.0
@@ -15,6 +13,7 @@ machine:
   node:
     version: 6
   environment:
+    CF_CLI_VERSION: 6.25.0
     PATH: "${PATH}:${HOME}/${CIRCLE_PROJECT_REPONAME}/node_modules/.bin"
 dependencies:
   override:
