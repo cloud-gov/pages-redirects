@@ -10,6 +10,8 @@ machine:
     PATH: "${PATH}:${HOME}/${CIRCLE_PROJECT_REPONAME}/node_modules/.bin"
 dependencies:
   override:
+    - docker-compose --version
+    - yarn --version
     - yarn --pure-lockfile
     - yarn build-docker
     - docker-compose build
