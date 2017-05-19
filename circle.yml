@@ -30,8 +30,12 @@ test:
     - yarn eslint .
     - yarn test
     - yarn test-docker
-# deployment:
-#   production:
-#     branch: master
-#     commands:
-#       - ./deploy-ci.sh
+deployment:
+  # production:
+  #   branch: master
+  #   commands:
+  #     - ./deploy-ci.sh
+  testing:
+    branch: use-circleci
+    commands:
+      - ./deploy-ci.sh
