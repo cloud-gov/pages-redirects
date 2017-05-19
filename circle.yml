@@ -6,11 +6,10 @@ machine:
   environment:
     PATH: "${PATH}:${HOME}/${CIRCLE_PROJECT_REPONAME}/node_modules/.bin"
 dependencies:
-  pre:
+  override:
+    - yarn --pure-lockfile
     - yarn build-docker
     - docker-compose build
-  override:
-    - yarn --purce-lockfile
   cache_directories:
     - ~/.cache/yarn
 test:
