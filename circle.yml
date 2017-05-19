@@ -1,0 +1,20 @@
+machine:
+  node:
+    version: 6
+  services:
+    - docker
+  environment:
+    PATH: "${PATH}:${HOME}/${CIRCLE_PROJECT_REPONAME}/node_modules/.bin"
+dependencies:
+  pre:
+    - yarn build-docker
+    - docker-compose build
+  override:
+    - yarn --purce-lockfile
+  cache_directories:
+    - ~/.cache/yarn
+test:
+  override:
+    - yarn eslint .
+    - yarn test
+    - yarn test-docker
