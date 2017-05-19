@@ -6,8 +6,6 @@ machine:
     - sudo pip install docker-compose
   node:
     version: 6
-  services:
-    - docker
   environment:
     PATH: "${PATH}:${HOME}/${CIRCLE_PROJECT_REPONAME}/node_modules/.bin"
 dependencies:
