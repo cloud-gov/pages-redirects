@@ -16,6 +16,7 @@
 - agile
 - automated-testing-playbook
 - before-you-ship
+- better-government
 - blogging-guide
 - brand
 - content-guide
@@ -45,6 +46,7 @@
   to: www
   toDomain: login.gov
   toPath: /playbook
+- innovation-toolkit-prototype
 - lean-product-design
 - paid-leave-prototype
 - partnership-playbook
