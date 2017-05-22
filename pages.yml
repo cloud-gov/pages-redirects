@@ -14,6 +14,9 @@
   to: ads
 - agile-labor-categories
 - agile
+- api-all-the-x
+- api-program
+- api-usability-testing
 - automated-testing-playbook
 - before-you-ship
 - blogging-guide
@@ -28,6 +31,7 @@
   to: fedspendingtransparency
 - frontend
 - govconnect
+- grouplet-playbook
 - guides-template
 - guides
 - iaa-forms
@@ -46,11 +50,14 @@
   toDomain: login.gov
   toPath: /playbook
 - lean-product-design
+- open-source-guide
+- open-source-program
 - paid-leave-prototype
 - partnership-playbook
 - private-eye
 - plain-language-tutorial
 - product-guide
+- slides
 - from: state-faq
   to: modularcontracting
 - testing-cookbook
