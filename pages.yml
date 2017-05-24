@@ -50,6 +50,7 @@
   to: www
   toDomain: login.gov
   toPath: /playbook
+- innovation-toolkit-prototype
 - lean-product-design
 - open-source-guide
 - open-source-program
