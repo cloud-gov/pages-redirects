@@ -51,7 +51,7 @@ test('lib.makeNginxConfigs', (t) => {
   t.ok(prodConf);
 
   TEST_PAGE_CONFIGS.forEach((pc) => {
-    const rewrite = `rewrite ^/${pc.from}(\\/.*)?$ https://${pc.to}.${pc.toDomain}$1;`;
+    const rewrite = `rewrite ^/${pc.from}(\\/.*)?$ https://${pc.to}.${pc.toDomain}$1 permanent;`;
     t.ok(prodConf.indexOf(rewrite) >= 0);
     t.ok(dockerConf.indexOf(rewrite) >= 0);
   });

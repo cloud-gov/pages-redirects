@@ -12,7 +12,7 @@ test('redirects "/" to guides.18f.gov', (t) => {
   const reqObj = { url: HOST, followRedirect: false };
   request(reqObj, (err, res) => {
     t.notOk(err);
-    t.equal(res.statusCode, 302);
+    t.equal(res.statusCode, 301);
     t.equal(res.headers.location, 'https://guides.18f.gov');
     t.end();
   });
@@ -31,7 +31,7 @@ subdomainConfigs.forEach((pc) => {
     };
     request(reqObj, (err, res) => {
       t.notOk(err);
-      t.equal(res.statusCode, 302);
+      t.equal(res.statusCode, 301);
       t.equal(res.headers.location, `https://${pc.to}.18f.gov`);
       t.end();
     });
@@ -41,7 +41,7 @@ subdomainConfigs.forEach((pc) => {
     const reqObj = { url: `${HOST}/${pc.from}/subpath`, followRedirect: false };
     request(reqObj, (err, res) => {
       t.notOk(err);
-      t.equal(res.statusCode, 302);
+      t.equal(res.statusCode, 301);
       t.equal(res.headers.location, `https://${pc.to}.18f.gov/subpath`);
       t.end();
     });
@@ -56,7 +56,7 @@ customDomainConfigs.forEach((pc) => {
     };
     request(reqObj, (err, res) => {
       t.notOk(err);
-      t.equal(res.statusCode, 302);
+      t.equal(res.statusCode, 301);
       t.equal(res.headers.location, `https://${pc.to}.${pc.toDomain}${pc.toPath}`);
       t.end();
     });
@@ -66,7 +66,7 @@ customDomainConfigs.forEach((pc) => {
     const reqObj = { url: `${HOST}/${pc.from}/subpath`, followRedirect: false };
     request(reqObj, (err, res) => {
       t.notOk(err);
-      t.equal(res.statusCode, 302);
+      t.equal(res.statusCode, 301);
       t.equal(res.headers.location, `https://${pc.to}.${pc.toDomain}${pc.toPath}/subpath`);
       t.end();
     });
@@ -84,7 +84,7 @@ customDomainConfigs.forEach((pc) => {
     const reqObj = { url: `${HOST}/${from}`, followRedirect: false };
     request(reqObj, (err, res) => {
       t.notOk(err);
-      t.equal(res.statusCode, 302);
+      t.equal(res.statusCode, 301);
       t.equal(res.headers.location, `https://${to}`);
       t.end();
     });
@@ -95,7 +95,7 @@ test('proxy_pass for non-migrated pages works', (t) => {
   const reqObj = { url: `${HOST}/non-migrated-page`, followRedirect: false };
   request(reqObj, (err, res) => {
     t.notOk(err);
-    t.equal(res.statusCode, 302);
+    t.equal(res.statusCode, 301);
     t.equal(res.headers.location, 'https://pages.18f.gov/non-migrated-page/');
     t.end();
   });
