@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # CF_USER and CF_PASS are defined as private Environment Variables
-# in the Travis web UI: https://travis-ci.org/18F/pages-redirects/settings
+# in the Circle web UI: https://circleci.com/gh/18F/pages-redirects/edit#env-vars
 
 set -eu
 
