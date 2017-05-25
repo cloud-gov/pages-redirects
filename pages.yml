@@ -62,5 +62,6 @@
 - slides
 - from: state-faq
   to: modularcontracting
+- test-circle-ci
 - testing-cookbook
 - writing-lab-guide
