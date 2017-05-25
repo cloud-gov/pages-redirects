@@ -1,6 +1,6 @@
 # pages-redirects
 
-[![Build Status](https://travis-ci.org/18F/pages-redirects.svg?branch=master)](https://travis-ci.org/18F/pages-redirects)
+[![CircleCI](https://circleci.com/gh/18F/pages-redirects.svg?style=svg)](https://circleci.com/gh/18F/pages-redirects)
 
 This app redirects traffic from previous `pages.18f.gov` sites to their new URLs,
 which are usually a subdomain of `18f.gov` (eg `pages.18f.gov/boop` → `boop.18f.gov`).
@@ -53,7 +53,7 @@ add lines of the following form to `pages.yml`:
 ```
 
 Once your changes are merged into `master` by an administrator,
-the `pages-redirects` app will be redeployed by Travis and your redirects
+the `pages-redirects` app will be redeployed by CircleCI and your redirects
 should start working within a few minutes.
 
 ## Developing
@@ -109,11 +109,11 @@ This is deployed in GovCloud cloud.gov:
 
 ### Automated Deployments
 
-This app is automatically deployed by Travis when commits are pushed to the
+This app is automatically deployed by CircleCI when commits are pushed to the
 `master` branch (such as from a merged Pull Request). Deployments are done with
 the [cf-autopilot][] plugin so that there will be no downtime.
 
-See [`.travis.yml`](/.travis.yml) and [`deploy-travis.sh`](/deploy-travis.sh) for details.
+See [`circle.yml`](/circle.yml) and [`deploy-ci.sh`](/deploy-ci.sh) for details.
 
 ### Manual Deployments
 
