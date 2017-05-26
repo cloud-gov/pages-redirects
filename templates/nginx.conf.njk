@@ -52,13 +52,15 @@ http {
     rewrite ^/$ https://guides.18f.gov redirect;
     # -- end custom pages.18f.gov redirects
 
-    # For everything else, proxy to the old Federalist bucket.
-    # This portion will go away soon once all 18F pages are migrated to their
-    # new subdomain homes.
-    rewrite ^/([^/]*)$ https://pages.18f.gov/$1/ redirect; # add trailing slash if missing
+    # For everything else, show an error message
     location / {
-      # proxy everything else to the old Federalist S3 bucket
-      proxy_pass http://federalist.18f.gov.s3-website-us-east-1.amazonaws.com/site/18f/;
+      # Return a not found error
+      return 404 "<h1>Page Not Found</h1>
+                  <p>If you are looking for a site previously on 18F Pages
+                    that you think should still exist, please send a message to
+                    <a href='mailto:federalist-support@gsa.gov'>federalist-support@gsa.gov</a>.
+                  </p>";
+      default_type text/html;
     }
   }
 

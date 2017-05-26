@@ -91,12 +91,13 @@ customDomainConfigs.forEach((pc) => {
   });
 });
 
-test('proxy_pass for non-migrated pages works', (t) => {
+test('return error page for anything else', (t) => {
   const reqObj = { url: `${HOST}/non-migrated-page`, followRedirect: false };
   request(reqObj, (err, res) => {
     t.notOk(err);
-    t.equal(res.statusCode, 302);
-    t.equal(res.headers.location, 'https://pages.18f.gov/non-migrated-page/');
+    t.equal(res.statusCode, 404);
+    t.ok(res.body.indexOf('federalist-support@gsa.gov') > -1, 'contains support email address');
+    t.equal(res.headers['content-type'], 'text/html; charset=utf-8');
     t.end();
   });
 });
