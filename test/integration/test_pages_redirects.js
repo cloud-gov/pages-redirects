@@ -20,35 +20,8 @@ test('redirects "/" to guides.18f.gov', (t) => {
 
 const pageConfigs = lib.getPageConfigs(fs.readFileSync(PAGES_FILE, 'utf-8'));
 
-const subdomainConfigs = pageConfigs.filter(pc => !pc.toDomain);
-const customDomainConfigs = pageConfigs.filter(pc => pc.toDomain);
 
-subdomainConfigs.forEach((pc) => {
-  test(`redirect "pages/${pc.from}" to "${pc.to}.18f.gov" works`, (t) => {
-    const reqObj = {
-      url: `${HOST}/${pc.from}`,
-      followRedirect: false,
-    };
-    request(reqObj, (err, res) => {
-      t.notOk(err);
-      t.equal(res.statusCode, 302);
-      t.equal(res.headers.location, `https://${pc.to}.18f.gov`);
-      t.end();
-    });
-  });
-
-  test(`redirect "pages/${pc.from}/subpath" to "${pc.to}.18f.gov/subpath" works`, (t) => {
-    const reqObj = { url: `${HOST}/${pc.from}/subpath`, followRedirect: false };
-    request(reqObj, (err, res) => {
-      t.notOk(err);
-      t.equal(res.statusCode, 302);
-      t.equal(res.headers.location, `https://${pc.to}.18f.gov/subpath`);
-      t.end();
-    });
-  });
-});
-
-customDomainConfigs.forEach((pc) => {
+pageConfigs.forEach((pc) => {
   test(`redirect "pages/${pc.from}" to "${pc.to}.${pc.toDomain}" works`, (t) => {
     const reqObj = {
       url: `${HOST}/${pc.from}`,
