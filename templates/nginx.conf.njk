@@ -40,7 +40,7 @@ http {
 
     # -- Redirects for pages.18f.gov sites
     {% for page in PAGE_CONFIGS %}
-    rewrite ^/{{ page.from }}(\/.*)?$ https://{{ page.to }}.{{ page.toDomain }}{{ page.toPath }}$1;
+    rewrite (?i)^/{{ page.from }}(\/.*)?$ https://{{ page.to }}.{{ page.toDomain }}{{ page.toPath }}$1;
     {% endfor %}
     # -- end redirects for pages.18f.gov sites
 
