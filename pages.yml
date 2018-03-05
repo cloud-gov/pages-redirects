@@ -54,7 +54,9 @@
 - open-source-guide
 - open-source-program
 - paid-leave-prototype
-- partnership-playbook
+- from: partnership-playbook
+  toDomain: 18f.gsa.gov
+  toPath: /partnership-principles
 - private-eye
 - plain-language-tutorial
 - product-guide
