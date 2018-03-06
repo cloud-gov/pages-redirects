@@ -35,3 +35,12 @@ server {
   server_name join.18f.gov;
   return 302 https://18f.gsa.gov/join/;
 }
+
+server {
+  listen {{ PORT }};
+  set $target_domain digitalgov.gov;
+  server_name www.digitalgov.gov;
+  return 302 https://$target_domain$request_uri;
+}
+
+
