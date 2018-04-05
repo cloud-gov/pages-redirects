@@ -40,6 +40,6 @@ server {
 server {
   listen {{ PORT }};
   set $target_domain digital.gov;
-  server_name digitalgov.gov www.digitalgov.gov;
+  server_name digitalgov.gov www.digitalgov.gov www.digital.gov;
   return 301 https://$target_domain$request_uri;
 }
