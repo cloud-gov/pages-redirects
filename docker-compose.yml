@@ -35,3 +35,4 @@ services:
       - app:pages.18f.gov
       - app:digitalgov.gov
       - app:www.digitalgov.gov
+      - app:www.digital.gov
