@@ -30,7 +30,7 @@ jobs:
           command: yarn --version
           command: yarn --pure-lockfile
           command: yarn build-docker
-          command: docker-compose build
+          # command: docker-compose build
       - run:
           name: Run tests
           command: yarn eslint .
