@@ -33,3 +33,6 @@ services:
       - app:jobs.18f.gov
       - app:join.18f.gov
       - app:pages.18f.gov
+      - app:digitalgov.gov
+      - app:www.digitalgov.gov
+      - app:www.digital.gov
