@@ -30,6 +30,6 @@ jobs:
         name: Deploy to production
         command: |
           if [ "${CIRCLE_BRANCH}" == "master" ]; then
-              ./scripts/deploy-circle.sh
+              ./deploy-circle.sh
           fi
       
