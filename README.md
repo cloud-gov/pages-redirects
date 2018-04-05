@@ -61,7 +61,7 @@ should start working within a few minutes.
 This is a NodeJS-based that project uses [`yarn`](https://yarnpkg.com/) for managing node dependencies.
 After making sure you have it installed, run `yarn` to install dependencies.
 
-The NodeJS code (called from [`build.js`](/build.js)), reads an array of sites to
+The NodeJS code (called from [`build.js`](/build.js)) reads an array of sites to
 redirect from the [`pages.yml`](/pages.yml) file and inserts new NGINX rewrite rules
 into the [`nginx.conf.njk`](/templates/nginx.conf.njk) template in [`templates/`](/templates).
 The resulting `nginx.conf` files (one for testing in [Docker](#local-docker) and one
