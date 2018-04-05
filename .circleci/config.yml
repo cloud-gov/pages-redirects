@@ -6,30 +6,29 @@ jobs:
     steps:
       - checkout
       - run:
-        name: Install yarn
-        command: sudo npm install -g yarn
+          name: Install yarn
+          command: sudo npm install -g yarn
       - run:
-        name: Display versions
-        command: |
-          echo $(node --version)
-          echo $(yarn --version)
-          echo $(npm --version)
+          name: Display versions
+          command: |
+            echo $(node --version)
+            echo $(yarn --version)
+            echo $(npm --version)
       - save_cache:
-        key: dependency-cache-{{ checksum "yarn.lock" }}
-        paths:
-          - ./node_modules
-          - ~/.cache/yarn
+          key: dependency-cache-{{ checksum "yarn.lock" }}
+          paths:
+            - ./node_modules
+            - ~/.cache/yarn
 
       - run:
-        name: Run tests
-        command: yarn eslint .
-        command: yarn test
-        command: yarn test-docker
+          name: Run tests
+          command: yarn eslint .
+          command: yarn test
+          command: yarn test-docker
 
       - deploy:
-        name: Deploy to production
-        command: |
-          if [ "${CIRCLE_BRANCH}" == "master" ]; then
-            ./deploy-circle.sh
-          fi
-      
+          name: Deploy to production
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              ./deploy-circle.sh
+            fi
