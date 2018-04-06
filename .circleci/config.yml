@@ -1,0 +1,52 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/node:6
+    steps:
+      - checkout
+      - run:
+          name: Install yarn
+          command: sudo npm install -g yarn
+      - run:
+          name: Display versions
+          command: |
+            echo $(node --version)
+            echo $(yarn --version)
+            echo $(npm --version)
+      - restore_cache:
+          key: dependency-cache-{{ checksum "yarn.lock" }}
+      - run:
+          name: Install dependencies
+          command: yarn --pure-lockfile
+      - save_cache:
+          key: dependency-cache-{{ checksum "yarn.lock" }}
+          paths:
+            - ./node_modules
+            - ~/.cache/yarn
+      - run:
+          name: Install Docker Compose
+          command: |
+            curl -L https://github.com/docker/compose/releases/download/1.19.0/docker-compose-`uname -s`-`uname -m` > ~/docker-compose
+            chmod +x ~/docker-compose
+            sudo mv ~/docker-compose /usr/local/bin/docker-compose
+      - setup_remote_docker
+      - run:
+          name: Run dependencies
+          command: |
+            yarn --version
+            yarn --pure-lockfile
+            yarn build-docker
+      - run:
+          name: Run tests
+          command: |
+            yarn eslint .
+            yarn test
+            yarn test-docker
+
+      - deploy:
+          name: Deploy to production
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              ./deploy-ci.sh
+            fi
