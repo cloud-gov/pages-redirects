@@ -48,5 +48,5 @@ jobs:
           name: Deploy to production
           command: |
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
-              ./deploy-circle.sh
+              ./deploy-ci.sh
             fi
