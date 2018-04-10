@@ -41,7 +41,7 @@ expectedRedirects.forEach((expected) => {
   });
 
   if (!expected.noPath) {
-    test(`redirects ${expected.from}/boop to ${expected.to}/boop`, (t) => {
+    test(`redirects ${expected.from}/boop to ${expected.to}/boop (${redirectCode})`, (t) => {
       redirectOk(t, `${expected.from}/boop`, `${expected.to}/boop`, redirectCode);
     });
   }
