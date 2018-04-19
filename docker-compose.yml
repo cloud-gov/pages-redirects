@@ -35,4 +35,5 @@ services:
       - app:pages.18f.gov
       - app:digitalgov.gov
       - app:www.digitalgov.gov
+      - app:summit.digitalgov.gov
       - app:www.digital.gov
