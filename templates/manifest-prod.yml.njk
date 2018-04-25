@@ -19,7 +19,6 @@ routes:
 - route: www.app.gov
 - route: 18f.gov
 - route: www.18f.gov
-- route: demo.digitalgov.gov
 {% for page in PAGE_CONFIGS -%}
 - route: {{ page.to }}.{{ page.toDomain }}
 {% endfor -%}
