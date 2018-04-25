@@ -13,7 +13,7 @@ test('redirects "/" to guides.18f.gov', (t) => {
   request(reqObj, (err, res) => {
     t.notOk(err);
     t.equal(res.statusCode, 302);
-    t.equal(res.headers.location, 'https://guides.18f.gov');
+    t.equal(res.headers.location, 'https://18f.gsa.gov');
     t.end();
   });
 });
