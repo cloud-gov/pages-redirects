@@ -19,6 +19,7 @@ const expectedRedirects = [
   { from: 'jobs.18f.gov', to: 'join.18f.gov' },
   { from: 'join.18f.gov', to: '18f.gsa.gov/join', noPath: true },
   { from: 'demo.digitalgov.gov', to: 'demo.digital.gov' },
+  { from: 'openopps.digitalgov.gov', to: 'openopps.usajobs.gov' },
 ];
 
 function redirectOk(t, from, to) {

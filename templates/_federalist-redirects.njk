@@ -36,9 +36,18 @@ server {
   return 302 https://18f.gsa.gov/join/;
 }
 
+# Digital.gov —
 server {
   listen {{ PORT }};
   set $target_domain demo.digital.gov;
   server_name demo.digitalgov.gov;
+  return 302 https://$target_domain$request_uri;
+}
+
+# OpenOpps — Redirect openopps.digitalgov.gov to openopps.usajobs.gov
+server {
+  listen {{ PORT }};
+  set $target_domain openopps.usajobs.gov;
+  server_name openopps.digitalgov.gov;
   return 302 https://$target_domain$request_uri;
 }

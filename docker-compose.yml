@@ -34,3 +34,4 @@ services:
       - app:join.18f.gov
       - app:pages.18f.gov
       - app:demo.digitalgov.gov
+      - app:openopps.digitalgov.gov
