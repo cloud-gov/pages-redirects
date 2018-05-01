@@ -36,9 +36,34 @@ server {
   return 302 https://18f.gsa.gov/join/;
 }
 
+# digitalgov.gov to digital.gov
+server {
+  listen {{ PORT }};
+  set $target_domain digital.gov;
+  server_name digitalgov.gov www.digitalgov.gov www.digital.gov;
+  return 301 https://$target_domain$request_uri;
+}
+
+# summit.digitalgov.gov to digital.gov
+server {
+  listen {{ PORT }};
+  set $target_domain digital.gov;
+  server_name summit.digitalgov.gov;
+  return 302 https://$target_domain$request_uri;
+}
+
+# demo.digitalgov.gov to demo.digital.gov
 server {
   listen {{ PORT }};
   set $target_domain demo.digital.gov;
   server_name demo.digitalgov.gov;
-  return 302 https://$target_domain$request_uri;
+  return 301 https://$target_domain$request_uri;
+}
+
+# openopps.digitalgov.gov to openopps.usajobs.gov
+server {
+  listen {{ PORT }};
+  set $target_domain openopps.usajobs.gov;
+  server_name openopps.digitalgov.gov;
+  return 301 https://$target_domain$request_uri;
 }
