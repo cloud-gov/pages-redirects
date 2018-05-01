@@ -20,8 +20,9 @@ const expectedRedirects = [
   { from: 'join.18f.gov', to: '18f.gsa.gov/join', noPath: true },
   { from: 'digitalgov.gov', to: 'digital.gov', redirectCode: 301 },
   { from: 'www.digitalgov.gov', to: 'digital.gov', redirectCode: 301 },
+  { from: 'demo.digitalgov.gov', to: 'demo.digital.gov', redirectCode: 301 },
   { from: 'www.digital.gov', to: 'digital.gov', redirectCode: 301 },
-  { from: 'summit.digitalgov.gov', to: 'digital.gov', noPath: true },
+  { from: 'summit.digitalgov.gov', to: 'digital.gov' },
 ];
 
 function redirectOk(t, from, to, redirectCode) {
