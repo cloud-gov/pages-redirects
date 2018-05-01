@@ -59,3 +59,11 @@ server {
   server_name demo.digitalgov.gov;
   return 301 https://$target_domain$request_uri;
 }
+
+# openopps.digitalgov.gov to openopps.usajobs.gov
+server {
+  listen {{ PORT }};
+  set $target_domain openopps.usajobs.gov;
+  server_name openopps.digitalgov.gov;
+  return 301 https://$target_domain$request_uri;
+}

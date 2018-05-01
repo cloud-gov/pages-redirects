@@ -23,6 +23,7 @@ const expectedRedirects = [
   { from: 'demo.digitalgov.gov', to: 'demo.digital.gov', redirectCode: 301 },
   { from: 'www.digital.gov', to: 'digital.gov', redirectCode: 301 },
   { from: 'summit.digitalgov.gov', to: 'digital.gov' },
+  { from: 'openopps.digitalgov.gov', to: 'openopps.usajobs.gov', redirectCode: 301 },
 ];
 
 function redirectOk(t, from, to, redirectCode) {
