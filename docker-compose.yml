@@ -39,3 +39,5 @@ services:
       - app:summit.digitalgov.gov
       - app:www.digital.gov
       - app:openopps.digitalgov.gov
+      - app:guides.18f.gov
+      - app:guides.18f.gsa.gov

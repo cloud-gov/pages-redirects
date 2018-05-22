@@ -67,3 +67,11 @@ server {
   server_name openopps.digitalgov.gov;
   return 301 https://$target_domain$request_uri;
 }
+
+# guides.18f.gov to www.18f.gov/guides
+server {
+  listen {{ PORT }};
+  set $target_domain 18f.gov/guides;
+  server_name guides.18f.gov;
+  return 301 https://$target_domain$request_uri;
+}
