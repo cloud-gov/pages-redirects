@@ -67,3 +67,12 @@ server {
   server_name openopps.digitalgov.gov;
   return 301 https://$target_domain$request_uri;
 }
+
+
+# blogging-guide.18f.gov to handbook.18f.gov/blogging
+server {
+  listen {{ PORT }};
+  set $target_domain handbook.18f.gov/blogging;
+  server_name blogging-guide.18f.gov;
+  return 301 https://$target_domain;
+}
