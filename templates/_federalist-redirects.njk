@@ -18,13 +18,6 @@ server {
 
 server {
   listen {{ PORT }};
-  set $target_domain apps.gov;
-  server_name app.gov www.app.gov;
-  return 302 https://$target_domain$request_uri;
-}
-
-server {
-  listen {{ PORT }};
   set $target_domain join.18f.gov;
   server_name jobs.18f.gov;
   return 302 https://$target_domain$request_uri;
@@ -72,7 +65,7 @@ server {
 # blogging-guide.18f.gov to handbook.18f.gov/blogging
 server {
   listen {{ PORT }};
-  set $target_domain handbook.18f.gov/blogging;
+  set $target_domain handbook.18f.gov/blogging/;
   server_name blogging-guide.18f.gov;
   return 301 https://$target_domain;
 }
