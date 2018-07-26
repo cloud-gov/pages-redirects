@@ -151,15 +151,6 @@ server {
 }
 
 
-# iaa-forms.18f.gov to github.com/18F/iaa-forms
-server {
-  listen {{ PORT }};
-  set $target_domain github.com/18F/iaa-forms;
-  server_name iaa-forms.18f.gov;
-  return 301 https://$target_domain;
-}
-
-
 # lean-product-design.18f.gov to github.com/18F/lean-product-design
 server {
   listen {{ PORT }};
