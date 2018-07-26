@@ -76,3 +76,147 @@ server {
   server_name blogging-guide.18f.gov;
   return 301 https://$target_domain;
 }
+
+
+# guides.18f.gov to 18f.gsa.gov/guides
+server {
+  listen {{ PORT }};
+  set $target_domain 18f.gsa.gov/guides;
+  server_name blogging-guide.18f.gov;
+  return 301 https://$target_domain;
+}
+
+
+# writing-lab-guide.18f.gov to handbook.18f.gov/writing-lab
+server {
+  listen {{ PORT }};
+  set $target_domain handbook.18f.gov/writing-lab;
+  server_name writing-lab-guide.18f.gov;
+  return 301 https://$target_domain;
+}
+
+
+# iaa-forms.18f.gov to github.com/18F/iaa-forms
+server {
+  listen {{ PORT }};
+  set $target_domain github.com/18F/iaa-forms;
+  server_name iaa-forms.18f.gov;
+  return 301 https://$target_domain;
+}
+
+
+# digital-acquisition-playbook.18f.gov to github.com/18F/digital-acquisition-playbook
+server {
+  listen {{ PORT }};
+  set $target_domain github.com/18F/digital-acquisition-playbook;
+  server_name digital-acquisition-playbook.18f.gov;
+  return 301 https://$target_domain;
+}
+
+# automated-testing-playbook.18f.gov to github.com/18F/automated-testing-playbook
+server {
+  listen {{ PORT }};
+  set $target_domain github.com/18F/automated-testing-playbook;
+  server_name automated-testing-playbook.18f.gov;
+  return 301 https://$target_domain;
+}
+
+
+# design-principles-guide.18f.gov to github.com/18F/design-principles-guide
+server {
+  listen {{ PORT }};
+  set $target_domain github.com/18F/design-principles-guide;
+  server_name design-principles-guide.18f.gov;
+  return 301 https://$target_domain;
+}
+
+
+# contracting-cookbook.18f.gov to github.com/18F/contracting-cookbook
+server {
+  listen {{ PORT }};
+  set $target_domain github.com/18F/contracting-cookbook;
+  server_name contracting-cookbook.18f.gov;
+  return 301 https://$target_domain;
+}
+
+
+# grouplet-playbook.18f.gov to github.com/18F/grouplet-playbook
+server {
+  listen {{ PORT }};
+  set $target_domain github.com/18F/grouplet-playbook;
+  server_name grouplet-playbook.18f.gov;
+  return 301 https://$target_domain;
+}
+
+
+# guides-template.18f.gov to github.com/18F/guides-template
+server {
+  listen {{ PORT }};
+  set $target_domain github.com/18F/guides-template;
+  server_name guides-template.18f.gov;
+  return 301 https://$target_domain;
+}
+
+
+# iaa-forms.18f.gov to github.com/18F/iaa-forms
+server {
+  listen {{ PORT }};
+  set $target_domain github.com/18F/iaa-forms;
+  server_name iaa-forms.18f.gov;
+  return 301 https://$target_domain;
+}
+
+
+# lean-product-design.18f.gov to github.com/18F/lean-product-design
+server {
+  listen {{ PORT }};
+  set $target_domain github.com/18F/lean-product-design;
+  server_name lean-product-design.18f.gov;
+  return 301 https://$target_domain;
+}
+
+
+# open-source-guide.18f.gov to github.com/18F/open-source-guide
+server {
+  listen {{ PORT }};
+  set $target_domain github.com/18F/open-source-guide;
+  server_name open-source-guide.18f.gov;
+  return 301 https://$target_domain;
+}
+
+
+# partnership-playbook.18f.gov to 18f.gsa.gov/partnership-principles
+server {
+  listen {{ PORT }};
+  set $target_domain 18f.gsa.gov/partnership-principles;
+  server_name partnership-playbook.18f.gov;
+  return 301 https://$target_domain;
+}
+
+
+# plain-language-tutorial.18f.gov to github.com/18F/plain-language-tutorial
+server {
+  listen {{ PORT }};
+  set $target_domain github.com/18F/plain-language-tutorial;
+  server_name plain-language-tutorial.18f.gov;
+  return 301 https://$target_domain;
+}
+
+
+# testing-cookbook.18f.gov to github.com/18F/testing-cookbook
+server {
+  listen {{ PORT }};
+  set $target_domain github.com/18F/testing-cookbook;
+  server_name testing-cookbook.18f.gov;
+  return 301 https://$target_domain;
+}
+
+
+# writing-lab-guide.18f.gov to handbook.18f.gov/writing-lab;
+server {
+  listen {{ PORT }};
+  set $target_domain handbook.18f.gov/writing-lab;
+  server_name writing-lab-guide.18f.gov;
+  return 301 https://$target_domain;
+}
+
