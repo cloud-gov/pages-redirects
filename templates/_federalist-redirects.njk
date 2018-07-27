@@ -185,13 +185,3 @@ server {
   server_name testing-cookbook.18f.gov;
   return 301 https://$target_domain;
 }
-
-
-# writing-lab-guide.18f.gov to handbook.18f.gov/writing-lab;
-server {
-  listen {{ PORT }};
-  set $target_domain handbook.18f.gov/writing-lab;
-  server_name writing-lab-guide.18f.gov;
-  return 301 https://$target_domain;
-}
-
