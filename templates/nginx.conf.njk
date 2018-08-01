@@ -2,7 +2,6 @@ worker_processes 1;
 
 {% if not IS_DOCKER %}
 daemon off;
-error_log <%= ENV["APP_ROOT"] %>/nginx/logs/error.log;
 {% endif %}
 
 events { worker_connections 1024; }
@@ -12,7 +11,6 @@ http {
   log_format cloudfoundry '$http_x_forwarded_for - $http_referer - [$time_local] "$request" $status $body_bytes_sent';
 
   {% if not IS_DOCKER %}
-  access_log <%= ENV["APP_ROOT"] %>/nginx/logs/access.log cloudfoundry;
   port_in_redirect off; # Ensure that redirects do not include the internal container PORT
   {% endif %}
 
