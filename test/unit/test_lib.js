@@ -61,9 +61,7 @@ test('lib.makeNginxConfigs', (t) => {
   const prodLines = [
     'port_in_redirect off;',
     'daemon off;',
-    'error_log <%= ENV["APP_ROOT"] %>/nginx/logs/error.log;',
-    'access_log <%= ENV["APP_ROOT"] %>/nginx/logs/access.log cloudfoundry;',
-    'listen <%= ENV["PORT"] %>;',
+    'listen {{port}};',
   ];
 
   prodLines.forEach((line) => {

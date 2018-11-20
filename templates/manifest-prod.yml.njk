@@ -2,7 +2,7 @@
 path: ../out
 memory: 64MB
 stack: cflinuxfs2
-buildpack: staticfile_buildpack
+buildpack: https://github.com/cloudfoundry/nginx-buildpack.git
 applications:
 - name: pages-redirects
 instances: 4
