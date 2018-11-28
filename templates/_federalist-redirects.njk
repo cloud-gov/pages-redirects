@@ -38,11 +38,11 @@ server {
   return 301 https://$target_domain;
 }
 
-# api-program.18f.gov/ to github.com/18F/api-program
+# api-program.18f.gov to github.com/18F/api-program
 server {
   listen {{ PORT }};
   set $target_domain github.com/18F/api-program;
-  server_name api-program.18f.gov/;
+  server_name api-program.18f.gov;
   return 301 https://$target_domain;
 }
 
