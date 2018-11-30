@@ -59,7 +59,7 @@ server {
 server {
   listen {{ PORT }};
   set $target_domain github.com/18F/digitalaccelerator;
-  server_name guides.18f.gov;
+  server_name digitalaccelerator.18f.gov;
   return 301 https://$target_domain;
 }
 
@@ -180,7 +180,7 @@ server {
 # guides.18f.gov to github.com/18F/guides-template
 server {
   listen {{ PORT }};
-  set $target_domain 18f.gsa.gov/guides;
+  set $target_domain github.com/18F/guides-template;
   server_name guides.18f.gov;
   return 301 https://$target_domain;
 }
