@@ -29,6 +29,40 @@ server {
   return 302 https://18f.gsa.gov/join/;
 }
 
+
+# api-all-the-x.18f.gov to github.com/18F/API-All-the-X
+server {
+  listen {{ PORT }};
+  set $target_domain github.com/18F/API-All-the-X;
+  server_name api-all-the-x.18f.gov;
+  return 301 https://$target_domain;
+}
+
+# api-program.18f.gov to github.com/18F/api-program
+server {
+  listen {{ PORT }};
+  set $target_domain github.com/18F/api-program;
+  server_name api-program.18f.gov;
+  return 301 https://$target_domain;
+}
+
+# api-usability-testing.18f.gov to github.com/18F/API-Usability-Testing
+server {
+  listen {{ PORT }};
+  set $target_domain github.com/18F/API-Usability-Testing;
+  server_name api-usability-testing.18f.gov;
+  return 301 https://$target_domain;
+}
+
+
+# digitalaccelerator.18f.gov to github.com/18F/digitalaccelerator
+server {
+  listen {{ PORT }};
+  set $target_domain github.com/18F/digitalaccelerator;
+  server_name digitalaccelerator.18f.gov;
+  return 301 https://$target_domain;
+}
+
 # digitalgov.gov to digital.gov
 server {
   listen {{ PORT }};
@@ -89,6 +123,16 @@ server {
 }
 
 
+# innovation-toolkit-prototype.18f.gov to github.com/18F/innovation-toolkit-prototype
+server {
+  listen {{ PORT }};
+  set $target_domain github.com/18F/innovation-toolkit-prototype;
+  server_name innovation-toolkit-prototype.18f.gov;
+  return 301 https://$target_domain;
+}
+
+
+
 # digital-acquisition-playbook.18f.gov to github.com/18F/digital-acquisition-playbook
 server {
   listen {{ PORT }};
@@ -133,6 +177,15 @@ server {
 }
 
 
+# guides.18f.gov to github.com/18F/guides-template
+server {
+  listen {{ PORT }};
+  set $target_domain github.com/18F/guides-template;
+  server_name guides.18f.gov;
+  return 301 https://$target_domain;
+}
+
+
 # guides-template.18f.gov to github.com/18F/guides-template
 server {
   listen {{ PORT }};
@@ -156,6 +209,16 @@ server {
   listen {{ PORT }};
   set $target_domain github.com/18F/open-source-guide;
   server_name open-source-guide.18f.gov;
+  return 301 https://$target_domain;
+}
+
+
+
+# open-source-program.18f.gov to github.com/18F/open-source-program
+server {
+  listen {{ PORT }};
+  set $target_domain github.com/18F/open-source-program;
+  server_name open-source-program.18f.gov;
   return 301 https://$target_domain;
 }
 
