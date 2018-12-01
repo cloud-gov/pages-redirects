@@ -14,6 +14,9 @@
   to: ads
 - agile-labor-categories
 - agile
+- api-all-the-x
+- api-program
+- api-usability-testing
 - automated-testing-playbook
 - before-you-ship
 - brand
@@ -29,6 +32,7 @@
 - govconnect
 - grouplet-playbook
 - guides-template
+- guides
 - iaa-forms
 - from: identity-dev-docs
   to: developers
@@ -44,8 +48,10 @@
   to: www
   toDomain: login.gov
   toPath: /playbook
+- innovation-toolkit-prototype
 - lean-product-design
 - open-source-guide
+- open-source-program
 - paid-leave-prototype
 - partnership-playbook
 - private-eye
