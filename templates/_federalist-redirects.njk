@@ -247,3 +247,10 @@ server {
   server_name testing-cookbook.18f.gov;
   return 301 https://$target_domain;
 }
+
+server {
+  listen {{ PORT }};
+  set $target_domain presidentialinnovationfellows.gov/apply;
+  server_name apply.pif.gov;
+  return 302 https://$target_domain;
+}
