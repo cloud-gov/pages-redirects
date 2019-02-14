@@ -23,6 +23,7 @@ services:
     external_links:
       # These are all the `server_name`s that the nginx server is listening on
       - app:pif.gov
+      - app:apply.pif.gov
       - app:www.pif.gov
       - app:connect.gov
       - app:www.connect.gov
