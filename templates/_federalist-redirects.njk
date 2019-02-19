@@ -250,7 +250,7 @@ server {
 
 server {
   listen {{ PORT }};
-  set $target_domain presidentialinnovationfellows.gov/apply;
+  set $target_domain presidentialinnovationfellows.gov/apply/;
   server_name apply.pif.gov;
   return 302 https://$target_domain;
 }
