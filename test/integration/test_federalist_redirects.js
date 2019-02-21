@@ -12,6 +12,7 @@ const PROTOCOL = process.env.TARGET_HOST && process.env.TARGET_HOST.startsWith('
 const expectedRedirects = [
   { from: 'pif.gov', to: 'presidentialinnovationfellows.gov' },
   { from: 'www.pif.gov', to: 'presidentialinnovationfellows.gov' },
+  { from: 'apply.pif.gov', to: 'presidentialinnovationfellows.gov/apply', noPath: true },
   { from: '18f.gov', to: '18f.gsa.gov' },
   { from: 'www.18f.gov', to: '18f.gsa.gov' },
   { from: 'jobs.18f.gov', to: 'join.18f.gov' },
