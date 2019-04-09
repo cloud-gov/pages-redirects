@@ -59,3 +59,4 @@ services:
       - app:innovation-toolkit-prototype.18f.gov
       - app:guides.18f.gov
       - app:open-source-program.18f.gov
+      - app:modularcontracting.18f.gov
