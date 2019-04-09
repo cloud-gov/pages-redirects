@@ -203,6 +203,14 @@ server {
   return 301 https://$target_domain;
 }
 
+# modularcontracting.18f.gov to https://github.com/18F/Modular-Contracting-And-Agile-Development
+server {
+  listen {{ PORT }};
+  set $target_domain github.com/18F/Modular-Contracting-And-Agile-Development;
+  server_name modularcontracting.18f.gov;
+  return 301 https://$target_domain;
+}
+
 
 # open-source-guide.18f.gov to github.com/18F/open-source-guide
 server {
