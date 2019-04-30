@@ -63,11 +63,20 @@ server {
   return 301 https://$target_domain;
 }
 
+# www.digitalgov.gov and www.digital.gov to digital.gov
+server {
+  listen {{ PORT }};
+  set $target_domain digital.gov;
+  server_name www.digitalgov.gov www.digital.gov;
+  return 301 https://$target_domain$request_uri;
+}
+
 # digitalgov.gov to digital.gov
 server {
   listen {{ PORT }};
   set $target_domain digital.gov;
-  server_name digitalgov.gov www.digitalgov.gov www.digital.gov;
+  server_name digitalgov.gov;
+  add_header Strict-Transport-Security 'max-age=63072000; includeSubDomains; preload';
   return 301 https://$target_domain$request_uri;
 }
 
