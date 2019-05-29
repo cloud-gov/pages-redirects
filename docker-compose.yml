@@ -60,3 +60,4 @@ services:
       - app:guides.18f.gov
       - app:open-source-program.18f.gov
       - app:modularcontracting.18f.gov
+      - app:v2.designsystem.digital.gov
