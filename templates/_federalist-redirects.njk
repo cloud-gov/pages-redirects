@@ -113,6 +113,13 @@ server {
   return 301 https://$target_domain;
 }
 
+# v2.designsystem.digital.gov to designsystem.digital.gov
+server {
+  listen {{ PORT }};
+  set $target_domain designsystem.digital.gov;
+  server_name v2.designsystem.digital.gov;
+  return 301 https://$target_domain$request_uri;
+}
 
 # writing-lab-guide.18f.gov to handbook.18f.gov/writing-lab
 server {
