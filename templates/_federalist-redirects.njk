@@ -278,3 +278,44 @@ server {
   server_name apply.pif.gov;
   return 302 https://$target_domain;
 }
+
+# micropurchase.18f.gov to github.com/18f/micropurchase-archive
+server {
+  listen {{ PORT }};
+  set $target_domain github.com/18f/micropurchase-archive;
+  server_name micropurchase.18f.gov;
+  return 301 https://$target_domain;
+}
+
+
+# federalist-modern-team-template.18f.gov to github.com/18F/federalist-modern-team-template
+server {
+  listen {{ PORT }};
+  set $target_domain github.com/18F/federalist-modern-team-template;
+  server_name federalist-modern-team-template.18f.gov;
+  return 301 https://$target_domain;
+}
+
+# paid-leave-prototype.18f.gov to github.com/18f/paid-leave-prototype
+server {
+  listen {{ PORT }};
+  set $target_domain github.com/18f/paid-leave-prototype;
+  server_name paid-leave-prototype.18f.gov;
+  return 301 https://$target_domain;
+}
+
+# boise.18f.gov to github.com/18f/boise
+server {
+  listen {{ PORT }};
+  set $target_domain github.com/18f/boise;
+  server_name boise.18f.gov;
+  return 301 https://$target_domain;
+}
+
+# acqstack-journeymap.18f.gov to github.com/18f/acqstack-journeymap
+server {
+  listen {{ PORT }};
+  set $target_domain github.com/18f/acqstack-journeymap;
+  server_name acqstack-journeymap.18f.gov;
+  return 301 https://$target_domain;
+}
