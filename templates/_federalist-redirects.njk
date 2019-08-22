@@ -319,3 +319,11 @@ server {
   server_name acqstack-journeymap.18f.gov;
   return 301 https://$target_domain;
 }
+
+# agile-bpa.18f.gov to github.com/18f/ads-bpa
+server {
+  listen {{ PORT }};
+  set $target_domain github.com/18f/ads-bpa;
+  server_name agile-bpa.18f.gov;
+  return 301 https://$target_domain;
+}
