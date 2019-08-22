@@ -66,3 +66,4 @@ services:
       - app:acqstack-journeymap.18f.gov
       - app:boise.18f.gov
       - app:paid-leave-prototype.18f.gov
+      - app:agile-bpa.18f.gov
