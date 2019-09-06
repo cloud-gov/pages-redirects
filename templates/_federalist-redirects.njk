@@ -296,14 +296,6 @@ server {
   return 301 https://$target_domain;
 }
 
-# paid-leave-prototype.18f.gov to github.com/18f/paid-leave-prototype
-server {
-  listen {{ PORT }};
-  set $target_domain github.com/18f/paid-leave-prototype;
-  server_name paid-leave-prototype.18f.gov;
-  return 301 https://$target_domain;
-}
-
 # boise.18f.gov to github.com/18f/boise
 server {
   listen {{ PORT }};
