@@ -319,3 +319,19 @@ server {
   server_name agile-bpa.18f.gov;
   return 301 https://$target_domain;
 }
+
+# slides.18f.gov to github.com/18f/slides
+server {
+  listen {{ PORT }};
+  set $target_domain github.com/18f/slides;
+  server_name slides.18f.gov;
+  return 301 https://$target_domain;
+}
+
+# fedspendingtransparency.18f.gov to https://github.com/fedspendingtransparency/fedspendingtransparency.github.io
+server {
+  listen {{ PORT }};
+  set $target_domain github.com/fedspendingtransparency/fedspendingtransparency.github.io;
+  server_name fedspendingtransparency.18f.gov;
+  return 301 https://$target_domain;
+}
