@@ -67,3 +67,5 @@ services:
       - app:boise.18f.gov
       - app:paid-leave-prototype.18f.gov
       - app:agile-bpa.18f.gov
+      - app:slides.18f.gov
+      - app:fedspendingtransparency.18f.gov
