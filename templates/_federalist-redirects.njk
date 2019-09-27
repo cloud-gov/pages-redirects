@@ -338,6 +338,11 @@ server {
 # C2: cap.18f.gov and requests.18f.gov to https://handbook.18f.gov/purchase-requests/
 server {
   listen {{ PORT }};
-  server_name cap.18f.gov requests.18f.gov;
+  server_name cap.18f.gov;
+  return 301 https://handbook.18f.gov/purchase-requests/;
+}
+server {
+  listen {{ PORT }};
+  server_name requests.18f.gov;
   return 301 https://handbook.18f.gov/purchase-requests/;
 }
