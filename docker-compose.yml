@@ -69,3 +69,5 @@ services:
       - app:agile-bpa.18f.gov
       - app:slides.18f.gov
       - app:fedspendingtransparency.18f.gov
+      - app:cap.18f.gov
+      - app:requests.18f.gov

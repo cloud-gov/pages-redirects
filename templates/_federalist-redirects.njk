@@ -338,11 +338,13 @@ server {
 # C2: cap.18f.gov and requests.18f.gov to https://handbook.18f.gov/purchase-requests/
 server {
   listen {{ PORT }};
+  set $target_domain docs.google.com/forms/d/e/1FAIpQLSd-GoOE9xWWfJvdZNRP3SE7mj5ysI_RfM8brxdG8YpyJV9yKA/viewform;
   server_name cap.18f.gov;
-  return 301 https://docs.google.com/forms/d/e/1FAIpQLSd-GoOE9xWWfJvdZNRP3SE7mj5ysI_RfM8brxdG8YpyJV9yKA/viewform;
+  return 301 https://$target_domain
 }
 server {
   listen {{ PORT }};
+  set $target_domain docs.google.com/forms/d/e/1FAIpQLSd-GoOE9xWWfJvdZNRP3SE7mj5ysI_RfM8brxdG8YpyJV9yKA/viewform;
   server_name requests.18f.gov;
-  return 301 https://docs.google.com/forms/d/e/1FAIpQLSd-GoOE9xWWfJvdZNRP3SE7mj5ysI_RfM8brxdG8YpyJV9yKA/viewform;
+  return 301 https://$target_domain
 }
