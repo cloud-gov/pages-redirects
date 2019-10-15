@@ -11,6 +11,7 @@ These redirect rules can be found in [`templates/_federalist-redirects.njk`](./t
 
 ## Adding a new redirect
 
+### pages.18f.gov redirects
 To add a new redirect from a retired pages.18f.gov to its new 18f.gov-subdomain home,
 you will need to edit [`pages.yml`](/pages.yml). Please open a [Pull Request](https://github.com/18F/pages-redirects/pull/new/master)
 with your modifications.
@@ -51,6 +52,30 @@ add lines of the following form to `pages.yml`:
   toDomain: new-domain.gov
   toPath: custom-path
 ```
+
+### Domain redirects
+To create a redirect for yourOldDomain.gov to yourNewDomain.gov, perform the following steps:
+1. Create a [`custom-domain`](https://cloud.gov/docs/apps/custom-domains/) for `yourOldDoaming.gov` in the same space as pages-redirects
+2. Update the DNS settings (CNAME and TXT record) for yourOldDomain.gov with the details provided by your custom-domain
+3. Add a route for yourdomain.gov in [`_manifest-prod.yml.njk`](/templates/_manifest-prod.yml.njk)
+```
+route: yourOldDomain.gov
+```
+4. Add a redirect configuration in [`_federalist-redirects.njk`](/templates/_federalist-redirects.njk):
+```
+server {
+  listen {{ PORT }};
+  set $target_domain yourNewDomain.gov;
+  server_name yourOldDomain.gov;
+  return 301 https://$target_domain;
+}
+```
+5. Add yourdOldDomain.gov as an external link to [`docker-compose.yml`](/docker-compose.yml)
+```
+app:yourOldDomain.gov
+```
+6. Test this app as described below in the `Testing` section
+
 
 Once your changes are merged into `master` by an administrator,
 the `pages-redirects` app will be redeployed by CircleCI and your redirects
