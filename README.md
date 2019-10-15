@@ -54,27 +54,27 @@ add lines of the following form to `pages.yml`:
 ```
 
 ### Domain redirects
-To create a redirect for yourOldDomain.gov to yourNewDomain.gov, perform the following steps:
-1. Create a [`custom-domain`](https://cloud.gov/docs/apps/custom-domains/) for `yourOldDoaming.gov` in the same space as pages-redirects
-2. Update the DNS settings (CNAME and TXT record) for yourOldDomain.gov with the details provided by your custom-domain
-3. Add a route for yourdomain.gov in [`_manifest-prod.yml.njk`](/templates/_manifest-prod.yml.njk)
+To create a redirect for yourOrigDomain.gov to yourNewDomain.gov, perform the following steps:
+1. Add a route for yourOrigDomain.gov in [`manifest-prod.yml.njk`](/templates/manifest-prod.yml.njk)
 ```
-route: yourOldDomain.gov
+route: yourOrigDomain.gov
 ```
-4. Add a redirect configuration in [`_federalist-redirects.njk`](/templates/_federalist-redirects.njk):
+2. Add a redirect configuration in [`_federalist-redirects.njk`](/templates/_federalist-redirects.njk):
 ```
 server {
   listen {{ PORT }};
   set $target_domain yourNewDomain.gov;
-  server_name yourOldDomain.gov;
+  server_name yourOrigDomain.gov;
   return 301 https://$target_domain;
 }
 ```
-5. Add yourdOldDomain.gov as an external link to [`docker-compose.yml`](/docker-compose.yml)
+3. Add yourdOldDomain.gov as an external link to [`docker-compose.yml`](/docker-compose.yml)
 ```
-app:yourOldDomain.gov
+app:yourOrigDomain.gov
 ```
-6. Test this app as described below in the `Testing` section
+4. Test this app as described below in the `Testing` section
+5. Ask an administrator to create a [`custom-domain`](https://cloud.gov/docs/apps/custom-domains/) for `yourOldDoaming.gov`
+6. Update the DNS settings (CNAME and TXT record) for yourOrigDomain.gov with the details specified by your custom-domain
 
 
 Once your changes are merged into `master` by an administrator,
