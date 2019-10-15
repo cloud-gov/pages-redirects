@@ -73,9 +73,8 @@ server {
 app:yourOrigDomain.gov
 ```
 4. Test this app as described below in the `Testing` section
-5. Ask an administrator to create a [`custom-domain`](https://cloud.gov/docs/apps/custom-domains/) for `yourOldDoaming.gov`
+5. Ask an administrator to create a [`custom-domain`](https://cloud.gov/docs/apps/custom-domains/) for `yourOldDoaming.gov` and to provide you the generated CNAME and TXT record
 6. Update the DNS settings (CNAME and TXT record) for yourOrigDomain.gov with the details specified by your custom-domain
-
 
 Once your changes are merged into `master` by an administrator,
 the `pages-redirects` app will be redeployed by CircleCI and your redirects
