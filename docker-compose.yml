@@ -71,3 +71,4 @@ services:
       - app:fedspendingtransparency.18f.gov
       - app:cap.18f.gov
       - app:requests.18f.gov
+      - app:www.findtreatment.gov

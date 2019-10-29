@@ -348,3 +348,11 @@ server {
   server_name requests.18f.gov;
   return 301 https://$target_domain;
 }
+
+# www.findtreatment.gov to findtreatment.gov
+server {
+  listen {{ PORT }};
+  set $target_domain findtreatment.gov;
+  server_name www.findtreatment.gov;
+  return 301 https://$target_domain$request_uri;
+}
