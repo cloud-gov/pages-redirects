@@ -72,3 +72,4 @@ services:
       - app:cap.18f.gov
       - app:requests.18f.gov
       - app:www.findtreatment.gov
+      - app:federalist-docs.18f.gov

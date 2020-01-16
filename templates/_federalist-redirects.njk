@@ -356,3 +356,11 @@ server {
   server_name www.findtreatment.gov;
   return 301 https://$target_domain$request_uri;
 }
+
+# federalist-docs.18f.gov to federalist.18f.gov
+server {
+  listen {{ PORT }};
+  set $target_domain federalist.18f.gov;
+  server_name federalist-docs.18f.gov;
+  return 301 https://$target_domain;
+}
