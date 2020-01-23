@@ -26,6 +26,7 @@ const expectedRedirects = [
   { from: 'blogging-guide.18f.gov', to: 'handbook.18f.gov/blogging', redirectCode: 301, noPath: true },
   { from: 'v2.designsystem.digital.gov', to: 'designsystem.digital.gov', redirectCode: 301 },
   { from: 'www.findtreatment.gov', to: 'findtreatment.gov', redirectCode: 301 },
+  { from: 'handbook.18f.gov', to: 'handbook.tts.gsa.gov', redirectCode: 301 },
 ];
 
 function redirectOk(t, from, to, redirectCode) {
