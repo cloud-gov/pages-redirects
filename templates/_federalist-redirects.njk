@@ -364,3 +364,11 @@ server {
   server_name federalist-docs.18f.gov;
   return 301 https://$target_domain;
 }
+
+# handbook.18f.gov to handbook.tts.gsa.gov
+server {
+  listen {{ PORT }};
+  set $target_domain handbook.tts.gsa.gov;
+  server_name handbook.18f.gov;
+  return 301 https://$target_domain$request_uri;
+}
