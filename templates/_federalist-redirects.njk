@@ -373,10 +373,10 @@ server {
   return 301 https://$target_domain$request_uri;
 }
 
-# frontend.18f.gov to engineering.18f.gov/frontend
+# frontend.18f.gov to engineering.18f.gov/frontend/
 server {
   listen {{ PORT }};
-  set $target_domain engineering.18f.gov/frontend;
+  set $target_domain engineering.18f.gov/frontend/;
   server_name frontend.18f.gov;
   return 301 https://$target_domain;
 }
