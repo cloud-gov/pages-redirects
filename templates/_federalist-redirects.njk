@@ -380,3 +380,11 @@ server {
   server_name frontend.18f.gov;
   return 301 https://$target_domain;
 }
+
+# proposal.pif.gov to form
+server {
+  listen {{ PORT }};
+  set $target_domain https://docs.google.com/forms/d/e/1FAIpQLSeIVylFhpyyv9cBQFKnXa6x3sJsZN4HkkqhNcYgHfSHjv-5kw/viewform;
+  server_name proposal.pif.gov;
+  return 301 https://$target_domain;
+}

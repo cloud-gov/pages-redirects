@@ -75,3 +75,4 @@ services:
       - app:federalist-docs.18f.gov
       - app:handbook.18f.gov
       - app:frontend.18f.gov
+      - app:proposal.pif.gov
