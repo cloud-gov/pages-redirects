@@ -388,3 +388,11 @@ server {
   server_name proposal.pif.gov;
   return 301 https://$target_domain;
 }
+
+# federalist-report-template.18f.gov to github repo
+server {
+  listen {{ PORT }};
+  set $target_domain github.com/18f/federalist-report-template;
+  server_name federalist-report-template.18f.gov;
+  return 301 https://$target_domain;
+}
