@@ -15,20 +15,6 @@ server {
   return 302 https://$target_domain$request_uri;
 }
 
-server {
-  listen {{ PORT }};
-  set $target_domain join.18f.gov;
-  server_name jobs.18f.gov;
-  return 302 https://$target_domain$request_uri;
-}
-
-server {
-  listen {{ PORT }};
-  server_name join.18f.gov;
-  return 302 https://18f.gsa.gov/join/;
-}
-
-
 # api-all-the-x.18f.gov to github.com/18F/API-All-the-X
 server {
   listen {{ PORT }};

@@ -15,8 +15,6 @@ const expectedRedirects = [
   { from: 'apply.pif.gov', to: 'presidentialinnovationfellows.gov/apply', noPath: true },
   { from: '18f.gov', to: '18f.gsa.gov' },
   { from: 'www.18f.gov', to: '18f.gsa.gov' },
-  { from: 'jobs.18f.gov', to: 'join.18f.gov' },
-  { from: 'join.18f.gov', to: '18f.gsa.gov/join', noPath: true },
   { from: 'digitalgov.gov', to: 'digital.gov', redirectCode: 301 },
   { from: 'www.digitalgov.gov', to: 'digital.gov', redirectCode: 301 },
   { from: 'demo.digitalgov.gov', to: 'demo.digital.gov', redirectCode: 301 },
