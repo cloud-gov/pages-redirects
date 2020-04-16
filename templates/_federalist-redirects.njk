@@ -382,3 +382,11 @@ server {
   server_name federalist-report-template.18f.gov;
   return 301 https://$target_domain;
 }
+
+# www.search.gov to search.gov
+server {
+  listen {{ PORT }};
+  set $target_domain search.gov;
+  server_name www.search.gov;
+  return 301 https://$target_domain$request_uri;
+}
