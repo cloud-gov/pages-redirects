@@ -26,6 +26,7 @@ const expectedRedirects = [
   { from: 'www.findtreatment.gov', to: 'findtreatment.gov', redirectCode: 301 },
   { from: 'handbook.18f.gov', to: 'handbook.tts.gsa.gov', redirectCode: 301 },
   { from: 'frontend.18f.gov', to: 'engineering.18f.gov/frontend', redirectCode: 301, noPath: true },
+  { from: 'www.search.gov', to: 'search.gov', redirectCode: 301 },
 ];
 
 function redirectOk(t, from, to, redirectCode) {

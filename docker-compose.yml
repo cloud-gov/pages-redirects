@@ -75,3 +75,4 @@ services:
       - app:frontend.18f.gov
       - app:proposal.pif.gov
       - app:federalist-report-template.18f.gov
+      - app:www.search.gov
