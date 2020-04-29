@@ -390,3 +390,19 @@ server {
   server_name www.search.gov;
   return 301 https://$target_domain$request_uri;
 }
+
+# paid-leave-prototype.18f.gov to github repo
+server {
+  listen {{ PORT }};
+  set $target_domain github.com/18F/Paid-Leave-Prototype;
+  server_name paid-leave-prototype.18f.gov;
+  return 301 https://$target_domain;
+}
+
+# ads.18f.gov to github repo
+server {
+  listen {{ PORT }};
+  set $target_domain github.com/18F/ads-bpa;
+  server_name ads.18f.gov;
+  return 301 https://$target_domain;
+}

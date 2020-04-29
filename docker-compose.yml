@@ -76,3 +76,4 @@ services:
       - app:proposal.pif.gov
       - app:federalist-report-template.18f.gov
       - app:www.search.gov
+      - app:ads.18f.gov
