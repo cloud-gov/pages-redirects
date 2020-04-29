@@ -77,4 +77,4 @@ services:
       - app:federalist-report-template.18f.gov
       - app:www.search.gov
       - app:ads.18f.gov
-      - app:cloud.18f.gov
+      - app:cloud.gov
