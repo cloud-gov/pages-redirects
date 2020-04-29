@@ -406,3 +406,12 @@ server {
   server_name ads.18f.gov;
   return 301 https://$target_domain;
 }
+
+# cloud.gov to www.cloud.gov
+server {
+  listen {{ PORT }};
+  set $target_domain www.cloud.gov;
+  server_name cloud.gov;
+  add_header Strict-Transport-Security 'max-age=31536000; includeSubDomains; preload';
+  return 301 https://$target_domain$request_uri;
+}
