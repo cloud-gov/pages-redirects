@@ -65,6 +65,15 @@ server {
   return 301 https://$target_domain$request_uri;
 }
 
+# digitalgov.gov to digital.gov
+server {
+  listen {{ PORT }};
+  set $target_domain www.usability.gov;
+  server_name usability.gov;
+  add_header Strict-Transport-Security 'max-age=63072000; includeSubDomains; preload';
+  return 301 https://$target_domain$request_uri;
+}
+
 # summit.digitalgov.gov to digital.gov
 server {
   listen {{ PORT }};
