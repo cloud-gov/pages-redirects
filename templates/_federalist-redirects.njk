@@ -90,6 +90,15 @@ server {
   return 301 https://$target_domain$request_uri;
 }
 
+# emerging.digital.gov to digital.gov/topics/emerging-tech/
+server {
+  listen {{ PORT }};
+  set $target_domain digital.gov/topics/emerging-tech/;
+  server_name emerging.digitalgov.gov;
+  add_header Strict-Transport-Security 'max-age=63072000; includeSubDomains; preload';
+  return 301 https://$target_domain$request_uri;
+}
+
 # openopps.digitalgov.gov to openopps.usajobs.gov
 server {
   listen {{ PORT }};
