@@ -95,7 +95,6 @@ server {
   listen {{ PORT }};
   set $target_domain digital.gov/topics/emerging-tech/;
   server_name emerging.digitalgov.gov;
-  add_header Strict-Transport-Security 'max-age=63072000; includeSubDomains; preload';
   return 301 https://$target_domain$request_uri;
 }
 
