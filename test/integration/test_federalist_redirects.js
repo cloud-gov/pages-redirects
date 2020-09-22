@@ -28,7 +28,7 @@ const expectedRedirects = [
   { from: 'frontend.18f.gov', to: 'engineering.18f.gov/frontend', redirectCode: 301, noPath: true },
   { from: 'www.search.gov', to: 'search.gov', redirectCode: 301 },
   { from: 'usability.gov', to: 'www.usability.gov', redirectCode: 301 },
-  { from: 'emerging.digital.gov', to: 'digital.gov/topics/emerging-tech', redirectCode: 301 },
+  { from: 'emerging.digital.gov', to: 'digital.gov/topics/emerging-tech', redirectCode: 301, noPath: true },
 ];
 
 function redirectOk(t, from, to, redirectCode) {
