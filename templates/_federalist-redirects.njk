@@ -95,7 +95,7 @@ server {
   listen {{ PORT }};
   set $target_domain digital.gov/topics/emerging-tech/;
   server_name emerging.digital.gov;
-  return 301 https://$target_domain$request_uri;
+  return 301 https://$target_domain;
 }
 
 # openopps.digitalgov.gov to openopps.usajobs.gov
