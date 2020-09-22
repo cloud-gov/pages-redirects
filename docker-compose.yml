@@ -33,6 +33,7 @@ services:
       - app:digitalgov.gov
       - app:www.digitalgov.gov
       - app:demo.digitalgov.gov
+      - app:emerging.digital.gov
       - app:summit.digitalgov.gov
       - app:www.digital.gov
       - app:openopps.digitalgov.gov
