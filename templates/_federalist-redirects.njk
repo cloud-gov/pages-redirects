@@ -423,3 +423,11 @@ server {
   server_name ads.18f.gov;
   return 301 https://$target_domain;
 }
+
+# developer.login.gov to developers.login.gov
+server {
+  listen {{ PORT }};
+  set $target_domain developers.login.gov;
+  server_name developer.login.gov;
+  return 301 https://$target_domain;
+}
