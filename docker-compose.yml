@@ -79,3 +79,4 @@ services:
       - app:www.search.gov
       - app:ads.18f.gov
       - app:usability.gov
+      - app:developer.login.gov
