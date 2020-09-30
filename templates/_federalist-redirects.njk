@@ -109,8 +109,8 @@ server {
 # www.plainlanguage.gov to plainlanguage.gov
 server {
   listen {{ PORT }};
-  set $target_domain plainlanguage.gov;
-  server_name www.plainlanguage.gov;
+  set $target_domain www.plainlanguage.gov;
+  server_name plainlanguage.gov;
   add_header Strict-Transport-Security 'max-age=31536000; includeSubDomains; preload';
   return 301 https://$target_domain$request_uri;
 }
