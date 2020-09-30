@@ -106,7 +106,7 @@ server {
   return 301 https://$target_domain$request_uri;
 }
 
-# www.plainlanguage.gov to plainlanguage.gov
+# plainlanguage.gov to www.plainlanguage.gov
 server {
   listen {{ PORT }};
   set $target_domain www.plainlanguage.gov;
