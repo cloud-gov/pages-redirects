@@ -106,6 +106,14 @@ server {
   return 301 https://$target_domain$request_uri;
 }
 
+# www.plainlanguage.gov to plainlanguage.gov
+server {
+  listen {{ PORT }};
+  set $target_domain plainlanguage.gov;
+  server_name www.plainlanguage.gov;
+  add_header Strict-Transport-Security 'max-age=31536000; includeSubDomains; preload';
+  return 301 https://$target_domain$request_uri;
+}
 
 # blogging-guide.18f.gov to handbook.18f.gov/blogging
 server {
