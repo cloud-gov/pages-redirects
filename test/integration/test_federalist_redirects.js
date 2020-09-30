@@ -20,6 +20,7 @@ const expectedRedirects = [
   { from: 'demo.digitalgov.gov', to: 'demo.digital.gov', redirectCode: 301 },
   { from: 'www.digital.gov', to: 'digital.gov', redirectCode: 301 },
   { from: 'summit.digitalgov.gov', to: 'digital.gov' },
+  { from: 'plainlanguage', to: 'www.plainlanguage.gov', redirectCode: 301 },
   { from: 'openopps.digitalgov.gov', to: 'openopps.usajobs.gov', redirectCode: 301 },
   { from: 'blogging-guide.18f.gov', to: 'handbook.18f.gov/blogging', redirectCode: 301, noPath: true },
   { from: 'v2.designsystem.digital.gov', to: 'designsystem.digital.gov', redirectCode: 301 },
