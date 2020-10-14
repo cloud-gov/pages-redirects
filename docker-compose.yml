@@ -61,7 +61,6 @@ services:
       - app:modularcontracting.18f.gov
       - app:v2.designsystem.digital.gov
       - app:micropurchase.18f.gov
-      - app:federalist-modern-team-template.18f.gov
       - app:acqstack-journeymap.18f.gov
       - app:boise.18f.gov
       - app:paid-leave-prototype.18f.gov
@@ -75,7 +74,6 @@ services:
       - app:handbook.18f.gov
       - app:frontend.18f.gov
       - app:proposal.pif.gov
-      - app:federalist-report-template.18f.gov
       - app:www.search.gov
       - app:ads.18f.gov
       - app:usability.gov
