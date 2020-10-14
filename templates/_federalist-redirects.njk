@@ -289,15 +289,6 @@ server {
   return 301 https://$target_domain;
 }
 
-
-# federalist-modern-team-template.18f.gov to github.com/18F/federalist-modern-team-template
-server {
-  listen {{ PORT }};
-  set $target_domain github.com/18F/federalist-modern-team-template;
-  server_name federalist-modern-team-template.18f.gov;
-  return 301 https://$target_domain;
-}
-
 # boise.18f.gov to github.com/18f/boise
 server {
   listen {{ PORT }};
@@ -389,14 +380,6 @@ server {
   listen {{ PORT }};
   set $target_domain docs.google.com/forms/d/e/1FAIpQLSeIVylFhpyyv9cBQFKnXa6x3sJsZN4HkkqhNcYgHfSHjv-5kw/viewform;
   server_name proposal.pif.gov;
-  return 301 https://$target_domain;
-}
-
-# federalist-report-template.18f.gov to github repo
-server {
-  listen {{ PORT }};
-  set $target_domain github.com/18f/federalist-report-template;
-  server_name federalist-report-template.18f.gov;
   return 301 https://$target_domain;
 }
 
