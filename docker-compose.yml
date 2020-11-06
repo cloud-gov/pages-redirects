@@ -37,6 +37,7 @@ services:
       - app:summit.digitalgov.gov
       - app:www.digital.gov
       - app:openopps.digitalgov.gov
+      - app:plainlanguage.gov
       - app:blogging-guide.18f.gov
       - app:writing-lab-guide.18f.gov
       - app:iaa-forms.18f.gov
