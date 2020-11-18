@@ -30,6 +30,7 @@ const expectedRedirects = [
   { from: 'www.search.gov', to: 'search.gov', redirectCode: 301 },
   { from: 'usability.gov', to: 'www.usability.gov', redirectCode: 301 },
   { from: 'emerging.digital.gov', to: 'digital.gov/topics/emerging-tech', redirectCode: 301, noPath: true },
+  { from: 'components.designsystem.digital.gov', to: 'designsystem.digital.gov/components', redirectCode: 301, noPath: true },
 ];
 
 function redirectOk(t, from, to, redirectCode) {

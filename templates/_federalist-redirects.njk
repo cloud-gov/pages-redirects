@@ -422,3 +422,11 @@ server {
   server_name developer.login.gov;
   return 301 https://$target_domain;
 }
+
+# components.designsystem.digital.gov to designsystem.digital.gov/components
+server {
+  listen {{ PORT }};
+  set $target_domain designsystem.digital.gov/components/;
+  server_name components.designsystem.digital.gov;
+  return 301 https://$target_domain;
+}
