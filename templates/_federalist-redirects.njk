@@ -430,3 +430,11 @@ server {
   server_name components.designsystem.digital.gov;
   return 301 https://$target_domain;
 }
+
+# climate-data-user-study.18f.gov to github.com/18F/climate-labs
+server {
+  listen {{ PORT }};
+  set $target_domain github.com/18F/climate-labs;
+  server_name climate-data-user-study.18f.gov;
+  return 301 https://$target_domain;
+}
