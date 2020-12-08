@@ -70,6 +70,7 @@ services:
       - app:fedspendingtransparency.18f.gov
       - app:cap.18f.gov
       - app:requests.18f.gov
+      - app:c2.18f.gov
       - app:www.findtreatment.gov
       - app:federalist-docs.18f.gov
       - app:handbook.18f.gov
