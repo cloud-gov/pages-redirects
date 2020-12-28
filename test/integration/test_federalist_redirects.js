@@ -17,7 +17,6 @@ const expectedRedirects = [
   { from: 'www.18f.gov', to: '18f.gsa.gov' },
   { from: 'digitalgov.gov', to: 'digital.gov', redirectCode: 301 },
   { from: 'www.digitalgov.gov', to: 'digital.gov', redirectCode: 301 },
-  { from: 'demo.digitalgov.gov', to: 'demo.digital.gov', redirectCode: 301 },
   { from: 'www.digital.gov', to: 'digital.gov', redirectCode: 301 },
   { from: 'summit.digitalgov.gov', to: 'digital.gov' },
   { from: 'plainlanguage.gov', to: 'www.plainlanguage.gov', redirectCode: 301 },

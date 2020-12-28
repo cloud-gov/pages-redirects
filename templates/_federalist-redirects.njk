@@ -82,14 +82,6 @@ server {
   return 302 https://$target_domain$request_uri;
 }
 
-# demo.digitalgov.gov to demo.digital.gov
-server {
-  listen {{ PORT }};
-  set $target_domain demo.digital.gov;
-  server_name demo.digitalgov.gov;
-  return 301 https://$target_domain$request_uri;
-}
-
 # emerging.digital.gov to digital.gov/topics/emerging-tech/
 server {
   listen {{ PORT }};
