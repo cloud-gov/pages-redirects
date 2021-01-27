@@ -79,3 +79,4 @@ services:
       - app:developer.login.gov
       - app:components.designsystem.digital.gov
       - app:climate-data-user-study.18f.gov
+      - app:govconnect.18f.gov
