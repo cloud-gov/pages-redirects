@@ -437,3 +437,11 @@ server {
   server_name climate-data-user-study.18f.gov;
   return 301 https://$target_domain;
 }
+
+# govconnect.18f.gov to github.com/18F/govconnect
+server {
+  listen {{ PORT }};
+  set $target_domain github.com/18F/govconnect;
+  server_name govconnect.18f.gov;
+  return 301 https://$target_domain;
+}
