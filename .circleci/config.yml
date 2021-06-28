@@ -44,6 +44,6 @@ jobs:
       - deploy:
           name: Deploy to production
           command: |
-            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+            if [ "${CIRCLE_BRANCH}" == "main" ]; then
               ./deploy-ci.sh
             fi

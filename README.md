@@ -13,7 +13,7 @@ These redirect rules can be found in [`templates/_federalist-redirects.njk`](./t
 
 ### pages.18f.gov redirects
 To add a new redirect from a retired pages.18f.gov to its new 18f.gov-subdomain home,
-you will need to edit [`pages.yml`](/pages.yml). Please open a [Pull Request](https://github.com/18F/pages-redirects/pull/new/master)
+you will need to edit [`pages.yml`](/pages.yml). Please open a [Pull Request](https://github.com/18F/pages-redirects/pull/new/main)
 with your modifications.
 
 If you need to add a simple redirect of `pages.18f.gov/site-name` to `site-name.18f.gov`,
@@ -79,7 +79,7 @@ cf create-service cdn-route cdn-route yourOrigDomain.gov -c '{"domain": "yourOri
 ```
 6. Update the DNS settings (CNAME and TXT record) for yourOrigDomain.gov with the details specified by your custom-domain
 
-Once your changes are merged into `master` by an administrator,
+Once your changes are merged into `main` by an administrator,
 the `pages-redirects` app will be redeployed by CircleCI and your redirects
 should start working within a few minutes.
 
@@ -137,7 +137,7 @@ This is deployed in GovCloud cloud.gov:
 ### Automated Deployments
 
 This app is automatically deployed by CircleCI when commits are pushed to the
-`master` branch (such as from a merged Pull Request). Deployments are done with
+`main` branch (such as from a merged Pull Request). Deployments are done with
 the [cf-autopilot][] plugin so that there will be no downtime.
 
 See [`circle.yml`](/circle.yml) and [`deploy-ci.sh`](/deploy-ci.sh) for details.
