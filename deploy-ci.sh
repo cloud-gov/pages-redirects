@@ -6,7 +6,7 @@ set -e
 CF_ORGANIZATION="gsa-18f-federalist"
 CF_API="https://api.fr.cloud.gov"
 
-if [ "$CIRCLE_BRANCH" == "master" ]; then
+if [ "$CIRCLE_BRANCH" == "main" ]; then
   CF_USERNAME=$CF_USER
   CF_PASSWORD=$CF_PASS
   CF_SPACE="redirects"
