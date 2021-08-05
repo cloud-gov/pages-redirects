@@ -85,7 +85,7 @@ should start working within a few minutes.
 
 ## Developing
 
-This is a NodeJS-based that project uses [`yarn`](https://yarnpkg.com/) for managing node dependencies.
+This is a NodeJS-based project that uses [`yarn`](https://yarnpkg.com/) for managing node dependencies.
 After making sure you have it installed, run `yarn` to install dependencies.
 
 The NodeJS code (called from [`build.js`](/build.js)) reads an array of sites to
