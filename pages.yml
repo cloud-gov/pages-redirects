@@ -12,7 +12,8 @@
 - acqstack-journeymap
 - from: ads-bpa
   to: ads
-- agile-labor-categories
+- from: agile-labor-categories
+  to: agile
 - agile
 - api-all-the-x
 - api-program
