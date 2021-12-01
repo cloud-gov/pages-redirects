@@ -451,5 +451,6 @@ server {
   listen {{ PORT }};
   set $target_domain www.login.gov;
   server_name login.gov;
+  add_header Strict-Transport-Security 'max-age=31536000; includeSubDomains; preload';
   return 301 https://$target_domain;
 }
