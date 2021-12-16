@@ -49,6 +49,8 @@
   to: www
   toDomain: login.gov
   toPath: /playbook
+- from: status.login.gov
+  toDomain: logingov.statuspage.io
 - innovation-toolkit-prototype
 - lean-product-design
 - open-source-guide
