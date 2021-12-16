@@ -49,8 +49,6 @@
   to: www
   toDomain: login.gov
   toPath: /playbook
-- from: status.login.gov
-  toDomain: logingov.statuspage.io
 - innovation-toolkit-prototype
 - lean-product-design
 - open-source-guide
@@ -62,5 +60,8 @@
 - slides
 - from: state-faq
   to: modularcontracting
+- from: status.login.gov
+  toDomain: logingov.statuspage.io
+  to: www # technically not true but it's a required field
 - testing-cookbook
 - writing-lab-guide
