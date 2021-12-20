@@ -60,5 +60,8 @@
 - slides
 - from: state-faq
   to: modularcontracting
+- from: status.login.gov
+  toDomain: logingov.statuspage.io
+  to: www # technically not true but it's a required field
 - testing-cookbook
 - writing-lab-guide
