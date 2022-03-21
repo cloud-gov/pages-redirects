@@ -68,16 +68,16 @@ server {
   return 301 https://$target_domain;
 }
 ```
-3. Add yourdOldDomain.gov as an external link to [`docker-compose.yml`](/docker-compose.yml)
+3. Add yourdOrigDomain.gov as an external link to [`docker-compose.yml`](/docker-compose.yml)
 ```
 app:yourOrigDomain.gov
 ```
 4. Test this app as described below in the `Testing` section
-5. Ask an administrator to create a [`custom-domain`](https://cloud.gov/docs/apps/custom-domains/) for `yourOldDoaming.gov` and to provide you the generated CNAME and TXT record
+5. Create a pull request in the the [dns repository](https://github.com/18F/dns) to follow the [cloud.gov instructions](https://cloud.gov/docs/services/external-domain-service/#how-to-create-an-instance-of-this-service) to create the required DNS entries for `yourOrigDomain.gov` and ask @federalist-admins and @tts-tech-portfolio for a review.
+6. Ask an administrator to create an [`external-domain`](https://cloud.gov/docs/services/external-domain-service/) for `yourOrigDomain.gov`.
 ```
-cf create-service cdn-route cdn-route yourOrigDomain.gov -c '{"domain": "yourOrigDomain.gov"}'
+cf create-service external-domain domain-with-cdn yourOrigDomain.gov -c '{"domains": "yourOrigDomain.gov"}'
 ```
-6. Update the DNS settings (CNAME and TXT record) for yourOrigDomain.gov with the details specified by your custom-domain
 
 Once your changes are merged into `master` by an administrator,
 the `pages-redirects` app will be redeployed by CircleCI and your redirects
