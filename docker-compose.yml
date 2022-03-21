@@ -73,3 +73,6 @@ services:
       - app:requests.18f.gov
       - app:www.findtreatment.gov
       - app:federalist-docs.18f.gov
+      - app:private-eye.18f.gov
+      - app:atf-eregs.18f.gov
+      - app:agile-labor-categories.18f.gov
