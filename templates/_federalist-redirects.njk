@@ -366,6 +366,30 @@ server {
   return 301 https://$target_domain;
 }
 
+# private-eye.18f.gov to github.com/18f/private-eye
+server {
+  listen {{ PORT }};
+  set $target_domain github.com/18f/private-eye;
+  server_name private-eye.18f.gov;
+  return 301 https://$target_domain;
+}
+
+# atf-eregs.18f.gov to regulations.atf.gov
+server {
+  listen {{ PORT }};
+  set $target_domain regulations.atf.gov;
+  server_name atf-eregs.18f.gov;
+  return 301 https://$target_domain;
+}
+
+# agile-labor-categories.18f.gov to derisking-guide.18f.gov
+server {
+  listen {{ PORT }};
+  set $target_domain derisking-guide.18f.gov;
+  server_name agile-labor-categories.18f.gov;
+  return 301 https://$target_domain$request_uri;
+}
+
 # handbook.18f.gov to handbook.tts.gsa.gov
 server {
   listen {{ PORT }};
