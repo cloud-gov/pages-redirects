@@ -281,6 +281,22 @@ server {
   return 302 https://$target_domain;
 }
 
+# paygap.pif.gov to pif.gov
+server {
+  listen {{ PORT }};
+  set $target_domain pif.gov;
+  server_name paygap.pif.gov;
+  return 301 https://$target_domain;
+}
+
+# tophealth.pif.gov to pif.gov
+server {
+  listen {{ PORT }};
+  set $target_domain pif.gov;
+  server_name tophealth.pif.gov;
+  return 301 https://$target_domain;
+}
+
 # micropurchase.18f.gov to github.com/18f/micropurchase-archive
 server {
   listen {{ PORT }};
