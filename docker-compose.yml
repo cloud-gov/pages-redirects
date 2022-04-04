@@ -25,6 +25,8 @@ services:
       - app:pif.gov
       - app:apply.pif.gov
       - app:www.pif.gov
+      - app:paygap.pif.gov
+      - app:tophealth.pif.gov      
       - app:18f.gov
       - app:www.18f.gov
       - app:pages.18f.gov
