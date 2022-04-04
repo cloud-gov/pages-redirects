@@ -8,26 +8,22 @@ applications:
 instances: 4
 routes:
 - route: pages-redirects.app.cloud.gov
-- route: join.18f.gov
-- route: jobs.18f.gov
 - route: pif.gov
 - route: apply.pif.gov
 - route: www.pif.gov
-- route: connect.gov
-- route: www.connect.gov
 - route: pages.18f.gov
 - route: 18f.gov
 - route: www.18f.gov
 - route: digitalgov.gov
 - route: www.digitalgov.gov
-- route: demo.digitalgov.gov
+- route: emerging.digital.gov
 - route: summit.digitalgov.gov
 - route: www.digital.gov
 - route: openopps.digitalgov.gov
+- route: plainlanguage.gov
 - route: blogging-guide.18f.gov
 - route: v2.designsystem.digital.gov
 - route: micropurchase.18f.gov
-- route: federalist-modern-team-template.18f.gov
 - route: acqstack-journeymap.18f.gov
 - route: boise.18f.gov
 - route: agile-bpa.18f.gov
@@ -35,11 +31,23 @@ routes:
 - route: fedspendingtransparency.18f.gov
 - route: cap.18f.gov
 - route: requests.18f.gov
+- route: c2.18f.gov
 - route: www.findtreatment.gov
 - route: federalist-docs.18f.gov
 - route: atf-eregs.18f.gov
 - route: private-eye.18f.gov
 - route: agile-labor-categories.18f.gov
+- route: handbook.18f.gov
+- route: frontend.18f.gov
+- route: proposal.pif.gov
+- route: www.search.gov
+- route: ads.18f.gov
+- route: paid-leave-prototype.18f.gov
+- route: usability.gov
+- route: developer.login.gov
+- route: components.designsystem.digital.gov
+- route: climate-data-user-study.18f.gov
+- route: govconnect.18f.gov
 {% for page in PAGE_CONFIGS -%}
 - route: {{ page.to }}.{{ page.toDomain }}
 {% endfor -%}

@@ -25,19 +25,16 @@ services:
       - app:pif.gov
       - app:apply.pif.gov
       - app:www.pif.gov
-      - app:connect.gov
-      - app:www.connect.gov
       - app:18f.gov
       - app:www.18f.gov
-      - app:jobs.18f.gov
-      - app:join.18f.gov
       - app:pages.18f.gov
       - app:digitalgov.gov
       - app:www.digitalgov.gov
-      - app:demo.digitalgov.gov
+      - app:emerging.digital.gov
       - app:summit.digitalgov.gov
       - app:www.digital.gov
       - app:openopps.digitalgov.gov
+      - app:plainlanguage.gov
       - app:blogging-guide.18f.gov
       - app:writing-lab-guide.18f.gov
       - app:iaa-forms.18f.gov
@@ -62,7 +59,6 @@ services:
       - app:modularcontracting.18f.gov
       - app:v2.designsystem.digital.gov
       - app:micropurchase.18f.gov
-      - app:federalist-modern-team-template.18f.gov
       - app:acqstack-journeymap.18f.gov
       - app:boise.18f.gov
       - app:paid-leave-prototype.18f.gov
@@ -71,8 +67,19 @@ services:
       - app:fedspendingtransparency.18f.gov
       - app:cap.18f.gov
       - app:requests.18f.gov
+      - app:c2.18f.gov
       - app:www.findtreatment.gov
       - app:federalist-docs.18f.gov
       - app:private-eye.18f.gov
       - app:atf-eregs.18f.gov
       - app:agile-labor-categories.18f.gov
+      - app:handbook.18f.gov
+      - app:frontend.18f.gov
+      - app:proposal.pif.gov
+      - app:www.search.gov
+      - app:ads.18f.gov
+      - app:usability.gov
+      - app:developer.login.gov
+      - app:components.designsystem.digital.gov
+      - app:climate-data-user-study.18f.gov
+      - app:govconnect.18f.gov
