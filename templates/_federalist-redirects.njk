@@ -3,6 +3,7 @@ server {
   listen {{ PORT }};
   set $target_domain presidentialinnovationfellows.gov;
   server_name pif.gov www.pif.gov;
+  add_header Strict-Transport-Security 'max-age=31536000; includeSubDomains; preload';  
   return 302 https://$target_domain$request_uri;
 }
 
