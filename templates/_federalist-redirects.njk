@@ -487,3 +487,11 @@ server {
   server_name govconnect.18f.gov;
   return 301 https://$target_domain;
 }
+
+# portfolios.18f.gov to 18f.gsa.gov
+server {
+  listen {{ PORT }};
+  set $target_domain 18f.gsa.gov;
+  server_name portfolios.18f.gov;
+  return 301 https://$target_domain;
+}
