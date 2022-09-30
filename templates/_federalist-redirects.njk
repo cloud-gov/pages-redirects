@@ -495,3 +495,12 @@ server {
   server_name portfolios.18f.gov;
   return 301 https://$target_domain;
 }
+
+# fac.gov to www.fac.gov
+server {
+  listen {{ PORT }};
+  set $target_domain www.fac.gov;
+  server_name fac.gov;
+  add_header Strict-Transport-Security 'max-age=31536000; preload';
+  return 301 https://$target_domain$request_uri;
+}
