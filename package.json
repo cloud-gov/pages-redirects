@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "build.js",
   "license": "CC0-1.0",
-  "repository" : {
+  "repository": {
     "type": "git",
     "url": "https://github.com/18f/pages-redirects"
   },
