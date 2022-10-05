@@ -30,6 +30,13 @@ const expectedRedirects = [
   { from: 'usability.gov', to: 'www.usability.gov', redirectCode: 301 },
   { from: 'emerging.digital.gov', to: 'digital.gov/topics/emerging-tech', redirectCode: 301, noPath: true },
   { from: 'components.designsystem.digital.gov', to: 'designsystem.digital.gov/components', redirectCode: 301, noPath: true },
+  { from: 'partners.login.gov', to: 'www.login.gov/partners/', redirectCode: 301, noPath: true },
+  { from: 'partners.login.gov/product/', to: 'www.login.gov/partners/our-services/', redirectCode: 301, noPath: true },
+  { from: 'partners.login.gov/product', to: 'www.login.gov/partners/our-services/', redirectCode: 301, noPath: true },
+  { from: 'partners.login.gov/sandbox/', to: 'developers.login.gov', redirectCode: 301, noPath: true },
+  { from: 'partners.login.gov/sandbox', to: 'developers.login.gov', redirectCode: 301, noPath: true },
+  { from: 'partners.login.gov/state-and-local/', to: 'www.login.gov/partners/state-and-local/', redirectCode: 301, noPath: true },
+  { from: 'partners.login.gov/state-and-local', to: 'www.login.gov/partners/state-and-local/', redirectCode: 301, noPath: true },
 ];
 
 function redirectOk(t, from, to, redirectCode) {
