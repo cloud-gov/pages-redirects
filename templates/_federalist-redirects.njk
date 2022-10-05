@@ -505,17 +505,17 @@ server {
   return 301 https://$target_domain$request_uri;
 }
 
-# partners.login.gov to login.gov/partners
+# partners.login.gov to www.login.gov/partners
 server {
   listen {{ PORT }};
   server_name partners.login.gov;
 
   location = / {
-    return 301 https://login.gov/partners/;
+    return 301 https://www.login.gov/partners/;
   }
 
   location ~ /product/? {
-    return 301 https://login.gov/partners/our-services/;
+    return 301 https://www.login.gov/partners/our-services/;
   }
 
   location ~ /sandbox/? {
@@ -523,6 +523,6 @@ server {
   }
 
   location ~ /state-and-local/? {
-    return 301 https://login.gov/partners/state-and-local/;
+    return 301 https://www.login.gov/partners/state-and-local/;
   }
 }
