@@ -82,6 +82,7 @@ services:
       - app:ads.18f.gov
       - app:usability.gov
       - app:developer.login.gov
+      - app:partners.login.gov
       - app:components.designsystem.digital.gov
       - app:climate-data-user-study.18f.gov
       - app:govconnect.18f.gov
