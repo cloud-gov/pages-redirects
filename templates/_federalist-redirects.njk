@@ -514,15 +514,15 @@ server {
     return 301 https://www.login.gov/partners/;
   }
 
-  location ~ /product/? {
+  location ~ ^/product/?$ {
     return 301 https://www.login.gov/partners/our-services/;
   }
 
-  location ~ /sandbox/? {
+  location ~ ^/sandbox/?$ {
     return 301 https://developers.login.gov/;
   }
 
-  location ~ /state-and-local/? {
+  location ~ ^/state-and-local/?$ {
     return 301 https://www.login.gov/partners/state-and-local/;
   }
 }
