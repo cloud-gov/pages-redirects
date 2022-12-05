@@ -68,7 +68,7 @@ server {
   return 301 https://$target_domain;
 }
 ```
-3. Add yourdOrigDomain.gov as an external link to [`docker-compose.yml`](/docker-compose.yml)
+3. Add yourOrigDomain.gov as an external link to [`docker-compose.yml`](/docker-compose.yml)
 ```
 app:yourOrigDomain.gov
 ```
