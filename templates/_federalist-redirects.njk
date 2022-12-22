@@ -407,6 +407,14 @@ server {
   return 301 https://$target_domain$request_uri;
 }
 
+# stage-socialmobileregistry.digitalgov.gov to touchpoints-staging.app.cloud.gov/registry
+server {
+  listen {{ PORT }};
+  set $target_domain touchpoints-staging.app.cloud.gov/registry
+  server_name stage-socialmobileregistry.digitalgov.gov
+  return 301 https://$target_domain$request_uri;
+}
+
 # handbook.18f.gov to handbook.tts.gsa.gov
 server {
   listen {{ PORT }};
