@@ -6,8 +6,7 @@ This app redirects traffic from previous `pages.18f.gov` sites to their new URLs
 which are usually a subdomain of `18f.gov` (eg `pages.18f.gov/boop` → `boop.18f.gov`).
 
 This app also contains a number of non-pages.18f.gov-related redirects that were
-previously handled by [federalist-redirects](https://github.com/18F/federalist-redirects).
-These redirect rules can be found in [`templates/_federalist-redirects.njk`](./templates/_federalist-redirects.njk).
+previously handled by [pages-redirects](https://github.com/18F/pages-redirects) for TTS in the 18F GitHub organziation. These redirect rules can be found in [`templates/_federalist-redirects.njk`](./templates/_federalist-redirects.njk).
 
 ## Adding a new redirect
 
@@ -73,7 +72,7 @@ server {
 app:yourOrigDomain.gov
 ```
 4. Test this app as described below in the `Testing` section
-5. Create a pull request in the the [dns repository](https://github.com/18F/dns) to follow the [cloud.gov instructions](https://cloud.gov/docs/services/external-domain-service/#how-to-create-an-instance-of-this-service) to create the required DNS entries for `yourOrigDomain.gov` and ask @federalist-admins and @tts-tech-portfolio for a review.
+5. Create a pull request in the the [dns repository](https://github.com/18F/dns) to follow the [cloud.gov instructions](https://cloud.gov/docs/services/external-domain-service/#how-to-create-an-instance-of-this-service) to create the required DNS entries for `yourOrigDomain.gov` and ask @cloud-gov/pages-ops for a review.
 6. Ask an administrator to create an [`external-domain`](https://cloud.gov/docs/services/external-domain-service/) for `yourOrigDomain.gov`.
 ```
 cf create-service external-domain domain-with-cdn yourOrigDomain.gov -c '{"domains": "yourOrigDomain.gov"}'
