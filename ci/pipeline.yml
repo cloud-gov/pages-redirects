@@ -72,15 +72,15 @@ jobs:
 
   - name: test-redirects-pr
     plan:
-      - get: pr
+      - get: src
         passed: [set-pipeline]
         resource: pr
         trigger: true
         version: every
-      # - put: pr
+      # - put: src
       #   resource: pr
       #   params:
-      #     path: pr
+      #     path: src
       #     status: pending
       #     base_context: concourse
       #     context: test-redirects-pr
@@ -88,10 +88,10 @@ jobs:
 
     on_failure:
       in_parallel:
-        - put: pr
+        - put: src
           resource: pr
           params:
-            path: pr
+            path: src
             status: failure
             base_context: concourse
             context: test-redirects-pr
@@ -106,13 +106,13 @@ jobs:
 
     on_success:
       in_parallel:
-        - put: pr
-          resource: pr
-          params:
-            path: pr
-            status: success
-            base_context: concourse
-            context: test-redirects-pr
+        # - put: src
+        #   resource: pr
+        #   params:
+        #     path: src
+        #     status: success
+        #     base_context: concourse
+        #     context: test-redirects-pr
         - put: slack
           params:
             text: |
