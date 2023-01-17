@@ -139,7 +139,9 @@ This app is automatically deployed by CircleCI when commits are pushed to the
 `main` branch (such as from a merged Pull Request). Deployments are done with
 the [cf-autopilot][] plugin so that there will be no downtime.
 
-See [`circle.yml`](/circle.yml) and [`deploy-ci.sh`](/deploy-ci.sh) for details.
+#### Concourse CI
+
+See [`ci/pipeline.yml`](/ci/pipeline.yml) and [`deploy-ci.sh`](/deploy-ci.sh) for details.
 
 ### Manual Deployments
 
