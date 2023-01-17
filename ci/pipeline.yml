@@ -202,9 +202,8 @@ jobs:
     plan:
     - get: pr
       resource: pr
-      params: {git_depth: 1}
       trigger: true
-    - set_pipeline: core
+    - set_pipeline: redirects
       file: pr/ci/pipeline.yml
 
 ############################
