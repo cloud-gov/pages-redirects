@@ -77,13 +77,13 @@ jobs:
         resource: pr
         trigger: true
         version: every
-      - put: pr
-        resource: pr
-        params:
-          path: pr
-          status: pending
-          base_context: concourse
-          context: test-redirects-pr
+      # - put: pr
+      #   resource: pr
+      #   params:
+      #     path: pr
+      #     status: pending
+      #     base_context: concourse
+      #     context: test-redirects-pr
       - do: *test-redirects
 
     on_failure:
