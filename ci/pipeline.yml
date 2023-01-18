@@ -148,8 +148,8 @@ jobs:
         params:
           <<: *env-cf
           CF_APP_NAME: pages-redirects
-          CF_MANIFEST: out/manifest-prod.yml
-          CF_PATH: src
+          CF_MANIFEST: src/out/manifest-prod.yml
+          CF_PATH: src/out
         on_failure:
           try:
             task: cancel-api-deployment
@@ -161,8 +161,6 @@ jobs:
             params:
               <<: *env-cf
               CF_APP_NAME: pages-redirects
-              CF_MANIFEST: out/manifest-prod.yml
-              CF_PATH: src
 
     on_failure:
       in_parallel:
