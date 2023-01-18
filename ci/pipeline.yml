@@ -77,20 +77,20 @@ test-redirects: &test-redirects
 #  JOBS
 
 jobs:
-  - name: test-redirects-pr
+  - name: test-redirects-pull-request
     plan:
       - get: src
         passed: [set-pipeline]
         resource: pr
         trigger: true
         version: every
-      # - put: src
-      #   resource: pr
-      #   params:
-      #     path: src
-      #     status: pending
-      #     base_context: concourse
-      #     context: test-redirects-pr
+      - put: src
+        resource: pr
+        params:
+          path: src
+          status: pending
+          base_context: concourse
+          context: test-pull-request
       - do: *test-redirects
 
     on_failure:
@@ -101,7 +101,7 @@ jobs:
             path: src
             status: failure
             base_context: concourse
-            context: test-redirects-pr
+            context: test-pull-request
         - put: slack
           params:
             text: |
@@ -113,13 +113,13 @@ jobs:
 
     on_success:
       in_parallel:
-        # - put: src
-        #   resource: pr
-        #   params:
-        #     path: src
-        #     status: success
-        #     base_context: concourse
-        #     context: test-redirects-pr
+        - put: src
+          resource: pr
+          params:
+            path: src
+            status: success
+            base_context: concourse
+            context: test-pull-request
         - put: slack
           params:
             text: |
@@ -129,15 +129,15 @@ jobs:
             username: ((slack-username))
             icon_url: ((slack-icon-url))
 
-  - name: test-and-deploy-pages-redirects
+  - name: test-and-deploy-redirects
     plan:
       - get: src
         resource: src
         trigger: true
         params: { depth: 1 }
-      # - put: gh-status
-      #   inputs: [src]
-      #   params: { state: pending }
+      - put: gh-status
+        inputs: [src]
+        params: { state: pending }
       - do: *test-redirects
 
       - task: deploy
@@ -163,9 +163,9 @@ jobs:
 
     on_failure:
       in_parallel:
-        # - put: gh-status
-        #   inputs: [src]
-        #   params: { state: failure }
+        - put: gh-status
+          inputs: [src]
+          params: { state: failure }
         - put: slack
           params:
             text: |
@@ -176,9 +176,9 @@ jobs:
             icon_url: ((slack-icon-url))
     on_success:
       in_parallel:
-        # - put: gh-status
-        #   inputs: [src]
-        #   params: { state: success }
+        - put: gh-status
+          inputs: [src]
+          params: { state: success }
         - put: slack
           params:
             text: |
@@ -188,7 +188,7 @@ jobs:
             username: ((slack-username))
             icon_url: ((slack-icon-url))
 
-  - name: nightly-tasks
+  - name: nightly-restage-redirects
     plan:
       - get: src
         resource: src
@@ -246,14 +246,14 @@ resources:
     source:
       url: ((slack-webhook-url))
 
-  # - name: gh-status
-  #   type: cogito
-  #   check_every: 1h
-  #   source:
-  #     owner: cloud-gov
-  #     repo: pages-redirects
-  #     access_token: ((gh-access-token))
-  #     context_prefix: concourse
+  - name: gh-status
+    type: cogito
+    check_every: 1h
+    source:
+      owner: cloud-gov
+      repo: pages-redirects
+      access_token: ((gh-access-token))
+      context_prefix: concourse
 
 ############################
 #  RESOURCE TYPES
