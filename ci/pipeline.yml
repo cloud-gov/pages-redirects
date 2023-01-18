@@ -22,10 +22,6 @@ cf-image: &cf-image
       repository: 18fgsa/concourse-task
 
 test-redirects: &test-redirects
-  - in_parallel:
-      - get: node
-        params: { save: true }
-
   - task: install-dependencies
     config:
       platform: linux
@@ -243,12 +239,6 @@ resources:
   #     start: 12:00 AM
   #     stop: 1:00 AM
   #     location: America/New_York
-
-  - name: node
-    type: docker-image
-    source:
-      repository: node
-      tag: 18
 
   - name: slack
     type: slack-notification
