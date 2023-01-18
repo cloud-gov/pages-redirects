@@ -23,10 +23,10 @@ cf-image: &cf-image
 
 test-redirects: &test-redirects
   - in_parallel:
-    - get: node
-      params: {save: true}
+      - get: node
+        params: { save: true }
 
-  - task: install-deps-api
+  - task: install-dependencies
     config:
       platform: linux
       image_resource:
@@ -38,38 +38,48 @@ test-redirects: &test-redirects
         path: bash
         args: [-c, yarn --pure-lockfile]
 
+  - task: build
+    config:
+      platform: linux
+      image_resource:
+        <<: *node-image
+      inputs: [name: src]
+      outputs: [name: src]
+      run:
+        dir: src
+        path: bash
+        args: [-c, yarn build]
+
   - in_parallel:
-    - task: test-redirects
-      privileged: true
-      config:
-        platform: linux
-        image_resource:
-          type: docker-image
-          source:
-            repository: karlkfi/concourse-dcind
-        inputs:
-          - name: src
-          - name: node
-        run:
-          dir: src
-          path: ci/docker/entrypoint.sh
-          args:
-            - bash
-            - -ceux
-            - |
-              docker network prune -f
-              yarn eslint .
-              yarn test
-              yarn test-docker
-              docker-compose -f docker-compose.yml down
-              docker volume rm $(docker volume ls -q)
-              docker network prune -f
+      - task: test-redirects
+        privileged: true
+        config:
+          platform: linux
+          image_resource:
+            type: docker-image
+            source:
+              repository: karlkfi/concourse-dcind
+          inputs:
+            - name: src
+          run:
+            dir: src
+            path: ci/docker/entrypoint.sh
+            args:
+              - bash
+              - -ceux
+              - |
+                docker network prune -f
+                docker-compose up -d
+                sleep 2
+                docker-compose run test_client yarn test-integration
+                docker-compose stop
+                docker-compose down
+                docker network prune -f
 
 ############################
 #  JOBS
 
 jobs:
-
   - name: test-redirects-pr
     plan:
       - get: src
@@ -200,17 +210,16 @@ jobs:
 
   - name: set-pipeline
     plan:
-    - get: pr
-      resource: pr
-      trigger: true
-    - set_pipeline: redirects
-      file: pr/ci/pipeline.yml
+      - get: pr
+        resource: pr
+        trigger: true
+      - set_pipeline: redirects
+        file: pr/ci/pipeline.yml
 
 ############################
 #  RESOURCES
 
 resources:
-
   - name: pr
     type: pull-request
     check_every: 1m
@@ -255,12 +264,10 @@ resources:
   #     access_token: ((gh-access-token))
   #     context_prefix: concourse
 
-
 ############################
 #  RESOURCE TYPES
 
 resource_types:
-
   - name: cogito
     type: docker-image
     check_every: 24h
