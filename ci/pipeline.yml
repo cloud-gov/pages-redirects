@@ -128,63 +128,68 @@ jobs:
             username: ((slack-username))
             icon_url: ((slack-icon-url))
 
-  # - name: test-and-deploy-pages-redirects
-  #   plan:
-  #     - get: src
-  #       resource: src
-  #       passed: [set-pipeline]
-  #       trigger: true
-  #       params: {depth: 1}
-  #     - put: gh-status
-  #       inputs: [src]
-  #       params: {state: pending}
-  #     - do: *test-redirects
+  - name: test-and-deploy-pages-redirects
+    plan:
+      - get: src
+        resource: src
+        trigger: true
+        params: { depth: 1 }
+      # - put: gh-status
+      #   inputs: [src]
+      #   params: { state: pending }
+      - do: *test-redirects
 
-  #     - task: deploy-api
-  #       config:
-  #         <<: *cf-image
-  #         inputs: [name: src]
-  #         run:
-  #           path: src/ci/tasks/deploy.sh
-  #       params:
-  #         <<: *env-cf
-  #       on_failure:
-  #         try:
-  #           task: cancel-api-deployment
-  #           config:
-  #             <<: *cf-image
-  #             inputs: [name: src]
-  #             run:
-  #               path: src/ci/tasks/cancel-deployment.sh
-  #           params:
-  #             <<: *env-cf
+      - task: deploy
+        config:
+          <<: *cf-image
+          inputs: [name: src]
+          run:
+            path: src/ci/tasks/deploy.sh
+        params:
+          <<: *env-cf
+          CF_APP_NAME: pages-redirects
+          CF_MANIFEST: out/manifest-prod.yml
+          CF_PATH: src
+        on_failure:
+          try:
+            task: cancel-api-deployment
+            config:
+              <<: *cf-image
+              inputs: [name: src]
+              run:
+                path: src/ci/tasks/cancel-deployment.sh
+            params:
+              <<: *env-cf
+              CF_APP_NAME: pages-redirects
+              CF_MANIFEST: out/manifest-prod.yml
+              CF_PATH: src
 
-  #   on_failure:
-  #     in_parallel:
-  #       - put: gh-status
-  #         inputs: [src]
-  #         params: {state: failure}
-  #       - put: slack
-  #         params:
-  #           text: |
-  #             :x: FAILED: deployment of pages redirects
-  #             <$ATC_EXTERNAL_URL/teams/$BUILD_TEAM_NAME/pipelines/$BUILD_PIPELINE_NAME/jobs/$BUILD_JOB_NAME/builds/$BUILD_NAME/"|View build details>
-  #           channel: ((slack-channel))
-  #           username: ((slack-username))
-  #           icon_url: ((slack-icon-url))
-  #   on_success:
-  #     in_parallel:
-  #       - put: gh-status
-  #         inputs: [src]
-  #         params: {state: success}
-  #       - put: slack
-  #         params:
-  #           text: |
-  #             :white_check_mark: SUCCESS: Successfully deployed pages redirects
-  #             <$ATC_EXTERNAL_URL/teams/$BUILD_TEAM_NAME/pipelines/$BUILD_PIPELINE_NAME/jobs/$BUILD_JOB_NAME/builds/$BUILD_NAME/"|View build details>
-  #           channel: ((slack-channel))
-  #           username: ((slack-username))
-  #           icon_url: ((slack-icon-url))
+    on_failure:
+      in_parallel:
+        # - put: gh-status
+        #   inputs: [src]
+        #   params: { state: failure }
+        - put: slack
+          params:
+            text: |
+              :x: FAILED: deployment of pages redirects
+              <$ATC_EXTERNAL_URL/teams/$BUILD_TEAM_NAME/pipelines/$BUILD_PIPELINE_NAME/jobs/$BUILD_JOB_NAME/builds/$BUILD_NAME/"|View build details>
+            channel: ((slack-channel))
+            username: ((slack-username))
+            icon_url: ((slack-icon-url))
+    on_success:
+      in_parallel:
+        # - put: gh-status
+        #   inputs: [src]
+        #   params: { state: success }
+        - put: slack
+          params:
+            text: |
+              :white_check_mark: SUCCESS: Successfully deployed pages redirects
+              <$ATC_EXTERNAL_URL/teams/$BUILD_TEAM_NAME/pipelines/$BUILD_PIPELINE_NAME/jobs/$BUILD_JOB_NAME/builds/$BUILD_NAME/"|View build details>
+            channel: ((slack-channel))
+            username: ((slack-username))
+            icon_url: ((slack-icon-url))
 
   # - name: nightly-tasks
   #   plan:
@@ -226,12 +231,12 @@ resources:
       disable_forks: true
       ignore_drafts: false
 
-  # - name: src
-  #   type: git
-  #   icon: github
-  #   source:
-  #     uri: https://github.com/cloud-gov/pages-redirects
-  #     branch: main
+  - name: src
+    type: git
+    icon: github
+    source:
+      uri: https://github.com/cloud-gov/pages-redirects
+      branch: ci-migrate-to-concourse-205
 
   # - name: nightly
   #   type: time
