@@ -24,6 +24,10 @@
 - design-principles-guide
 - digitalaccelerator
 - digital-acquisition-playbook
+- from: digital-registry
+  to: touchpoints
+  toDomain: app.cloud.gov
+  toPath: /registry
 - federalist-modern-team-template
 - from: fedspendingtransparency.github.io
   to: fedspendingtransparency

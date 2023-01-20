@@ -88,4 +88,3 @@ services:
       - app:govconnect.18f.gov
       - app:portfolios.18f.gov
       - app:fac.gov
-      - app:stage-socialmobileregistry.digitalgov.gov
