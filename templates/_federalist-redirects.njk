@@ -407,6 +407,14 @@ server {
   return 301 https://$target_domain$request_uri;
 }
 
+# usdigitalregistry.digitalgov.gov to touchpoints.app.cloud.gov/registry
+server {
+  listen {{ PORT }};
+  set $target_domain touchpoints.app.cloud.gov/registry
+  server_name usdigitalregistry.digitalgov.gov;
+  return 301 https://$target_domain;
+}
+
 # handbook.18f.gov to handbook.tts.gsa.gov
 server {
   listen {{ PORT }};
