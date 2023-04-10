@@ -375,12 +375,12 @@ server {
   return 301 https://$target_domain$request_uri;
 }
 
-# federalist-docs.18f.gov to federalist.18f.gov
+# federalistapp.18f.gov to pages.cloud.gov
 server {
   listen {{ PORT }};
-  set $target_domain federalist.18f.gov;
-  server_name federalist-docs.18f.gov;
-  return 301 https://$target_domain;
+  set $target_domain pages.cloud.gov;
+  server_name federalistapp.18f.gov;
+  return 301 https://$target_domain$request_uri;
 }
 
 # private-eye.18f.gov to github.com/18f/private-eye
