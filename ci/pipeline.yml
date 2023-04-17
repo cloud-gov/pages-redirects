@@ -237,6 +237,7 @@ resources:
     source:
       uri: https://github.com/cloud-gov/pages-redirects
       branch: main
+      commit_verification_keys: ((cloud-gov-pages-gpg-keys))
 
   - name: nightly
     type: time
