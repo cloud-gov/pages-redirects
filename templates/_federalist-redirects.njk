@@ -535,3 +535,10 @@ server {
     return 301 https://www.login.gov/partners/state-and-local/;
   }
 }
+
+# design.login.gov to www.login.gov
+server {
+  listen {{ PORT }};
+  server_name design.login.gov;
+  return 301 https://www.login.gov/;
+}
