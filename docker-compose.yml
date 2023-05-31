@@ -80,6 +80,7 @@ services:
       - app:www.search.gov
       - app:ads.18f.gov
       - app:usability.gov
+      - app:design.login.gov
       - app:developer.login.gov
       - app:partners.login.gov
       - app:components.designsystem.digital.gov
