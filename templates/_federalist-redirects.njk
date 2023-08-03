@@ -445,3 +445,11 @@ server {
   server_name govconnect.18f.gov;
   return 301 https://$target_domain;
 }
+
+# http://login.gov to https://login.gov
+server {
+  listen {{ PORT }};
+  set $target_domain login.gov;
+  server_name login.gov;
+  return 301 https://$target_domain;
+}
