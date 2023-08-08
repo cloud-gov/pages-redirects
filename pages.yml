@@ -51,6 +51,9 @@
   toPath: /playbook
 - innovation-toolkit-prototype
 - lean-product-design
+- from: www.login.gov
+  to: login.gov
+  toDomain: login.gov
 - open-source-guide
 - open-source-program
 - partnership-playbook

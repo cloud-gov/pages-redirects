@@ -446,10 +446,10 @@ server {
   return 301 https://$target_domain;
 }
 
-# http://login.gov to https://login.gov
+# www.login.gov to login.gov
 server {
   listen {{ PORT }};
   set $target_domain login.gov;
-  server_name login.gov;
-  return 301 https://$target_domain;
+  server_name www.login.gov;
+  return 301 https://$target_domain$request_uri;
 }
