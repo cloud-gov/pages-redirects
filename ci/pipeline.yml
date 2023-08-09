@@ -1,0 +1,281 @@
+############################
+#  SHARED
+
+env-cf: &env-cf
+  CF_API: https://api.fr.cloud.gov
+  CF_USERNAME: ((redirects-cf-username))
+  CF_PASSWORD: ((redirects-cf-password))
+  CF_ORG: gsa-18f-federalist
+  CF_SPACE: redirects
+  CF_APP_NAME: pages-redirects
+
+node-image: &node-image
+  type: docker-image
+  source:
+    repository: node
+    tag: 18
+
+cf-image: &cf-image
+  platform: linux
+  image_resource:
+    type: registry-image
+    source:
+      aws_access_key_id: ((ecr-aws-key))
+      aws_secret_access_key: ((ecr-aws-secret))
+      repository: harden-concourse-task
+      aws_region: us-gov-west-1
+      tag: ((harden-concourse-task-tag))
+
+test-redirects: &test-redirects
+  - task: install-dependencies
+    config:
+      platform: linux
+      image_resource:
+        <<: *node-image
+      inputs: [name: src]
+      outputs: [name: src]
+      run:
+        dir: src
+        path: bash
+        args: [-c, yarn --pure-lockfile]
+
+  - task: build
+    config:
+      platform: linux
+      image_resource:
+        <<: *node-image
+      inputs: [name: src]
+      outputs: [name: src]
+      run:
+        dir: src
+        path: bash
+        args: [-c, yarn build]
+
+  - in_parallel:
+      - task: test-redirects
+        privileged: true
+        config:
+          platform: linux
+          image_resource:
+            type: docker-image
+            source:
+              repository: karlkfi/concourse-dcind
+          inputs:
+            - name: src
+          run:
+            dir: src
+            path: ci/docker/entrypoint.sh
+            args:
+              - bash
+              - -ceux
+              - |
+                docker network prune -f
+                docker-compose up -d
+                sleep 2
+                docker-compose run test_client yarn test-integration
+                docker-compose stop
+                docker-compose down
+                docker network prune -f
+
+############################
+#  JOBS
+
+jobs:
+  - name: test-redirects-pull-request
+    plan:
+      - get: src
+        passed: [set-pipeline]
+        resource: pr
+        trigger: true
+        version: every
+      - put: src
+        resource: pr
+        params:
+          path: src
+          status: pending
+          base_context: concourse
+          context: test-pull-request
+      - do: *test-redirects
+
+    on_failure:
+      in_parallel:
+        - put: src
+          resource: pr
+          params:
+            path: src
+            status: failure
+            base_context: concourse
+            context: test-pull-request
+        - put: slack
+          params:
+            text: |
+              :x: FAILED: pages redirects tests on PR into main
+              <$ATC_EXTERNAL_URL/teams/$BUILD_TEAM_NAME/pipelines/$BUILD_PIPELINE_NAME/jobs/$BUILD_JOB_NAME/builds/$BUILD_NAME/"|View build details>
+            channel: ((slack-channel))
+            username: ((slack-username))
+            icon_url: ((slack-icon-url))
+
+    on_success:
+      in_parallel:
+        - put: src
+          resource: pr
+          params:
+            path: src
+            status: success
+            base_context: concourse
+            context: test-pull-request
+        - put: slack
+          params:
+            text: |
+              :white_check_mark: SUCCESS: Successfully tested pages redirects on PR into main
+              <$ATC_EXTERNAL_URL/teams/$BUILD_TEAM_NAME/pipelines/$BUILD_PIPELINE_NAME/jobs/$BUILD_JOB_NAME/builds/$BUILD_NAME/"|View build details>
+            channel: ((slack-channel))
+            username: ((slack-username))
+            icon_url: ((slack-icon-url))
+
+  - name: test-and-deploy-redirects
+    plan:
+      - get: src
+        resource: src
+        trigger: true
+        params: { depth: 1 }
+      - put: gh-status
+        inputs: [src]
+        params: { state: pending }
+      - do: *test-redirects
+
+      - task: deploy
+        config:
+          <<: *cf-image
+          inputs: [name: src]
+          run:
+            path: src/ci/tasks/deploy.sh
+        params:
+          <<: *env-cf
+          CF_MANIFEST: src/out/manifest-prod.yml
+          CF_PATH: src/out
+        on_failure:
+          try:
+            task: cancel-api-deployment
+            config:
+              <<: *cf-image
+              inputs: [name: src]
+              run:
+                path: src/ci/tasks/cancel-deployment.sh
+            params:
+              <<: *env-cf
+
+    on_failure:
+      in_parallel:
+        - put: gh-status
+          inputs: [src]
+          params: { state: failure }
+        - put: slack
+          params:
+            text: |
+              :x: FAILED: deployment of pages redirects
+              <$ATC_EXTERNAL_URL/teams/$BUILD_TEAM_NAME/pipelines/$BUILD_PIPELINE_NAME/jobs/$BUILD_JOB_NAME/builds/$BUILD_NAME/"|View build details>
+            channel: ((slack-channel))
+            username: ((slack-username))
+            icon_url: ((slack-icon-url))
+    on_success:
+      in_parallel:
+        - put: gh-status
+          inputs: [src]
+          params: { state: success }
+        - put: slack
+          params:
+            text: |
+              :white_check_mark: SUCCESS: Successfully deployed pages redirects
+              <$ATC_EXTERNAL_URL/teams/$BUILD_TEAM_NAME/pipelines/$BUILD_PIPELINE_NAME/jobs/$BUILD_JOB_NAME/builds/$BUILD_NAME/"|View build details>
+            channel: ((slack-channel))
+            username: ((slack-username))
+            icon_url: ((slack-icon-url))
+
+  - name: nightly-restage-redirects
+    plan:
+      - get: src
+        resource: src
+        params: { depth: 1 }
+      - get: nightly
+        trigger: true
+      - in_parallel:
+          - task: restage
+            config:
+              inputs: [name: src]
+              <<: *cf-image
+              run:
+                path: src/ci/tasks/restage.sh
+            params:
+              <<: *env-cf
+
+  - name: set-pipeline
+    plan:
+      - get: pr
+        resource: pr
+        trigger: true
+      - set_pipeline: redirects
+        file: pr/ci/pipeline.yml
+
+############################
+#  RESOURCES
+
+resources:
+  - name: pr
+    type: pull-request
+    check_every: 1m
+    source:
+      repository: cloud-gov/pages-redirects
+      access_token: ((gh-access-token))
+      base_branch: main
+      disable_forks: true
+      ignore_drafts: false
+
+  - name: src
+    type: git
+    icon: github
+    source:
+      uri: https://github.com/cloud-gov/pages-redirects
+      branch: main
+      commit_verification_keys: ((cloud-gov-pages-gpg-keys))
+
+  - name: nightly
+    type: time
+    source:
+      start: 12:00 AM
+      stop: 1:00 AM
+      location: America/New_York
+
+  - name: slack
+    type: slack-notification
+    source:
+      url: ((slack-webhook-url))
+
+  - name: gh-status
+    type: cogito
+    check_every: 1h
+    source:
+      owner: cloud-gov
+      repo: pages-redirects
+      access_token: ((gh-access-token))
+      context_prefix: concourse
+
+############################
+#  RESOURCE TYPES
+
+resource_types:
+  - name: cogito
+    type: docker-image
+    check_every: 24h
+    source:
+      repository: pix4d/cogito
+
+  - name: pull-request
+    type: docker-image
+    source:
+      repository: teliaoss/github-pr-resource
+
+  - name: slack-notification
+    type: docker-image
+    source:
+      repository: cfcommunity/slack-notification-resource

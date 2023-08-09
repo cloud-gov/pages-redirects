@@ -11,6 +11,8 @@ routes:
 - route: pif.gov
 - route: apply.pif.gov
 - route: www.pif.gov
+- route: paygap.pif.gov
+- route: tophealth.pif.gov
 - route: pages.18f.gov
 - route: 18f.gov
 - route: www.18f.gov
@@ -33,7 +35,9 @@ routes:
 - route: requests.18f.gov
 - route: c2.18f.gov
 - route: www.findtreatment.gov
-- route: federalist-docs.18f.gov
+{# - route: atf-eregs.18f.gov #}
+- route: private-eye.18f.gov
+- route: agile-labor-categories.18f.gov
 - route: handbook.18f.gov
 - route: frontend.18f.gov
 - route: proposal.pif.gov
@@ -42,10 +46,13 @@ routes:
 - route: paid-leave-prototype.18f.gov
 - route: usability.gov
 - route: developer.login.gov
+- route: partners.login.gov
 - route: components.designsystem.digital.gov
 - route: climate-data-user-study.18f.gov
 - route: govconnect.18f.gov
 - route: www.login.gov
+- route: portfolios.18f.gov
+- route: fac.gov
 {% for page in PAGE_CONFIGS -%}
 - route: {{ page.to }}.{{ page.toDomain }}
 {% endfor -%}

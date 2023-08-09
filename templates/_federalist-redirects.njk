@@ -3,6 +3,7 @@ server {
   listen {{ PORT }};
   set $target_domain presidentialinnovationfellows.gov;
   server_name pif.gov www.pif.gov;
+  add_header Strict-Transport-Security 'max-age=31536000; includeSubDomains; preload';
   return 302 https://$target_domain$request_uri;
 }
 
@@ -281,6 +282,22 @@ server {
   return 302 https://$target_domain;
 }
 
+# paygap.pif.gov to pif.gov
+server {
+  listen {{ PORT }};
+  set $target_domain pif.gov;
+  server_name paygap.pif.gov;
+  return 301 https://$target_domain;
+}
+
+# tophealth.pif.gov to pif.gov
+server {
+  listen {{ PORT }};
+  set $target_domain pif.gov;
+  server_name tophealth.pif.gov;
+  return 301 https://$target_domain;
+}
+
 # micropurchase.18f.gov to github.com/18f/micropurchase-archive
 server {
   listen {{ PORT }};
@@ -358,11 +375,43 @@ server {
   return 301 https://$target_domain$request_uri;
 }
 
-# federalist-docs.18f.gov to federalist.18f.gov
+# federalistapp.18f.gov to pages.cloud.gov
 server {
   listen {{ PORT }};
-  set $target_domain federalist.18f.gov;
-  server_name federalist-docs.18f.gov;
+  set $target_domain pages.cloud.gov;
+  server_name federalistapp.18f.gov;
+  return 301 https://$target_domain$request_uri;
+}
+
+# private-eye.18f.gov to github.com/18f/private-eye
+server {
+  listen {{ PORT }};
+  set $target_domain github.com/18f/private-eye;
+  server_name private-eye.18f.gov;
+  return 301 https://$target_domain;
+}
+
+# atf-eregs.18f.gov to regulations.atf.gov
+{# server {
+  listen {{ PORT }};
+  set $target_domain regulations.atf.gov;
+  server_name atf-eregs.18f.gov;
+  return 301 https://$target_domain;
+} #}
+
+# agile-labor-categories.18f.gov to derisking-guide.18f.gov
+server {
+  listen {{ PORT }};
+  set $target_domain derisking-guide.18f.gov;
+  server_name agile-labor-categories.18f.gov;
+  return 301 https://$target_domain$request_uri;
+}
+
+# usdigitalregistry.digitalgov.gov to touchpoints.app.cloud.gov/registry
+server {
+  listen {{ PORT }};
+  set $target_domain touchpoints.app.cloud.gov/registry/;
+  server_name usdigitalregistry.digitalgov.gov;
   return 301 https://$target_domain;
 }
 
@@ -395,6 +444,7 @@ server {
   listen {{ PORT }};
   set $target_domain search.gov;
   server_name www.search.gov;
+  add_header Strict-Transport-Security 'max-age=31536000; includeSubDomains; preload';
   return 301 https://$target_domain$request_uri;
 }
 
@@ -452,4 +502,51 @@ server {
   set $target_domain login.gov;
   server_name www.login.gov;
   return 301 https://$target_domain$request_uri;
+}
+
+# portfolios.18f.gov to 18f.gsa.gov
+server {
+  listen {{ PORT }};
+  set $target_domain 18f.gsa.gov;
+  server_name portfolios.18f.gov;
+  add_header Strict-Transport-Security 'max-age=31536000; includeSubDomains; preload';
+  return 301 https://$target_domain;
+}
+
+# fac.gov to www.fac.gov
+server {
+  listen {{ PORT }};
+  set $target_domain www.fac.gov;
+  server_name fac.gov;
+  add_header Strict-Transport-Security 'max-age=31536000; preload';
+  return 301 https://$target_domain$request_uri;
+}
+
+# partners.login.gov to www.login.gov/partners
+server {
+  listen {{ PORT }};
+  server_name partners.login.gov;
+
+  location = / {
+    return 301 https://www.login.gov/partners/;
+  }
+
+  location ~ ^/product/?$ {
+    return 301 https://www.login.gov/partners/our-services/;
+  }
+
+  location ~ ^/sandbox/?$ {
+    return 301 https://developers.login.gov/;
+  }
+
+  location ~ ^/state-and-local/?$ {
+    return 301 https://www.login.gov/partners/state-and-local/;
+  }
+}
+
+# design.login.gov to www.login.gov
+server {
+  listen {{ PORT }};
+  server_name design.login.gov;
+  return 301 https://www.login.gov/;
 }

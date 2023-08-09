@@ -12,8 +12,6 @@
 - acqstack-journeymap
 - from: ads-bpa
   to: ads
-- from: agile-labor-categories
-  to: agile
 - agile
 - api-all-the-x
 - api-program
@@ -57,7 +55,6 @@
 - open-source-guide
 - open-source-program
 - partnership-playbook
-- private-eye
 - plain-language-tutorial
 - product-guide
 - slides

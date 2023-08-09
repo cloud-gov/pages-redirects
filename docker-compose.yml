@@ -25,6 +25,8 @@ services:
       - app:pif.gov
       - app:apply.pif.gov
       - app:www.pif.gov
+      - app:paygap.pif.gov
+      - app:tophealth.pif.gov
       - app:18f.gov
       - app:www.18f.gov
       - app:pages.18f.gov
@@ -69,15 +71,23 @@ services:
       - app:requests.18f.gov
       - app:c2.18f.gov
       - app:www.findtreatment.gov
-      - app:federalist-docs.18f.gov
+      - app:private-eye.18f.gov
+      # - app:atf-eregs.18f.gov
+      - app:agile-labor-categories.18f.gov
       - app:handbook.18f.gov
       - app:frontend.18f.gov
       - app:proposal.pif.gov
       - app:www.search.gov
       - app:ads.18f.gov
       - app:usability.gov
+      - app:design.login.gov
       - app:developer.login.gov
+      - app:partners.login.gov
       - app:components.designsystem.digital.gov
       - app:climate-data-user-study.18f.gov
       - app:govconnect.18f.gov
       - app:www.login.gov
+      - app:portfolios.18f.gov
+      - app:fac.gov
+      - app:usdigitalregistry.digitalgov.gov
+      - app:federalistapp.18f.gov
