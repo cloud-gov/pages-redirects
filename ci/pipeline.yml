@@ -8,13 +8,14 @@ env-cf: &env-cf
   CF_ORG: gsa-18f-federalist
   CF_SPACE: redirects
   CF_APP_NAME: pages-redirects
+  CF_STACK: cflinuxfs4
 
 node-image: &node-image
   type: docker-image
   source:
     repository: node
-    tag: 18
-
+    tag: 20-bullseye-slim
+    
 cf-image: &cf-image
   platform: linux
   image_resource:
@@ -37,7 +38,7 @@ test-redirects: &test-redirects
       run:
         dir: src
         path: bash
-        args: [-c, yarn --pure-lockfile]
+        args: [-c, npm install]
 
   - task: build
     config:
@@ -49,7 +50,7 @@ test-redirects: &test-redirects
       run:
         dir: src
         path: bash
-        args: [-c, yarn build]
+        args: [-c, npm run build]
 
   - in_parallel:
       - task: test-redirects
@@ -70,8 +71,6 @@ test-redirects: &test-redirects
               - -ceux
               - |
                 docker network prune -f
-                docker-compose up -d
-                sleep 2
                 docker-compose run test_client yarn test-integration
                 docker-compose stop
                 docker-compose down

@@ -1,10 +1,10 @@
-FROM node:18
+FROM node:20-bullseye-slim
 
 WORKDIR /src
 
 COPY package.json /src
-COPY yarn.lock /src
+COPY package-lock.json /src
 
-RUN yarn
+RUN npm install
 
 ADD . /src

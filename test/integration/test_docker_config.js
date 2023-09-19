@@ -8,7 +8,7 @@ const APP_DOCKER_NAME = 'app';
 const PROD_NGINX_CONF = './out/nginx.conf';
 const DOCKER_NGINX_CONF = './out/nginx.docker.conf';
 
-const composeConfig = yaml.safeLoad(fs.readFileSync(DOCKER_COMPOSE_FILE, 'utf-8'));
+const composeConfig = yaml.load(fs.readFileSync(DOCKER_COMPOSE_FILE, 'utf-8'));
 const externalLinks = composeConfig.services[TEST_CLIENT_DOCKER_NAME].external_links;
 
 const prodNginxConf = fs.readFileSync(PROD_NGINX_CONF, 'utf-8');

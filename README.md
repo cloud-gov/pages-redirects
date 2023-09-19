@@ -84,8 +84,8 @@ should start working within a few minutes.
 
 ## Developing
 
-This is a NodeJS-based project that uses [`yarn`](https://yarnpkg.com/) for managing node dependencies.
-After making sure you have it installed, run `yarn` to install dependencies.
+This is a NodeJS-based project that uses [`npm`](https://npmjs.com/) for managing node dependencies.
+After making sure you have it installed, run `npm` to install dependencies.
 
 The NodeJS code (called from [`build.js`](/build.js)) reads an array of sites to
 redirect from the [`pages.yml`](/pages.yml) file and inserts new NGINX rewrite rules
@@ -96,7 +96,7 @@ The build script also produces a CloudFoundry manifest file at `out/manifest-pro
 
 ## Testing
 
-To run unit tests, run `yarn test`.
+To run unit tests, run `npm test`.
 
 ### Integration Tests
 
@@ -109,7 +109,7 @@ give the [18F Docker guide][] a read.
 Then build and run tests in the docker-compose network:
 
 ```sh
-yarn build-docker && yarn test-docker
+npm run build-docker && npm run test-docker
 ```
 
 #### Real server
@@ -117,13 +117,13 @@ yarn build-docker && yarn test-docker
 To run integration tests against a real server:
 
 ```sh
-TARGET_HOST=<FULL_URL_TOSERVER> yarn test-integration
+TARGET_HOST=<FULL_URL_TOSERVER> npm run test-integration
 ```
 
 For example:
 
 ```sh
-TARGET_HOST=https://pages-redirects.app.cloud.gov yarn test-integration
+TARGET_HOST=https://pages-redirects.app.cloud.gov npm run test-integration
 ```
 
 ## Deploying
@@ -180,7 +180,7 @@ $ fly -t <Concourse CI Target Name> destroy-pipeline \
 To manually deploy (this should not be necessary):
 
 ```sh
-yarn build
+npm run build
 cf push -f out/manifest-prod.yml`
 ```
 
