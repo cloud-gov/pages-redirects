@@ -8,28 +8,28 @@
     "url": "https://github.com/18f/pages-redirects"
   },
   "homepage": "https://github.com/18f/pages-redirects",
-  "author": "James Seppi",
+  "author": "GSA TTS",
   "private": true,
   "engines": {
-    "node": "18.x.x"
+    "node": "18.5"
   },
   "scripts": {
-    "start": "yarn build",
+    "start": "npm run build",
     "eslint": "eslint",
     "test": "tape test/unit/**/*.js | tap-summary --no-progress",
-    "test-prod": "TARGET_HOST=https://pages.18f.gov yarn test-integration",
-    "test-docker": "docker-compose up -d && sleep 2 && docker-compose run test_client yarn test-integration && docker-compose stop",
+    "test-prod": "TARGET_HOST=https://pages.18f.gov npm run test-integration",
+    "test-docker": "docker-compose up -d && sleep 2 && docker-compose run test_client npm run test-integration && docker-compose stop",
     "test-integration": "tape test/integration/**/*.js | tap-summary --no-progress",
     "clean": "rm out/*.conf",
     "build": "node build.js",
-    "build-docker": "yarn build && docker-compose build"
+    "build-docker": "npm run build && docker-compose build"
   },
-  "dependencies": {
-    "eslint": "^6.3.0",
-    "js-yaml": "^3.13.1",
-    "nunjucks": "^3.2.0",
-    "request": "^2.88.0",
+  "devDependencies": {
+    "eslint": "^8.49.0",
+    "js-yaml": "^4.1.0",
+    "nunjucks": "^3.2.4",
+    "request": "^2.88.2",
     "tap-summary": "^4.0.0",
-    "tape": "^4.11.0"
+    "tape": "^5.6.6"
   }
 }

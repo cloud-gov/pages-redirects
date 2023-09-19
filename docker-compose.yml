@@ -1,6 +1,5 @@
 version: '2'
 volumes:
-  yarn-cache:
   node-modules:
 services:
   app:
@@ -19,7 +18,6 @@ services:
       - TARGET_HOST=http://app
     volumes:
       - node-modules:/src/node_modules/
-      - yarn-cache:/root/.cache/
     external_links:
       # These are all the `server_name`s that the nginx server is listening on
       - app:pif.gov

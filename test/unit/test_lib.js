@@ -72,7 +72,7 @@ test('lib.makeNginxConfigs', (t) => {
 });
 
 test('lib.makeManifest produces correct routes', (t) => {
-  const manifest = yaml.safeLoad(lib.makeManifest(TEST_PAGE_CONFIGS));
+  const manifest = yaml.load(lib.makeManifest(TEST_PAGE_CONFIGS));
   t.ok(manifest);
   t.ok(Array.isArray(manifest.routes));
 
