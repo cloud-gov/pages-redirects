@@ -11,7 +11,7 @@
   "author": "GSA TTS",
   "private": true,
   "engines": {
-    "node": "18.5"
+    "node": "^20.x.x"
   },
   "scripts": {
     "start": "npm run build",

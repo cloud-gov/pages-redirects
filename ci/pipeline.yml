@@ -14,8 +14,8 @@ node-image: &node-image
   type: docker-image
   source:
     repository: node
-    tag: 18.5
-
+    tag: 20-bullseye-slim
+    
 cf-image: &cf-image
   platform: linux
   image_resource:
