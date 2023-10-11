@@ -229,8 +229,8 @@ server {
   }
 
   location ~ ^/derisking/? {
-    rewrite ^/derisking/(.*)$ $scheme://derisking.18f.gov/$1;
-    return 302 $scheme://derisking.18f.gov/;
+    rewrite ^/derisking/(.*)$ $scheme://derisking-guide.18f.gov/$1;
+    return 302 $scheme://derisking-guide.18f.gov/;
   }
 
   location ~ ^/eng-hiring/? {
@@ -244,8 +244,8 @@ server {
   }
 
   location ~ ^/product/? {
-    rewrite ^/product/(.*)$ $scheme://product.18f.gov/$1;
-    return 302 $scheme://product.18f.gov/;
+    rewrite ^/product/(.*)$ $scheme://product-guide.18f.gov/$1;
+    return 302 $scheme://product-guide.18f.gov/;
   }
 
   location ~ ^/ux-guide/? {
