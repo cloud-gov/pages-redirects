@@ -196,65 +196,6 @@ server {
 }
 
 
-# guides.18f.gov to 18f.gsa.gov/guides/
-# individual guides re-routed to their current
-# addresses, for example:
-#    guides.18f.gov/<guide-name> to <guide-name>.18f.gov
-server {
-  listen {{ PORT }};
-  server_name guides.18f.gov;
-
-  location ~ ^/?$ {
-    return 302 $scheme://18f.gsa.gov/guides/;
-  }
-
-  location ~ ^/accessibility/? {
-    rewrite ^/accessibility/(.*)$ $scheme://accessibility.18f.gov/$1;
-    return 302 $scheme://accessibility.18f.gov/;
-  }
-
-  location ~ ^/agile/? {
-    rewrite ^/agile/(.*)$ $scheme://agile.18f.gov/$1;
-    return 302 $scheme://agile.18f.gov/;
-  }
-
-  location ~ ^/brand/? {
-    rewrite ^/brand/(.*)$ $scheme://brand.18f.gov/$1;
-    return 302 $scheme://brand.18f.gov/;
-  }
-
-  location ~ ^/content-guide/? {
-    rewrite ^/content-guide/(.*)$ $scheme://content-guide.18f.gov/$1;
-    return 302 $scheme://content-guide.18f.gov/;
-  }
-
-  location ~ ^/derisking/? {
-    rewrite ^/derisking/(.*)$ $scheme://derisking.18f.gov/$1;
-    return 302 $scheme://derisking.18f.gov/;
-  }
-
-  location ~ ^/eng-hiring/? {
-    rewrite ^/eng-hiring/(.*)$ $scheme://eng-hiring.18f.gov/$1;
-    return 302 $scheme://eng-hiring.18f.gov/;
-  }
-
-  location ~ ^/engineering/? {
-    rewrite ^/engineering/(.*)$ $scheme://engineering.18f.gov/$1;
-    return 302 $scheme://engineering.18f.gov/;
-  }
-
-  location ~ ^/product/? {
-    rewrite ^/product/(.*)$ $scheme://product.18f.gov/$1;
-    return 302 $scheme://product.18f.gov/;
-  }
-
-  location ~ ^/ux-guide/? {
-    rewrite ^/ux-guide/(.*)$ $scheme://ux-guide.18f.gov/$1;
-    return 302 $scheme://ux-guide.18f.gov/;
-  }
-}
-
-
 # guides-template.18f.gov to github.com/18F/guides-template
 server {
   listen {{ PORT }};
