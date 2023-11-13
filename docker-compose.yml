@@ -87,3 +87,4 @@ services:
       - app:fac.gov
       - app:usdigitalregistry.digitalgov.gov
       - app:federalistapp.18f.gov
+      - app:agile.18f.gov
