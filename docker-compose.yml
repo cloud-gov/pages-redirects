@@ -88,3 +88,4 @@ services:
       - app:usdigitalregistry.digitalgov.gov
       - app:federalistapp.18f.gov
       - app:agile.18f.gov
+      - app:brand.18f.gov
