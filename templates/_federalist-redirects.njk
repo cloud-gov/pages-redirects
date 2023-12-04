@@ -553,3 +553,33 @@ server {
     return 301 https://guides.18f.gov/brand$uri;
   }
 }
+
+# content-guide.18f.gov to guides.18f.gov/content-guide/
+server {
+  listen {{ PORT }};
+  server_name content-guide.18f.gov;
+
+  location / {
+    return 301 https://guides.18f.gov/content-guide$uri;
+  }
+}
+
+# derisking-guide.18f.gov to guides.18f.gov/derisking/
+server {
+  listen {{ PORT }};
+  server_name derisking-guide.18f.gov;
+
+  location / {
+    return 301 https://guides.18f.gov/derisking$uri;
+  }
+}
+
+# ux-guide.18f.gov to guides.18f.gov/ux-guide/
+server {
+  listen {{ PORT }};
+  server_name ux-guide.18f.gov;
+
+  location / {
+    return 301 https://guides.18f.gov/ux-guide$uri;
+  }
+}
