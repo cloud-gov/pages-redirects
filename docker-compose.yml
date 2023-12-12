@@ -92,3 +92,7 @@ services:
       - app:content-guide.18f.gov
       - app:derisking-guide.18f.gov
       - app:ux-guide.18f.gov
+      - app:accessibility.18f.gov
+      - app:eng-hiring.18f.gov
+      - app:engineering.18f.gov
+      - app:product-guide.18f.gov
