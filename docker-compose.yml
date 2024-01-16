@@ -69,7 +69,7 @@ services:
       - app:c2.18f.gov
       - app:www.findtreatment.gov
       - app:private-eye.18f.gov
-      # - app:atf-eregs.18f.gov
+      - app:atf-eregs.18f.gov
       - app:agile-labor-categories.18f.gov
       - app:handbook.18f.gov
       - app:frontend.18f.gov
