@@ -383,12 +383,12 @@ server {
 }
 
 # atf-eregs.18f.gov to regulations.atf.gov
-{# server {
+server {
   listen {{ PORT }};
   set $target_domain regulations.atf.gov;
   server_name atf-eregs.18f.gov;
   return 301 https://$target_domain;
-} #}
+} 
 
 # agile-labor-categories.18f.gov to derisking-guide.18f.gov
 server {
