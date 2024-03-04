@@ -96,3 +96,4 @@ services:
       - app:eng-hiring.18f.gov
       - app:engineering.18f.gov
       - app:product-guide.18f.gov
+      - app:methods.18f.gov
