@@ -66,13 +66,32 @@ server {
   return 301 https://$target_domain$request_uri;
 }
 
-# usability.gov to usability.gov
+# accessibility.digital.gov to digital.gov/guides/accessibility-for-teams/
 server {
   listen {{ PORT }};
-  set $target_domain www.usability.gov;
+  set $target_domain digital.gov/guides/accessibility-for-teams/;
+  server_name accessibility.digital.gov;
+  add_header Strict-Transport-Security 'max-age=63072000; includeSubDomains; preload';
+  # Making this a temp 302 to verify their target domain
+  return 302 https://$target_domain;
+}
+
+# usability.gov to digital.gov/topics/usability
+server {
+  listen {{ PORT }};
+  set $target_domain digital.gov/topics/usability/;
   server_name usability.gov;
   add_header Strict-Transport-Security 'max-age=31536000; includeSubDomains; preload';
-  return 301 https://$target_domain$request_uri;
+  return 301 https://$target_domain;
+}
+
+# www.usability.gov to digital.gov/topics/usability/
+server {
+  listen {{ PORT }};
+  set $target_domain digital.gov/topics/usability/;
+  server_name www.usability.gov;
+  add_header Strict-Transport-Security 'max-age=31536000; includeSubDomains; preload';
+  return 301 https://$target_domain;
 }
 
 # summit.digitalgov.gov to digital.gov
