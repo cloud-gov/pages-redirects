@@ -77,9 +77,11 @@ services:
       - app:www.search.gov
       - app:ads.18f.gov
       - app:usability.gov
+      - app:www.usability.gov
       - app:design.login.gov
       - app:developer.login.gov
       - app:partners.login.gov
+      - app:accessibility.digital.gov
       - app:components.designsystem.digital.gov
       - app:climate-data-user-study.18f.gov
       - app:govconnect.18f.gov
