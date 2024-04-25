@@ -652,3 +652,13 @@ server {
     return 301 https://guides.18f.gov/methods$uri;
   }
 }
+
+# identityequitystudy.gsa.gov to gsa.gov...
+server {
+  listen {{ PORT }};
+  server_name identityequitystudy.gsa.gov;
+
+  location / {
+    return 301 https://www.gsa.gov/governmentwide-initiatives/diversity-equity-inclusion-and-accessibility/equity-study-on-remote-identity-proofing
+  }
+}
