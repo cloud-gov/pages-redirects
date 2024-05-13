@@ -99,3 +99,4 @@ services:
       - app:engineering.18f.gov
       - app:product-guide.18f.gov
       - app:methods.18f.gov
+      - app:identityequitystudy.gsa.gov
