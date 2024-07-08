@@ -1,7 +1,0 @@
-platform: linux
-inputs: [name: src]
-outputs: [name: src]
-run:
-  dir: src
-  path: bash
-  args: [-c, npm run build]
