@@ -1,18 +1,24 @@
 ---
-#@ load("funcs.lib.yml", "slack_hook")
+#@ load("funcs.lib.yml", "slack_hook", "pr_hook")
 #@ load("@ytt:data", "data")
 #@ load("@ytt:template", "template")
+
+#@ env = data.values.env
 
 #!  SHARED
 
 test-redirects: &test-redirects
   - task: install-dependencies
     image: node
-    file: src/ci/partials/install-dependencies.yml
+    file: pipeline-tasks/tasks/run-command.yml
+    params:
+      COMMAND: npm install
 
   - task: build
     image: node
-    file: src/ci/partials/build.yml
+    file: pipeline-tasks/tasks/run-command.yml
+    params:
+      COMMAND: npm run build
 
   - task: test-redirects
     image: dind
@@ -22,52 +28,56 @@ test-redirects: &test-redirects
 #!  JOBS
 
 jobs:
-  - name: test-redirects-pull-request
+  - name: set-pipeline
+    plan:
+      - get: src
+        params:
+          #@ if/end env != 'test':
+          params: { depth: 1 }
+          #@ if/end env == 'test':
+          integration_tool: checkout
+        trigger: true
+      - get: pipeline-tasks
+      - get: general-task
+      - task: boot
+        image: general-task
+        file: pipeline-tasks/tasks/boot.yml
+        params:
+          ENV_OVERRIDE: ((deploy-env))
+      - set_pipeline: self
+        file: compiled/set-pipeline.yml
+        instance_vars:
+          deploy-env: ((deploy-env))
+
+  #@ if/end env == 'test':
+  - name: test-redirects
     plan:
       - get: src
         passed: [set-pipeline]
-        resource: pr
         trigger: true
         version: every
-      - put: src
-        resource: pr
-        params:
-          path: src
-          status: pending
-          base_context: concourse
-          context: test-pull-request
+      -  #@ pr_hook("pending", "run-tests")
+      - get: pipeline-tasks
       - get: node
       - get: dind
       - do: *test-redirects
 
     on_failure:
       in_parallel:
-        - put: src
-          resource: pr
-          params:
-            path: src
-            status: failure
-            base_context: concourse
-            context: test-pull-request
+        -  #@ pr_hook("failure", "run-tests")
         -  #@ slack_hook("failure", "tests")
 
     on_success:
       in_parallel:
-        - put: src
-          resource: pr
-          params:
-            path: src
-            status: success
-            base_context: concourse
-            context: test-pull-request
+        -  #@ pr_hook("success", "run-tests")
         -  #@ slack_hook("success", "tests")
 
+  #@ if env == 'deploy':
   - name: test-and-deploy-redirects
     plan:
       - get: src
-        resource: src
+        passed: [set-pipeline]
         trigger: true
-        params: { depth: 1 }
       - get: pipeline-tasks
       - get: general-task
       - get: node
@@ -91,11 +101,10 @@ jobs:
     on_failure: #@ slack_hook("failure", "deployment")
     on_success: #@ slack_hook("success", "deployment")
 
-  - name: nightly-restage-redirects
+  - name: nightly-restage
     plan:
       - get: src
-        resource: src
-        params: { depth: 1 }
+        passed: [set-pipeline]
       - get: nightly
         trigger: true
       - get: general-task
@@ -105,28 +114,13 @@ jobs:
         file: pipeline-tasks/tasks/restage.yml
         params:
           _: #@ template.replace(data.values.env_cf_redirects)
-
-  - name: set-pipeline
-    plan:
-      - get: src
-        resource: pr
-        trigger: true
-      - get: pipeline-tasks
-      - get: general-task
-      - task: init
-        image: general-task
-        file: pipeline-tasks/tasks/init.yml
-        params:
-          PIPELINE_YML: src/ci/pipeline.yml
-      - set_pipeline: redirects
-        file: compiled/set-pipeline.yml
-        instance_vars:
-          deploy-env: ((deploy-env))
+  #@ end
 
 #!  RESOURCES
 
 resources:
-  - name: pr
+  #@ if/end env == 'test':
+  - name: src
     type: pull-request
     check_every: 1m
     source:
@@ -136,6 +130,7 @@ resources:
       disable_forks: true
       ignore_drafts: false
 
+  #@ if env == 'deploy':
   - name: src
     type: git
     icon: github
@@ -150,6 +145,7 @@ resources:
       start: 12:00 AM
       stop: 1:00 AM
       location: America/New_York
+  #@ end
 
   - name: slack
   - name: node
