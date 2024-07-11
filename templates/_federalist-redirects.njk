@@ -506,6 +506,14 @@ server {
   return 301 https://$target_domain;
 }
 
+# www.login.gov to login.gov
+server {
+  listen {{ PORT }};
+  set $target_domain login.gov;
+  server_name www.login.gov;
+  return 301 https://$target_domain$request_uri;
+}
+
 # portfolios.18f.gov to 18f.gsa.gov
 server {
   listen {{ PORT }};
