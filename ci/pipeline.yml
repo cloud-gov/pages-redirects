@@ -114,6 +114,7 @@ jobs:
         file: pipeline-tasks/tasks/restage.yml
         params:
           _: #@ template.replace(data.values.env_cf_redirects)
+          CF_APP_NAME: pages-redirects
   #@ end
 
 #!  RESOURCES
