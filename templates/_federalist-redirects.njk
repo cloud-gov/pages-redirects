@@ -662,3 +662,22 @@ server {
     return 301 https://www.gsa.gov/governmentwide-initiatives/diversity-equity-inclusion-and-accessibility/equity-study-on-remote-identity-proofing;
   }
 }
+
+# join.tts.gsa.gov to tts.gsa.gov and handbook.tts.gsa.gov
+server {
+  listen {{ PORT }};
+  server_name join.tts.gsa.gov;
+
+  location ~ ^/working-at-tts/?$ {
+    return 301 https://handbook.tts.gsa.gov/about-us/tts-history/;
+  }
+
+  location ~ ^/tts-offices/?$ {
+    return 301 https://handbook.tts.gsa.gov/#tts-offices;
+  }
+
+  location / {
+    return 301 https://tts.gsa.gov/join$request_uri;
+  }
+
+}

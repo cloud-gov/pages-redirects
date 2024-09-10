@@ -41,6 +41,9 @@ const expectedRedirects = [
   { from: 'partners.login.gov/state-and-local', to: 'www.login.gov/partners/state-and-local', redirectCode: 301, noPath: true },
   { from: 'design.login.gov', to: 'www.login.gov', redirectCode: 301, noPath: true },
   { from: 'usdigitalregistry.digitalgov.gov', to: 'touchpoints.app.cloud.gov/registry', redirectCode: 301, noPath: true },
+  { from: 'join.tts.gsa.gov', to: 'tts.gsa.gov/join', redirectCode: 301 },
+  { from: 'join.tts.gsa.gov/working-at-tts/', to: 'handbook.tts.gsa.gov/about-us/tts-history', redirectCode: 301, noPath: true },
+  { from: 'join.tts.gsa.gov/tts-offices/', to: 'handbook.tts.gsa.gov/#tts-offices', redirectCode: 301, noPath: true },
 ];
 
 function redirectOk(t, from, to, redirectCode) {
@@ -58,7 +61,9 @@ expectedRedirects.forEach((expected) => {
   const redirectCode = expected.redirectCode || 302;
 
   test(`redirects ${expected.from} to ${expected.to} (${redirectCode})`, (t) => {
-    redirectOk(t, expected.from, `${expected.to}/`, redirectCode);
+    // hashes don't have trailing slashes
+    const trailingSlash = expected.to.includes('#') ? '' : '/';
+    redirectOk(t, expected.from, `${expected.to}${trailingSlash}`, redirectCode);
   });
 
   if (!expected.noPath) {
