@@ -13,7 +13,14 @@ server {
   server_name 18f.gov www.18f.gov;
   add_header X-Government-Innovation Disrupted;
   add_header Strict-Transport-Security 'max-age=31536000; includeSubDomains; preload';
-  return 302 https://$target_domain$request_uri;
+
+  location ~ ^/chat/?$ {
+    return 302 https://docs.google.com/forms/d/e/1FAIpQLSfFoLTRV00g1iIEZv404wJ0BRwNc6CPKbyXMCeXLjDKDv9g4Q/viewform?usp=sf_link/;
+  }
+
+  location / {
+    return 302 https://$target_domain$request_uri;
+  }
 }
 
 # api-all-the-x.18f.gov to github.com/18F/API-All-the-X

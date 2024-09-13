@@ -18,11 +18,11 @@
     "eslint": "eslint",
     "test": "tape test/unit/**/*.js | tap-summary --no-progress",
     "test-prod": "TARGET_HOST=https://pages.18f.gov npm run test-integration",
-    "test-docker": "docker-compose up -d && sleep 2 && docker-compose run test_client npm run test-integration && docker-compose stop",
+    "test-docker": "docker compose up -d && sleep 2 && docker compose run test_client npm run test-integration && docker compose stop",
     "test-integration": "tape test/integration/**/*.js | tap-summary --no-progress",
     "clean": "rm out/*.conf",
     "build": "node build.js",
-    "build-docker": "npm run build && docker-compose build"
+    "build-docker": "npm run build && docker compose build"
   },
   "devDependencies": {
     "eslint": "^8.49.0",
