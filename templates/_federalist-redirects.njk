@@ -683,6 +683,14 @@ server {
     return 301 https://handbook.tts.gsa.gov/#tts-offices;
   }
 
+  location ~ ^/join/PX-ContactCenterAnalysts/?$ {
+    return 301 https://tts.gsa.gov/join/public-experience-contact-center-analyst.html;
+  }
+
+  location ~ ^/join/Communities-Collaboration-Branch-Chief/?$ {
+    return 301 https://tts.gsa.gov/join/tts-platforms-and-services-communities-and-collaboration-branch-chief.html;
+  }
+
   location / {
     return 301 https://tts.gsa.gov/join$request_uri;
   }
