@@ -1,4 +1,3 @@
-
 const request = require('request');
 const test = require('tape');
 
@@ -46,6 +45,7 @@ const expectedRedirects = [
   { from: 'join.tts.gsa.gov', to: 'tts.gsa.gov/join', redirectCode: 301 },
   { from: 'join.tts.gsa.gov/working-at-tts/', to: 'handbook.tts.gsa.gov/about-us/tts-history', redirectCode: 301, noPath: true },
   { from: 'join.tts.gsa.gov/tts-offices/', to: 'handbook.tts.gsa.gov/#tts-offices', redirectCode: 301, noPath: true },
+  { from: 'demo.pra.digital.gov', to: 'pra.digital.gov', redirectCode: 301, noPath: true },
 ];
 
 function redirectOk(t, from, to, redirectCode) {
