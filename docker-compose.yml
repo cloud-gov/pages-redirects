@@ -32,6 +32,8 @@ services:
       - app:www.digitalgov.gov
       - app:emerging.digital.gov
       - app:summit.digitalgov.gov
+      - app:pra.digital.gov
+      - app:demo.pra.digital.gov
       - app:www.digital.gov
       - app:openopps.digitalgov.gov
       - app:plainlanguage.gov
