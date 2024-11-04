@@ -101,3 +101,4 @@ services:
       - app:methods.18f.gov
       - app:identityequitystudy.gsa.gov
       - app:join.tts.gsa.gov
+      - app:demo.pra.digital.gov
