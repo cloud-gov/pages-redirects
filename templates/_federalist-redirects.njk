@@ -696,3 +696,11 @@ server {
   }
 
 }
+
+# demo.pra.digital.gov to pra.digital.gov
+server {
+  listen {{ PORT }};
+  set $target_domain pra.digital.gov;
+  server_name demo.pra.digital.gov;
+  return 301 https://$target_domain$request_uri;
+}
