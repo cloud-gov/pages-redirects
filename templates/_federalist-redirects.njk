@@ -377,13 +377,6 @@ server {
   return 301 https://$target_domain;
 }
 
-server {
-  listen {{ PORT }};
-  set $target_domain docs.google.com/forms/d/e/1FAIpQLSd-GoOE9xWWfJvdZNRP3SE7mj5ysI_RfM8brxdG8YpyJV9yKA/viewform;
-  server_name c2.18f.gov;
-  return 301 https://$target_domain;
-}
-
 # www.findtreatment.gov to findtreatment.gov
 server {
   listen {{ PORT }};
