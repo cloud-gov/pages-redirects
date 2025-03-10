@@ -56,6 +56,10 @@ routes:
 - route: identityequitystudy.gsa.gov
 - route: join.tts.gsa.gov
 - route: demo.pra.digital.gov
+- route: code.gov
+- route: www.code.gov
+- route: staging.code.gov
+- route: api.code.gov
 {% for page in PAGE_CONFIGS -%}
 - route: {{ page.to }}.{{ page.toDomain }}
 {% endfor -%}

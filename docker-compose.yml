@@ -101,3 +101,7 @@ services:
       - app:identityequitystudy.gsa.gov
       - app:join.tts.gsa.gov
       - app:demo.pra.digital.gov
+      - app:code.gov
+      - app:www.code.gov
+      - app:staging.code.gov
+      - app:api.code.gov
