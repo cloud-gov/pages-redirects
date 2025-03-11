@@ -671,7 +671,7 @@ server {
 # code.gov to digital.gov
 server {
   listen {{ PORT }};
-  set $target_domain digital.gov;
+  set $target_domain digital.gov/resources/requirements-for-achieving-efficiency-transparency-and-innovation-through-reusable-and-open-source-software/;
   server_name code.gov;
   return 301 https://$target_domain;
 }
@@ -679,7 +679,7 @@ server {
 # www.code.gov to digital.gov
 server {
   listen {{ PORT }};
-  set $target_domain digital.gov;
+  set $target_domain digital.gov/resources/requirements-for-achieving-efficiency-transparency-and-innovation-through-reusable-and-open-source-software/;
   server_name www.code.gov;
   return 301 https://$target_domain;
 }
@@ -687,7 +687,7 @@ server {
 # staging.code.gov to digital.gov
 server {
   listen {{ PORT }};
-  set $target_domain digital.gov;
+  set $target_domain digital.gov/resources/requirements-for-achieving-efficiency-transparency-and-innovation-through-reusable-and-open-source-software/;
   server_name staging.code.gov;
   return 301 https://$target_domain;
 }
@@ -695,7 +695,7 @@ server {
 # api.code.gov to digital.gov
 server {
   listen {{ PORT }};
-  set $target_domain digital.gov;
+  set $target_domain digital.gov/resources/requirements-for-achieving-efficiency-transparency-and-innovation-through-reusable-and-open-source-software/;
   server_name api.code.gov;
   return 301 https://$target_domain;
 }
