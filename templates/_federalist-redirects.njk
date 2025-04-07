@@ -699,3 +699,11 @@ server {
   server_name api.code.gov;
   return 301 https://$target_domain;
 }
+
+# fehrm.gov to www.fehrm.gov
+server {
+  listen {{ PORT }};
+  set $target_domain www.fehrm.gov;
+  server_name fehrm.gov;
+  return 302 https://$target_domain$request_uri;
+}

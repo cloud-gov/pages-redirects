@@ -105,3 +105,4 @@ services:
       - app:www.code.gov
       - app:staging.code.gov
       - app:api.code.gov
+      - app:fehrm.gov
