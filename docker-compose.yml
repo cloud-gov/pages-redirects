@@ -46,7 +46,6 @@ services:
       - app:guides-template.18f.gov
       - app:lean-product-design.18f.gov
       - app:open-source-guide.18f.gov
-      - app:partnership-playbook.18f.gov
       - app:plain-language-tutorial.18f.gov
       - app:testing-cookbook.18f.gov
       - app:api-all-the-x.18f.gov
@@ -64,8 +63,6 @@ services:
       - app:agile-bpa.18f.gov
       - app:slides.18f.gov
       - app:fedspendingtransparency.18f.gov
-      - app:cap.18f.gov
-      - app:requests.18f.gov
       - app:www.findtreatment.gov
       - app:private-eye.18f.gov
       - app:atf-eregs.18f.gov

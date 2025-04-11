@@ -7,22 +7,6 @@ server {
   return 302 https://$target_domain$request_uri;
 }
 
-server {
-  listen {{ PORT }};
-  set $target_domain 18f.gsa.gov;
-  server_name 18f.gov www.18f.gov;
-  add_header X-Government-Innovation Disrupted;
-  add_header Strict-Transport-Security 'max-age=31536000; includeSubDomains; preload';
-
-  location ~ ^/chat/?$ {
-    return 302 https://docs.google.com/forms/d/e/1FAIpQLSfFoLTRV00g1iIEZv404wJ0BRwNc6CPKbyXMCeXLjDKDv9g4Q/viewform?usp=sf_link/;
-  }
-
-  location / {
-    return 302 https://$target_domain$request_uri;
-  }
-}
-
 # api-all-the-x.18f.gov to github.com/18F/API-All-the-X
 server {
   listen {{ PORT }};
@@ -266,15 +250,6 @@ server {
 }
 
 
-# partnership-playbook.18f.gov to 18f.gsa.gov/partnership-principles
-server {
-  listen {{ PORT }};
-  set $target_domain 18f.gsa.gov/partnership-principles;
-  server_name partnership-playbook.18f.gov;
-  return 301 https://$target_domain;
-}
-
-
 # plain-language-tutorial.18f.gov to github.com/18F/plain-language-tutorial
 server {
   listen {{ PORT }};
@@ -360,20 +335,6 @@ server {
   listen {{ PORT }};
   set $target_domain github.com/fedspendingtransparency/fedspendingtransparency.github.io;
   server_name fedspendingtransparency.18f.gov;
-  return 301 https://$target_domain;
-}
-
-# C2: cap.18f.gov and requests.18f.gov to https://handbook.18f.gov/purchase-requests/
-server {
-  listen {{ PORT }};
-  set $target_domain docs.google.com/forms/d/e/1FAIpQLSd-GoOE9xWWfJvdZNRP3SE7mj5ysI_RfM8brxdG8YpyJV9yKA/viewform;
-  server_name cap.18f.gov;
-  return 301 https://$target_domain;
-}
-server {
-  listen {{ PORT }};
-  set $target_domain docs.google.com/forms/d/e/1FAIpQLSd-GoOE9xWWfJvdZNRP3SE7mj5ysI_RfM8brxdG8YpyJV9yKA/viewform;
-  server_name requests.18f.gov;
   return 301 https://$target_domain;
 }
 
