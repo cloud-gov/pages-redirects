@@ -1,59 +1,10 @@
-# Originally from https://github.com/18F/federalist-redirects/blob/b60293b49d01c429092195bc6d446690423dcf3b/nginx.conf
+# pif.gov and www.pif.gov to presidentialinnovationfellows.gov
 server {
   listen {{ PORT }};
   set $target_domain presidentialinnovationfellows.gov;
   server_name pif.gov www.pif.gov;
   add_header Strict-Transport-Security 'max-age=31536000; includeSubDomains; preload';
   return 302 https://$target_domain$request_uri;
-}
-
-server {
-  listen {{ PORT }};
-  set $target_domain 18f.gsa.gov;
-  server_name 18f.gov www.18f.gov;
-  add_header X-Government-Innovation Disrupted;
-  add_header Strict-Transport-Security 'max-age=31536000; includeSubDomains; preload';
-
-  location ~ ^/chat/?$ {
-    return 302 https://docs.google.com/forms/d/e/1FAIpQLSfFoLTRV00g1iIEZv404wJ0BRwNc6CPKbyXMCeXLjDKDv9g4Q/viewform?usp=sf_link/;
-  }
-
-  location / {
-    return 302 https://$target_domain$request_uri;
-  }
-}
-
-# api-all-the-x.18f.gov to github.com/18F/API-All-the-X
-server {
-  listen {{ PORT }};
-  set $target_domain github.com/18F/API-All-the-X;
-  server_name api-all-the-x.18f.gov;
-  return 301 https://$target_domain;
-}
-
-# api-program.18f.gov to github.com/18F/api-program
-server {
-  listen {{ PORT }};
-  set $target_domain github.com/18F/api-program;
-  server_name api-program.18f.gov;
-  return 301 https://$target_domain;
-}
-
-# api-usability-testing.18f.gov to github.com/18F/API-Usability-Testing
-server {
-  listen {{ PORT }};
-  set $target_domain github.com/18F/API-Usability-Testing;
-  server_name api-usability-testing.18f.gov;
-  return 301 https://$target_domain;
-}
-
-
-# digitalaccelerator.18f.gov to github.com/18F/digitalaccelerator
-server {
-  listen {{ PORT }};
-  set $target_domain github.com/18F/digitalaccelerator;
-  server_name digitalaccelerator.18f.gov;
-  return 301 https://$target_domain;
 }
 
 # www.digitalgov.gov and www.digital.gov to digital.gov
@@ -134,162 +85,12 @@ server {
   return 301 https://$target_domain$request_uri;
 }
 
-# blogging-guide.18f.gov to handbook.18f.gov/blogging
-server {
-  listen {{ PORT }};
-  set $target_domain handbook.18f.gov/blogging/;
-  server_name blogging-guide.18f.gov;
-  return 301 https://$target_domain;
-}
-
 # v2.designsystem.digital.gov to designsystem.digital.gov
 server {
   listen {{ PORT }};
   set $target_domain designsystem.digital.gov;
   server_name v2.designsystem.digital.gov;
   return 301 https://$target_domain$request_uri;
-}
-
-# writing-lab-guide.18f.gov to handbook.18f.gov/writing-lab
-server {
-  listen {{ PORT }};
-  set $target_domain handbook.18f.gov/writing-lab;
-  server_name writing-lab-guide.18f.gov;
-  return 301 https://$target_domain;
-}
-
-
-# iaa-forms.18f.gov to github.com/18F/iaa-forms
-server {
-  listen {{ PORT }};
-  set $target_domain github.com/18F/iaa-forms;
-  server_name iaa-forms.18f.gov;
-  return 301 https://$target_domain;
-}
-
-
-# innovation-toolkit-prototype.18f.gov to github.com/18F/innovation-toolkit-prototype
-server {
-  listen {{ PORT }};
-  set $target_domain github.com/18F/innovation-toolkit-prototype;
-  server_name innovation-toolkit-prototype.18f.gov;
-  return 301 https://$target_domain;
-}
-
-
-
-# digital-acquisition-playbook.18f.gov to github.com/18F/digital-acquisition-playbook
-server {
-  listen {{ PORT }};
-  set $target_domain github.com/18F/digital-acquisition-playbook;
-  server_name digital-acquisition-playbook.18f.gov;
-  return 301 https://$target_domain;
-}
-
-# automated-testing-playbook.18f.gov to github.com/18F/automated-testing-playbook
-server {
-  listen {{ PORT }};
-  set $target_domain github.com/18F/automated-testing-playbook;
-  server_name automated-testing-playbook.18f.gov;
-  return 301 https://$target_domain;
-}
-
-
-# design-principles-guide.18f.gov to github.com/18F/design-principles-guide
-server {
-  listen {{ PORT }};
-  set $target_domain github.com/18F/design-principles-guide;
-  server_name design-principles-guide.18f.gov;
-  return 301 https://$target_domain;
-}
-
-
-# contracting-cookbook.18f.gov to github.com/18F/contracting-cookbook
-server {
-  listen {{ PORT }};
-  set $target_domain github.com/18F/contracting-cookbook;
-  server_name contracting-cookbook.18f.gov;
-  return 301 https://$target_domain;
-}
-
-
-# grouplet-playbook.18f.gov to github.com/18F/grouplet-playbook
-server {
-  listen {{ PORT }};
-  set $target_domain github.com/18F/grouplet-playbook;
-  server_name grouplet-playbook.18f.gov;
-  return 301 https://$target_domain;
-}
-
-
-# guides-template.18f.gov to github.com/18F/guides-template
-server {
-  listen {{ PORT }};
-  set $target_domain github.com/18F/guides-template;
-  server_name guides-template.18f.gov;
-  return 301 https://$target_domain;
-}
-
-
-# lean-product-design.18f.gov to github.com/18F/lean-product-design
-server {
-  listen {{ PORT }};
-  set $target_domain github.com/18F/lean-product-design;
-  server_name lean-product-design.18f.gov;
-  return 301 https://$target_domain;
-}
-
-# modularcontracting.18f.gov to https://github.com/18F/Modular-Contracting-And-Agile-Development
-server {
-  listen {{ PORT }};
-  set $target_domain github.com/18F/Modular-Contracting-And-Agile-Development;
-  server_name modularcontracting.18f.gov;
-  return 301 https://$target_domain;
-}
-
-
-# open-source-guide.18f.gov to github.com/18F/open-source-guide
-server {
-  listen {{ PORT }};
-  set $target_domain github.com/18F/open-source-guide;
-  server_name open-source-guide.18f.gov;
-  return 301 https://$target_domain;
-}
-
-
-# open-source-program.18f.gov to github.com/18F/open-source-program
-server {
-  listen {{ PORT }};
-  set $target_domain github.com/18F/open-source-program;
-  server_name open-source-program.18f.gov;
-  return 301 https://$target_domain;
-}
-
-
-# partnership-playbook.18f.gov to 18f.gsa.gov/partnership-principles
-server {
-  listen {{ PORT }};
-  set $target_domain 18f.gsa.gov/partnership-principles;
-  server_name partnership-playbook.18f.gov;
-  return 301 https://$target_domain;
-}
-
-
-# plain-language-tutorial.18f.gov to github.com/18F/plain-language-tutorial
-server {
-  listen {{ PORT }};
-  set $target_domain github.com/18F/plain-language-tutorial;
-  server_name plain-language-tutorial.18f.gov;
-  return 301 https://$target_domain;
-}
-
-
-# testing-cookbook.18f.gov to github.com/18F/testing-cookbook
-server {
-  listen {{ PORT }};
-  set $target_domain github.com/18F/testing-cookbook;
-  server_name testing-cookbook.18f.gov;
-  return 301 https://$target_domain;
 }
 
 server {
@@ -315,68 +116,6 @@ server {
   return 301 https://$target_domain;
 }
 
-# micropurchase.18f.gov to github.com/18f/micropurchase-archive
-server {
-  listen {{ PORT }};
-  set $target_domain github.com/18f/micropurchase-archive;
-  server_name micropurchase.18f.gov;
-  return 301 https://$target_domain;
-}
-
-# boise.18f.gov to github.com/18f/boise
-server {
-  listen {{ PORT }};
-  set $target_domain github.com/18f/boise;
-  server_name boise.18f.gov;
-  return 301 https://$target_domain;
-}
-
-# acqstack-journeymap.18f.gov to github.com/18f/acqstack-journeymap
-server {
-  listen {{ PORT }};
-  set $target_domain github.com/18f/acqstack-journeymap;
-  server_name acqstack-journeymap.18f.gov;
-  return 301 https://$target_domain;
-}
-
-# agile-bpa.18f.gov to github.com/18f/ads-bpa
-server {
-  listen {{ PORT }};
-  set $target_domain github.com/18f/ads-bpa;
-  server_name agile-bpa.18f.gov;
-  return 301 https://$target_domain;
-}
-
-# slides.18f.gov to github.com/18f/slides
-server {
-  listen {{ PORT }};
-  set $target_domain github.com/18f/slides;
-  server_name slides.18f.gov;
-  return 301 https://$target_domain;
-}
-
-# fedspendingtransparency.18f.gov to https://github.com/fedspendingtransparency/fedspendingtransparency.github.io
-server {
-  listen {{ PORT }};
-  set $target_domain github.com/fedspendingtransparency/fedspendingtransparency.github.io;
-  server_name fedspendingtransparency.18f.gov;
-  return 301 https://$target_domain;
-}
-
-# C2: cap.18f.gov and requests.18f.gov to https://handbook.18f.gov/purchase-requests/
-server {
-  listen {{ PORT }};
-  set $target_domain docs.google.com/forms/d/e/1FAIpQLSd-GoOE9xWWfJvdZNRP3SE7mj5ysI_RfM8brxdG8YpyJV9yKA/viewform;
-  server_name cap.18f.gov;
-  return 301 https://$target_domain;
-}
-server {
-  listen {{ PORT }};
-  set $target_domain docs.google.com/forms/d/e/1FAIpQLSd-GoOE9xWWfJvdZNRP3SE7mj5ysI_RfM8brxdG8YpyJV9yKA/viewform;
-  server_name requests.18f.gov;
-  return 301 https://$target_domain;
-}
-
 # www.findtreatment.gov to findtreatment.gov
 server {
   listen {{ PORT }};
@@ -385,59 +124,11 @@ server {
   return 301 https://$target_domain$request_uri;
 }
 
-# federalistapp.18f.gov to pages.cloud.gov
-server {
-  listen {{ PORT }};
-  set $target_domain pages.cloud.gov;
-  server_name federalistapp.18f.gov;
-  return 301 https://$target_domain$request_uri;
-}
-
-# private-eye.18f.gov to github.com/18f/private-eye
-server {
-  listen {{ PORT }};
-  set $target_domain github.com/18f/private-eye;
-  server_name private-eye.18f.gov;
-  return 301 https://$target_domain;
-}
-
-# atf-eregs.18f.gov to regulations.atf.gov
-server {
-  listen {{ PORT }};
-  set $target_domain regulations.atf.gov;
-  server_name atf-eregs.18f.gov;
-  return 301 https://$target_domain;
-}
-
-# agile-labor-categories.18f.gov to derisking-guide.18f.gov
-server {
-  listen {{ PORT }};
-  set $target_domain derisking-guide.18f.gov;
-  server_name agile-labor-categories.18f.gov;
-  return 301 https://$target_domain$request_uri;
-}
-
 # usdigitalregistry.digitalgov.gov to touchpoints.app.cloud.gov/registry
 server {
   listen {{ PORT }};
   set $target_domain touchpoints.app.cloud.gov/registry/;
   server_name usdigitalregistry.digitalgov.gov;
-  return 301 https://$target_domain;
-}
-
-# handbook.18f.gov to handbook.tts.gsa.gov
-server {
-  listen {{ PORT }};
-  set $target_domain handbook.tts.gsa.gov;
-  server_name handbook.18f.gov;
-  return 301 https://$target_domain$request_uri;
-}
-
-# frontend.18f.gov to engineering.18f.gov/frontend/
-server {
-  listen {{ PORT }};
-  set $target_domain engineering.18f.gov/frontend/;
-  server_name frontend.18f.gov;
   return 301 https://$target_domain;
 }
 
@@ -458,22 +149,6 @@ server {
   return 301 https://$target_domain$request_uri;
 }
 
-# paid-leave-prototype.18f.gov to github repo
-server {
-  listen {{ PORT }};
-  set $target_domain github.com/18F/Paid-Leave-Prototype;
-  server_name paid-leave-prototype.18f.gov;
-  return 301 https://$target_domain;
-}
-
-# ads.18f.gov to github repo
-server {
-  listen {{ PORT }};
-  set $target_domain github.com/18F/ads-bpa;
-  server_name ads.18f.gov;
-  return 301 https://$target_domain;
-}
-
 # developer.login.gov to developers.login.gov
 server {
   listen {{ PORT }};
@@ -487,31 +162,6 @@ server {
   listen {{ PORT }};
   set $target_domain designsystem.digital.gov/components/;
   server_name components.designsystem.digital.gov;
-  return 301 https://$target_domain;
-}
-
-# climate-data-user-study.18f.gov to github.com/18F/climate-labs
-server {
-  listen {{ PORT }};
-  set $target_domain github.com/18F/climate-labs;
-  server_name climate-data-user-study.18f.gov;
-  return 301 https://$target_domain;
-}
-
-# govconnect.18f.gov to github.com/18F/govconnect
-server {
-  listen {{ PORT }};
-  set $target_domain github.com/18F/govconnect;
-  server_name govconnect.18f.gov;
-  return 301 https://$target_domain;
-}
-
-# portfolios.18f.gov to 18f.gsa.gov
-server {
-  listen {{ PORT }};
-  set $target_domain 18f.gsa.gov;
-  server_name portfolios.18f.gov;
-  add_header Strict-Transport-Security 'max-age=31536000; includeSubDomains; preload';
   return 301 https://$target_domain;
 }
 
@@ -551,76 +201,6 @@ server {
   listen {{ PORT }};
   server_name design.login.gov;
   return 301 https://www.login.gov/;
-}
-
-# accessibility.18f.gov to guides.18f.gov/accessibility
-server {
-  listen {{ PORT }};
-  server_name accessibility.18f.gov;
-  return 301 https://guides.18f.gov/accessibility$request_uri;
-}
-
-# agile.18f.gov to guides.18f.gov/agile/
-server {
-  listen {{ PORT }};
-  server_name agile.18f.gov;
-  return 301 https://guides.18f.gov/agile$request_uri;
-}
-
-# brand.18f.gov to guides.18f.gov/brand/
-server {
-  listen {{ PORT }};
-  server_name brand.18f.gov;
-  return 301 https://guides.18f.gov/brand$request_uri;
-}
-
-# content-guide.18f.gov to guides.18f.gov/content-guide/
-server {
-  listen {{ PORT }};
-  server_name content-guide.18f.gov;
-  return 301 https://guides.18f.gov/content-guide$request_uri;
-}
-
-# derisking-guide.18f.gov to guides.18f.gov/derisking/
-server {
-  listen {{ PORT }};
-  server_name derisking-guide.18f.gov;
-  return 301 https://guides.18f.gov/derisking$request_uri;
-}
-
-# eng-hiring.18f.gov to guides.18f.gov/eng-hiring
-server {
-  listen {{ PORT }};
-  server_name eng-hiring.18f.gov;
-  return 301 https://guides.18f.gov/eng-hiring$request_uri;
-}
-
-# engineering.18f.gov to guides.18f.gov/engineering
-server {
-  listen {{ PORT }};
-  server_name engineering.18f.gov;
-  return 301 https://guides.18f.gov/engineering$request_uri;
-}
-
-# product-guide.18f.gov to guides.18f.gov/product
-server {
-  listen {{ PORT }};
-  server_name product-guide.18f.gov;
-  return 301 https://guides.18f.gov/product$request_uri;
-}
-
-# ux-guide.18f.gov to guides.18f.gov/ux-guide/
-server {
-  listen {{ PORT }};
-  server_name ux-guide.18f.gov;
-  return 301 https://guides.18f.gov/ux-guide$request_uri;
-}
-
-# methods.18f.gov to guides.18f.gov/methods/
-server {
-  listen {{ PORT }};
-  server_name methods.18f.gov;
-  return 301 https://guides.18f.gov/methods$request_uri;
 }
 
 # identityequitystudy.gsa.gov to gsa.gov...
