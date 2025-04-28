@@ -7,20 +7,11 @@ server {
   return 302 https://$target_domain$request_uri;
 }
 
-# www.digitalgov.gov and www.digital.gov to digital.gov
+# www.digital.gov to digital.gov
 server {
   listen {{ PORT }};
   set $target_domain digital.gov;
-  server_name www.digitalgov.gov www.digital.gov;
-  return 301 https://$target_domain$request_uri;
-}
-
-# digitalgov.gov to digital.gov
-server {
-  listen {{ PORT }};
-  set $target_domain digital.gov;
-  server_name digitalgov.gov;
-  add_header Strict-Transport-Security 'max-age=63072000; includeSubDomains; preload';
+  server_name www.digital.gov;
   return 301 https://$target_domain$request_uri;
 }
 
@@ -52,28 +43,12 @@ server {
   return 301 https://$target_domain;
 }
 
-# summit.digitalgov.gov to digital.gov
-server {
-  listen {{ PORT }};
-  set $target_domain digital.gov;
-  server_name summit.digitalgov.gov;
-  return 302 https://$target_domain$request_uri;
-}
-
 # emerging.digital.gov to digital.gov/topics/emerging-tech/
 server {
   listen {{ PORT }};
   set $target_domain digital.gov/topics/emerging-tech/;
   server_name emerging.digital.gov;
   return 301 https://$target_domain;
-}
-
-# openopps.digitalgov.gov to openopps.usajobs.gov
-server {
-  listen {{ PORT }};
-  set $target_domain openopps.usajobs.gov;
-  server_name openopps.digitalgov.gov;
-  return 301 https://$target_domain$request_uri;
 }
 
 # plainlanguage.gov to www.plainlanguage.gov
@@ -122,14 +97,6 @@ server {
   set $target_domain findtreatment.gov;
   server_name www.findtreatment.gov;
   return 301 https://$target_domain$request_uri;
-}
-
-# usdigitalregistry.digitalgov.gov to touchpoints.app.cloud.gov/registry
-server {
-  listen {{ PORT }};
-  set $target_domain touchpoints.app.cloud.gov/registry/;
-  server_name usdigitalregistry.digitalgov.gov;
-  return 301 https://$target_domain;
 }
 
 # proposal.pif.gov to form
