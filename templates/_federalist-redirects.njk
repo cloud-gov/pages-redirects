@@ -15,16 +15,6 @@ server {
   return 301 https://$target_domain$request_uri;
 }
 
-# accessibility.digital.gov to digital.gov/guides/accessibility-for-teams/
-server {
-  listen {{ PORT }};
-  set $target_domain digital.gov/guides/accessibility-for-teams/;
-  server_name accessibility.digital.gov;
-  add_header Strict-Transport-Security 'max-age=63072000; includeSubDomains; preload';
-  # Making this a temp 302 to verify their target domain
-  return 302 https://$target_domain;
-}
-
 # usability.gov to digital.gov/topics/usability
 server {
   listen {{ PORT }};
@@ -43,28 +33,12 @@ server {
   return 301 https://$target_domain;
 }
 
-# emerging.digital.gov to digital.gov/topics/emerging-tech/
-server {
-  listen {{ PORT }};
-  set $target_domain digital.gov/topics/emerging-tech/;
-  server_name emerging.digital.gov;
-  return 301 https://$target_domain;
-}
-
 # plainlanguage.gov to www.plainlanguage.gov
 server {
   listen {{ PORT }};
   set $target_domain www.plainlanguage.gov;
   server_name plainlanguage.gov;
   add_header Strict-Transport-Security 'max-age=31536000; includeSubDomains; preload';
-  return 301 https://$target_domain$request_uri;
-}
-
-# v2.designsystem.digital.gov to designsystem.digital.gov
-server {
-  listen {{ PORT }};
-  set $target_domain designsystem.digital.gov;
-  server_name v2.designsystem.digital.gov;
   return 301 https://$target_domain$request_uri;
 }
 
@@ -121,14 +95,6 @@ server {
   listen {{ PORT }};
   set $target_domain developers.login.gov;
   server_name developer.login.gov;
-  return 301 https://$target_domain;
-}
-
-# components.designsystem.digital.gov to designsystem.digital.gov/components
-server {
-  listen {{ PORT }};
-  set $target_domain designsystem.digital.gov/components/;
-  server_name components.designsystem.digital.gov;
   return 301 https://$target_domain;
 }
 
@@ -205,14 +171,6 @@ server {
     return 301 https://tts.gsa.gov/join$request_uri;
   }
 
-}
-
-# demo.pra.digital.gov to pra.digital.gov
-server {
-  listen {{ PORT }};
-  set $target_domain pra.digital.gov;
-  server_name demo.pra.digital.gov;
-  return 301 https://$target_domain$request_uri;
 }
 
 # code.gov to digital.gov

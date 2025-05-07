@@ -28,7 +28,6 @@ services:
       - app:18f.gov
       - app:www.18f.gov
       - app:pages.18f.gov
-      - app:emerging.digital.gov
       - app:www.digital.gov
       - app:plainlanguage.gov
       - app:blogging-guide.18f.gov
@@ -51,7 +50,6 @@ services:
       - app:innovation-toolkit-prototype.18f.gov
       - app:open-source-program.18f.gov
       - app:modularcontracting.18f.gov
-      - app:v2.designsystem.digital.gov
       - app:micropurchase.18f.gov
       - app:acqstack-journeymap.18f.gov
       - app:boise.18f.gov
@@ -73,8 +71,6 @@ services:
       - app:design.login.gov
       - app:developer.login.gov
       - app:partners.login.gov
-      - app:accessibility.digital.gov
-      - app:components.designsystem.digital.gov
       - app:climate-data-user-study.18f.gov
       - app:govconnect.18f.gov
       - app:portfolios.18f.gov
@@ -92,7 +88,6 @@ services:
       - app:methods.18f.gov
       - app:identityequitystudy.gsa.gov
       - app:join.tts.gsa.gov
-      - app:demo.pra.digital.gov
       - app:code.gov
       - app:www.code.gov
       - app:staging.code.gov
