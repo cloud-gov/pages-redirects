@@ -6,7 +6,7 @@ This app redirects traffic from previous `pages.18f.gov` sites to their new URLs
 which are usually a subdomain of `18f.gov` (eg `pages.18f.gov/boop` → `boop.18f.gov`).
 
 This app also contains a number of non-pages.18f.gov-related redirects that were
-previously handled by [pages-redirects](https://github.com/18F/pages-redirects) for TTS in the 18F GitHub organziation. These redirect rules can be found in [`templates/_federalist-redirects.njk`](./templates/_federalist-redirects.njk).
+previously handled by [pages-redirects](https://github.com/18F/pages-redirects) for TTS in the 18F GitHub organization. These redirect rules can be found in [`templates/_federalist-redirects.njk`](./templates/_federalist-redirects.njk).
 
 ## Adding a new redirect
 
@@ -142,7 +142,7 @@ __Redirects__ deploys the Pages redirects app
 #### Pipeline credentials
 Concourse CI integrates directly with [Credhub](https://docs.cloudfoundry.org/credhub/) to provide access to credentials/secrets at job runtime. When a job is started, Concourse will resolve the parameters within the pipeline with the latest credentials using the double parentheses notation (ie. `((<credential-name>))`). See more about the [credentials lookup rules](https://concourse-ci.org/credhub-credential-manager.html#credential-lookup-rules).
 
-Some credentials in this pipeline are "compound" credentials that use the pipeline's instance variable in conjuction with its parameterized variables to pull the correct Credhub credentials based on the pipeline instance. The following parameters are used in the proxy pipeline:
+Some credentials in this pipeline are "compound" credentials that use the pipeline's instance variable in conjunction with its parameterized variables to pull the correct Credhub credentials based on the pipeline instance. The following parameters are used in the proxy pipeline:
 
 |Parameter|Description|Is Compound|
 --- | --- | --- |
