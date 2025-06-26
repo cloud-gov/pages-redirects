@@ -49,7 +49,6 @@ services:
       - app:digitalaccelerator.18f.gov
       - app:innovation-toolkit-prototype.18f.gov
       - app:open-source-program.18f.gov
-      - app:modularcontracting.18f.gov
       - app:micropurchase.18f.gov
       - app:acqstack-journeymap.18f.gov
       - app:boise.18f.gov
