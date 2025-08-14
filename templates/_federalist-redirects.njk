@@ -81,15 +81,6 @@ server {
   return 301 https://$target_domain;
 }
 
-# www.search.gov to search.gov
-server {
-  listen {{ PORT }};
-  set $target_domain search.gov;
-  server_name www.search.gov;
-  add_header Strict-Transport-Security 'max-age=31536000; includeSubDomains; preload';
-  return 301 https://$target_domain$request_uri;
-}
-
 # developer.login.gov to developers.login.gov
 server {
   listen {{ PORT }};

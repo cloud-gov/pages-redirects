@@ -16,7 +16,6 @@ const expectedRedirects = [
   { from: 'www.digital.gov', to: 'digital.gov', redirectCode: 301 },
   { from: 'plainlanguage.gov', to: 'www.plainlanguage.gov', redirectCode: 301 },
   { from: 'www.findtreatment.gov', to: 'findtreatment.gov', redirectCode: 301 },
-  { from: 'www.search.gov', to: 'search.gov', redirectCode: 301 },
   { from: 'usability.gov', to: 'digital.gov/topics/usability', redirectCode: 301, noPath: true },
   { from: 'www.usability.gov', to: 'digital.gov/topics/usability', redirectCode: 301, noPath: true },
   { from: 'partners.login.gov', to: 'www.login.gov/partners', redirectCode: 301, noPath: true },
