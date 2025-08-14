@@ -63,7 +63,6 @@ services:
       - app:handbook.18f.gov
       - app:frontend.18f.gov
       - app:proposal.pif.gov
-      - app:www.search.gov
       - app:ads.18f.gov
       - app:usability.gov
       - app:www.usability.gov
