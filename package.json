@@ -26,7 +26,7 @@
   },
   "devDependencies": {
     "eslint": "^8.49.0",
-    "js-yaml": "^4.1.0",
+    "js-yaml": "^4.1.1",
     "nunjucks": "^3.2.4",
     "request": "^2.88.2",
     "tap-summary": "^4.0.0",
