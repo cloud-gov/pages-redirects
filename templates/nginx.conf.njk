@@ -45,8 +45,6 @@ http {
     # -- Custom pages.18f.gov redirects from the old federalist-redirects app
     # Ref: https://github.com/18F/federalist-redirects/blob/b60293b49d01c429092195bc6d446690423dcf3b/nginx.conf#L85-L89
     rewrite ^/intake/.* https://18f.gsa.gov/contact/ redirect;
-    rewrite ^/designstandards/.* https://standards.usa.gov/ redirect;
-    rewrite ^/joining-18f/.* https://18f.gsa.gov/join/ redirect;
     # -- end custom pages.18f.gov redirects
 
     # For everything else, show an error message
