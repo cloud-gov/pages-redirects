@@ -9,13 +9,13 @@
 
 test-redirects: &test-redirects
   - task: install-dependencies
-    image: node
+    image: node24
     file: pipeline-tasks/tasks/run-command.yml
     params:
-      COMMAND: npm install
+      COMMAND: npm ci
 
   - task: build
-    image: node
+    image: node24
     file: pipeline-tasks/tasks/run-command.yml
     params:
       COMMAND: npm run build
@@ -58,7 +58,7 @@ jobs:
         version: every
       -  #@ pr_hook("pending", "run-tests")
       - get: pipeline-tasks
-      - get: node
+      - get: node24
       - get: dind
       - do: *test-redirects
 
@@ -80,7 +80,7 @@ jobs:
         trigger: true
       - get: pipeline-tasks
       - get: general-task
-      - get: node
+      - get: node24
       - get: dind
       - do: *test-redirects
       - task: deploy
@@ -149,7 +149,7 @@ resources:
   #@ end
 
   - name: slack
-  - name: node
+  - name: node24
   - name: general-task
   - name: dind
   - name: pipeline-tasks
