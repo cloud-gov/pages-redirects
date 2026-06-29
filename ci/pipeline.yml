@@ -33,7 +33,7 @@ jobs:
       - get: src
         params:
           #@ if/end env != 'test':
-          params: { depth: 1 }
+          depth: 1
           #@ if/end env == 'test':
           integration_tool: checkout
         trigger: true
