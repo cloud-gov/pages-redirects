@@ -69,6 +69,7 @@ services:
       - app:design.login.gov
       - app:developer.login.gov
       - app:partners.login.gov
+      - app:data.login.gov
       - app:climate-data-user-study.18f.gov
       - app:govconnect.18f.gov
       - app:portfolios.18f.gov
