@@ -26,6 +26,7 @@ const expectedRedirects = [
   { from: 'partners.login.gov/state-and-local/', to: 'www.login.gov/partners/state-and-local', redirectCode: 301, noPath: true },
   { from: 'partners.login.gov/state-and-local', to: 'www.login.gov/partners/state-and-local', redirectCode: 301, noPath: true },
   { from: 'design.login.gov', to: 'www.login.gov', redirectCode: 301, noPath: true },
+  { from: 'data.login.gov', to: 'zendesk.login.gov/hc/en-us/articles/52648402367508-Reporting', redirectCode: 301, noPath: true },
   { from: 'join.tts.gsa.gov', to: 'tts.gsa.gov/join', redirectCode: 301 },
   { from: 'join.tts.gsa.gov/working-at-tts/', to: 'handbook.tts.gsa.gov/about-us/tts-history', redirectCode: 301, noPath: true },
   { from: 'join.tts.gsa.gov/tts-offices/', to: 'handbook.tts.gsa.gov/#tts-offices', redirectCode: 301, noPath: true },
