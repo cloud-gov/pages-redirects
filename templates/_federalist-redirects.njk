@@ -127,11 +127,11 @@ server {
   return 301 https://www.login.gov/;
 }
 
-# data.login.gov to zendesk.login.gov reporting article
+# data.login.gov to partners.login.gov
 server {
   listen {{ PORT }};
   server_name data.login.gov;
-  return 301 https://zendesk.login.gov/hc/en-us/articles/52648402367508-Reporting/;
+  return 301 https://partners.login.gov/;
 }
 
 # identityequitystudy.gsa.gov to gsa.gov...
